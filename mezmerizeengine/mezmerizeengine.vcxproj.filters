@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="mezmerize">
+      <UniqueIdentifier>{8665127c-ea9a-4a50-b358-290706a649b8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mez\merize\Engine.h" />
+    <ClInclude Include="mez\merize\EList.h" />
+    <ClInclude Include="mez\merize\BaseEntity.h" />
+    <ClInclude Include="mez\version.h" />
+    <ClInclude Include="mez\merize\merize.h" />
+    <ClInclude Include="mez\merize\ren\MRenderable.h" />
+    <ClInclude Include="mez\merize\entity\EntityPhysical.h" />
+    <ClInclude Include="mez\merize\entity_macros.h" />
+    <ClInclude Include="mez\settings.h" />
+    <ClInclude Include="mez\merize\ren\RenderSystem.h" />
+    <ClInclude Include="mez\merize\staticdefs.h" />
+    <ClInclude Include="mez\merize\hybridarray.h" />
+    <ClInclude Include="mez\merize\transform.h" />
+    <ClInclude Include="mez\merize\entity\Entity3D.h" />
+    <ClInclude Include="mez\merize\cmp\component.h" />
+    <ClInclude Include="mez\merize\cmp\cmp_transform.h" />
+    <ClInclude Include="mez\merize\cmp\cmp_renderable.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\interface_opengl.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rinterface.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rinterface_def.h" />
+    <ClInclude Include="mez\merize\CachedStuff.h" />
+    <ClInclude Include="mez\merize\console\cmd.h" />
+    <ClInclude Include="mez\merize\console\conthing.h" />
+    <ClInclude Include="mez\merize\console\cvhandler.h" />
+    <ClInclude Include="mez\merize\helpers\static_format.h" />
+    <ClInclude Include="mez\merize\helpers\coolmacros.h" />
+    <ClInclude Include="mez\merize\helpers\include_this_in_staticdefs.h" />
+    <ClInclude Include="mez\merize\ren\model.h" />
+    <ClInclude Include="mez\merize\cachedstuffmgr.h" />
+    <ClInclude Include="mez\merize\ren\mdlcache.h" />
+    <ClInclude Include="mez\merize\eng_console.h" />
+    <ClInclude Include="mez\merize\console\conhelper.h" />
+    <ClInclude Include="mez\merize\entityprivate\efactory.h" />
+    <ClInclude Include="mez\merize\entity\EntityTestCube.h" />
+    <ClInclude Include="mez\merize\console\cmdargs.h" />
+    <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="mez\merize\Engine.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mez\merize\EList.cpp" />
+    <ClCompile Include="mez\merize\BaseEntity.cpp" />
+    <ClCompile Include="mez\merize\ren\MRenderable.cpp" />
+    <ClCompile Include="mez\merize\entity\EntityPhysical.cpp" />
+    <ClCompile Include="mez\merize\ren\RenderSystem.cpp" />
+    <ClCompile Include="mez\merize\hybridarray.cpp" />
+    <ClCompile Include="mez\merize\transform.cpp" />
+    <ClCompile Include="mez\merize\cmp\componentcontainer.cpp" />
+    <ClCompile Include="mez\merize\cmp\cmp_transform.cpp" />
+    <ClCompile Include="mez\merize\cmp\cmp_renderable.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\interface_opengl.cpp" />
+    <ClCompile Include="mez\merize\CachedStuff.cpp" />
+    <ClCompile Include="mez\merize\console\cmd.cpp" />
+    <ClCompile Include="mez\merize\console\conthing.cpp" />
+    <ClCompile Include="mez\merize\console\cvhandler.cpp" />
+    <ClCompile Include="mez\merize\ren\model.cpp" />
+    <ClCompile Include="mez\merize\cachedstuffmgr.cpp" />
+    <ClCompile Include="mez\merize\eng_console.cpp" />
+    <ClCompile Include="mez\merize\console\conhelper.cpp" />
+    <ClCompile Include="mez\merize\helpers\static_format.cpp" />
+    <ClCompile Include="mez\merize\entityprivate\efactory.cpp" />
+    <ClCompile Include="mez\merize\entity\EntityTestCube.cpp" />
+    <ClCompile Include="mez\merize\entity_comms.cpp" />
+    <ClCompile Include="mez\merize\console\cmdargs.cpp" />
+  </ItemGroup>
+</Project>
