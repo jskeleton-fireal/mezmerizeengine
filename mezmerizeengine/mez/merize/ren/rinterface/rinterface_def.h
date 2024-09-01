@@ -5,7 +5,7 @@
 class RInterface_OpenGL;
 #define RInterface_Default RInterface_OpenGL
 #if  !defined(INTERFACE_OPENGL)
-#include "interface_opengl.h"
+#include "opengl/interface_opengl.h"
 #endif
 #else //no render system
 class RInterface_Null;

@@ -83,6 +83,7 @@ enum
 //dont use using here 
 #define stdvector std::vector
 #define stdstring std::string
+//Im never gonna use these but theyre here
 using std::unique_ptr;
 using std::shared_ptr;
 using std::weak_ptr;

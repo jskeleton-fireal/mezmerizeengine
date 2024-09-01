@@ -23,7 +23,7 @@
     <ClInclude Include="mez\merize\cmp\component.h" />
     <ClInclude Include="mez\merize\cmp\cmp_transform.h" />
     <ClInclude Include="mez\merize\cmp\cmp_renderable.h" />
-    <ClInclude Include="mez\merize\ren\rinterface\interface_opengl.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\interface_opengl.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rinterface.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rinterface_def.h" />
     <ClInclude Include="mez\merize\CachedStuff.h" />
@@ -42,6 +42,10 @@
     <ClInclude Include="mez\merize\entity\EntityTestCube.h" />
     <ClInclude Include="mez\merize\console\cmdargs.h" />
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\gl_def.h" />
+    <ClInclude Include="mez\merize\helpers\unique.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader_cache.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
@@ -56,7 +60,7 @@
     <ClCompile Include="mez\merize\cmp\componentcontainer.cpp" />
     <ClCompile Include="mez\merize\cmp\cmp_transform.cpp" />
     <ClCompile Include="mez\merize\cmp\cmp_renderable.cpp" />
-    <ClCompile Include="mez\merize\ren\rinterface\interface_opengl.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\interface_opengl.cpp" />
     <ClCompile Include="mez\merize\CachedStuff.cpp" />
     <ClCompile Include="mez\merize\console\cmd.cpp" />
     <ClCompile Include="mez\merize\console\conthing.cpp" />
@@ -70,5 +74,7 @@
     <ClCompile Include="mez\merize\entity\EntityTestCube.cpp" />
     <ClCompile Include="mez\merize\entity_comms.cpp" />
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader_cache.cpp" />
   </ItemGroup>
 </Project>

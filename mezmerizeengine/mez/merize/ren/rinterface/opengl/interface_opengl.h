@@ -1,7 +1,7 @@
 
 #ifndef INTERFACE_OPENGL
 #define INTERFACE_OPENGL
-#include "rinterface.h"
+#include "../rinterface.h"
 
 #define RIF_GL_DISABLED -1
 
@@ -20,12 +20,13 @@ public:
 	virtual void Initialize();
 	virtual void UploadVerts(Vector verts[],int count = -1);
 	virtual void UploadShader(int shader_id);
+	virtual void UploadShader(const char* vertexshader,const char* fragmentshader);
 	virtual void Prepare();//set schtuff
 	virtual void Draw();
 	virtual void PostDraw();//reset stuff set by prepare
 
 
-	glint_t m_vertcount;
+	glint_t m_vertcount=-1;
 	glint_t m_ShaderProgram = RIF_GL_DISABLED;
 	glint_t m_VertexBuffer = RIF_GL_DISABLED;
 	glint_t m_VAO = RIF_GL_DISABLED;

@@ -5,5 +5,5 @@ void MezEntityPhysical::SetModel(const char* name)
 {
 	MezComponent_Renderable* l_renderable= dynamic_cast<MezComponent_Renderable*>(m_ComponentContainer.FindRenderable());
 	assert(l_renderable);
-	l_renderable->m_Renderable.get()->SetModel_Name(name);
+	l_renderable->m_Renderable->SetModel_Name(name);
 }

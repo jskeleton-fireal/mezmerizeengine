@@ -53,9 +53,9 @@ void RenderSystem::RSRenderableSystem::render_single()
 	for (int i = 0; i < renderables.size(); i++)
 	{
 		assert(renderables[i]);
-		renderables[i]->Prepare();
-		renderables[i]->Draw();
-		renderables[i]->PostDraw();
+		renderables[i].get()->Prepare();
+		renderables[i].get()->Draw();
+		renderables[i].get()->PostDraw();
 	}
 }
 

@@ -148,9 +148,13 @@
     <ClInclude Include="mez\merize\helpers\coolmacros.h" />
     <ClInclude Include="mez\merize\helpers\include_this_in_staticdefs.h" />
     <ClInclude Include="mez\merize\helpers\static_format.h" />
+    <ClInclude Include="mez\merize\helpers\unique.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />
     <ClInclude Include="mez\merize\ren\model.h" />
-    <ClInclude Include="mez\merize\ren\rinterface\interface_opengl.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader_cache.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\gl_def.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\interface_opengl.h" />
     <ClInclude Include="mez\merize\cmp\cmp_renderable.h" />
     <ClInclude Include="mez\merize\cmp\cmp_transform.h" />
     <ClInclude Include="mez\merize\cmp\component.h" />
@@ -185,7 +189,9 @@
     <ClCompile Include="mez\merize\entity_comms.cpp" />
     <ClCompile Include="mez\merize\helpers\static_format.cpp" />
     <ClCompile Include="mez\merize\ren\model.cpp" />
-    <ClCompile Include="mez\merize\ren\rinterface\interface_opengl.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader_cache.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\interface_opengl.cpp" />
     <ClCompile Include="mez\merize\cmp\cmp_renderable.cpp" />
     <ClCompile Include="mez\merize\cmp\cmp_transform.cpp" />
     <ClCompile Include="mez\merize\cmp\componentcontainer.cpp" />

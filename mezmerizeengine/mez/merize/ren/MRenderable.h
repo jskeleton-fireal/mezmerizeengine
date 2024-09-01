@@ -5,6 +5,20 @@
 class RenderSystem;
 class RInterface;
 class RModel;
+class MRenderable;
+//(For RenderSystem)
+//need to prevent vectors from deallocating renderables because that destroys everything
+struct MRenderableRSHandle
+{
+public:
+	MRenderable* m_ = 0;
+	MRenderableRSHandle(MRenderable* f_) { m_ = f_; }
+	//some operators
+	bool operator !() { return !m_; }
+	inline MRenderable* get() { return m_; }
+	bool operator ==(MRenderable* f_) { return m_==f_; }
+};
+
 class MRenderable
 {
 	friend class RenderSystem;
@@ -37,12 +51,14 @@ public:
 		Create();
 	}
 
-	bool m_visible;
-	bool m_initialized;
+	bool m_visible=0;
+	bool m_initialized=0;
+	bool m_expecteddeallocation=0;
 protected:
 	debugvar(bool  m_Ready); //for debugging
 	void Upload();
 	bool RequestRemoval();
-	
+public:
+	explicit operator MRenderableRSHandle() { return MRenderableRSHandle(this); }
 };
 

@@ -40,7 +40,7 @@ void RInterface_OpenGL::Static_BeforeRender(trustmeptr(RINTERFACE_WINDOW_CLASS) 
 
 	if (engine->rendersys[0]->available())
 	{
-		glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+		glClearColor(0.f, 0.5f, 0.5f, 0.0f);
 	}
 	else
 	{
@@ -88,6 +88,10 @@ void RInterface_OpenGL::UploadVerts(Vector verts[], int count)
 void RInterface_OpenGL::UploadShader(int shader_id)
 {
 	function_body_not_implemented;
+}
+
+void RInterface_OpenGL::UploadShader(const char* vertexshader, const char* fragmentshader)
+{
 }
 
 void RInterface_OpenGL::Prepare()

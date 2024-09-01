@@ -10,5 +10,13 @@ public:
 	{
 		m_ComponentContainer.AddTransform();
 	}
+
+
+	Transform* GetTransform()
+	{
+		return &m_ComponentContainer.FindTransform()->m_Transform;
+	}
+
+	Vector GetPosition() { return GetTransform()->m_Position; }
 };
 

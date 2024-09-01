@@ -7,6 +7,9 @@
 
 //this is the minimum amount of space allocated per system. defaults to 30
 #define DEFAULT_RENDERABLES_SIZE 30
+
+
+struct MRenderableHandle;
 class Engine;
 class RenderSystem
 {
@@ -14,7 +17,9 @@ class RenderSystem
 	friend class Engine;
 	
 private:
-	typedef stdvector<MRenderable*> RenderableVector;
+
+	
+	typedef stdvector<MRenderableRSHandle> RenderableVector;
 	struct RSRenderableSystem {
 		//im not sure about the performance of this system, an array would obviously be much faster but the memory issues and clear limits are kind of lame
 		

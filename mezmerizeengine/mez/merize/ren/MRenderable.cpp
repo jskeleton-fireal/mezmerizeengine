@@ -7,10 +7,10 @@
 void MRenderable::Create()
 {
 	m_rInterface = new RInterface_Default();
+	m_rInterface->Initialize();
 	printf("Created an r_interface\n");
 }
 
-//Why the fuck doesnt this work. Fuck vectors. Fuck vectors so much.
 inline void MRenderable::Prepare() { setdebugvar(m_Ready, 1); m_rInterface->Prepare(); }
 
 void MRenderable::Draw()
@@ -44,10 +44,11 @@ void MRenderable::SetModel(RModel* model)
 	m_model = model;
 	m_visible = 1;
 	if (!m_initialized) Upload();
-	
+	m_rInterface->UploadVerts(m_model->m_meshes->m_Verts, m_model->m_meshes->m_NumOfVerts);
 }
 MRenderable::~MRenderable()
 {
+	if (m_expecteddeallocation) return;
 	delete m_rInterface;
 	m_rInterface = 0;
 	printf("deallocated the m_rinterface\n");
