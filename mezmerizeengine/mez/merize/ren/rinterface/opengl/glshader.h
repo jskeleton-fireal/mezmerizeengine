@@ -1,10 +1,10 @@
 #pragma once
 
-
+typedef unsigned int glint_t;
 class GLShader
 {
 public:
-	GLint m_shader;
+	glint_t m_shader;
 	void LoadFromFile(const char* filename);
 
 	GLShader(const char* f_fn) { LoadFromFile(f_fn); }

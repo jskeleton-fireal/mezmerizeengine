@@ -166,7 +166,9 @@
     <ClInclude Include="mez\merize\Engine.h" />
     <ClInclude Include="mez\merize\entity_macros.h" />
     <ClInclude Include="mez\merize\merize.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rinterface_def.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rstatic.h" />
     <ClInclude Include="mez\merize\staticdefs.h" />
     <ClInclude Include="mez\settings.h" />
     <ClInclude Include="mez\version.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="mez\merize\Engine.cpp" />
     <ClCompile Include="mez\merize\ren\MRenderable.cpp" />
     <ClCompile Include="mez\merize\ren\RenderSystem.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.cpp" />
     <ClCompile Include="mez\merize\transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

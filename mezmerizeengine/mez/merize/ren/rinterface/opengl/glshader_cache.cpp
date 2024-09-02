@@ -3,7 +3,7 @@
 
 
 
-GLShader_Pair* GLShaderCache::GetPair(int f_id)
+GLShader_Pair* GLShaderCache::Lookup(int f_id)
 {
     return nullptr;
 }

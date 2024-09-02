@@ -46,6 +46,8 @@
     <ClInclude Include="mez\merize\ren\rinterface\opengl\gl_def.h" />
     <ClInclude Include="mez\merize\helpers\unique.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader_cache.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rstatic.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
@@ -76,5 +78,6 @@
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader_cache.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.cpp" />
   </ItemGroup>
 </Project>

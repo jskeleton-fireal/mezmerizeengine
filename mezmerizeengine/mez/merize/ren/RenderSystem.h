@@ -9,8 +9,10 @@
 #define DEFAULT_RENDERABLES_SIZE 30
 
 
+
 struct MRenderableHandle;
 class Engine;
+class RStatic;
 class RenderSystem
 {
 	friend class MRenderable;
@@ -33,6 +35,7 @@ private:
 private:
 	RSRenderableSystem systems[NUMBER_OF_RENDERABLE_SYSTEMS] = { RSRenderableSystem() };
 public:
+	RStatic* m_rstatic=0;
 	RSRenderableSystem* operator [] (int i);
 private:
 	void Render_CallThisInEnginePlease();

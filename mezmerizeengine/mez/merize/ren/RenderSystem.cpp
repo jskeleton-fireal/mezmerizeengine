@@ -30,18 +30,19 @@ void RenderSystem::Render()
 	if (!should_render) return; //dont render
 #endif
 
-	RInterface_Default::Static_BeforeRender(engine->m_Window);
+	m_rstatic->BeforeRender(engine->m_Window);
 	for (int i = 0; i < NUMBER_OF_RENDERABLE_SYSTEMS; i++)
 	{
 		systems[i].render_single();
 	}
-	RInterface_Default::Static_AfterRender(engine->m_Window);
+	m_rstatic->AfterRender(engine->m_Window);
 }
 
 void RenderSystem::Engine_Setup(void* window)
 {
-	RINTERFACE_WINDOW_CLASS* win = reintrp(window, RINTERFACE_WINDOW_CLASS*);
-	RInterface_Default::Static_InitializeWindow(win);
+	RINTERFACE_WINDOW_CLASS win = reintrp(window, RINTERFACE_WINDOW_CLASS);
+	m_rstatic = new RStatic_Default();
+	m_rstatic->InitializeWindow(win);
 }
 
 void RenderSystem::RSRenderableSystem::render_single()
