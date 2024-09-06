@@ -35,6 +35,7 @@
 #else
 #define reintrp(vValue,vType) (*reinterpret_cast<vType*>(&vValue))
 #define reintrp_p(vValue,vType) (*reinterpret_cast<vType*>(vValue))
+#define reintrp_noderef(vValue,vType) (reinterpret_cast<vType>(vValue))
 #endif
 
 struct Vector
@@ -131,3 +132,8 @@ using std::make_unique;
 #define assert_msg(vCheckval,vMessage) assert(vCheckval illusionary(vMessage));
 
 #define function_body_not_implemented assert_msg(0,"function_body_not_implemented")
+
+
+
+
+#define INHERIT_CONSTRUCTOR(vClassname) using vClassname::vClassname;

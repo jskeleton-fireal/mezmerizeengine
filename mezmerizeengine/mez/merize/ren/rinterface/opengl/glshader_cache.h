@@ -2,6 +2,13 @@
 
 #include "../../../merize.h"
 #include "glshader.h"
+#include "../../../helpers/static_format.h"
+
+
+//shader id = "default"
+//shader filename = "default.vert.txt"
+
+//shaders are searched from starting in content/shader
 
 class GLShaderCache
 {
@@ -9,11 +16,33 @@ public:
 	//this needs to be public for static stuff to access it
 	struct GLShaderCache_Stored
 	{
-		const char* m_id;
-		GLShader_Pair m_pair;
+		u32 m_shadertype;
+		const char* m_sid;
+		GLShader* m_shader;
+	};
+
+	enum GLShaderType
+	{
+		GLSHADERTYPE_UNKNOWN,
+		GLSHADERTYPE_VERTEX,
+		GLSHADERTYPE_FRAGMENT,
 	};
 private:
 	stdvector< GLShaderCache::GLShaderCache_Stored> m_storage;
 public:
-	GLShader_Pair* Lookup(int f_id);
+	//GLShader_Pair* Lookup_iId(int f_id);
+	GLShader* Lookup_sId(const char* f_sid, GLShaderType f_type);
+
+	//load every shader in the shaders folder. not implemented
+	void LoadAllAvailableShaders();
+
+	GLShaderType DetermineShaderTypeFromFilename(const char* f_filename);
+	static_format_t GetShaderFilenameFromId(const char* f_id, GLShaderType f_type);
+	static_format_t GetShaderIdFromFilename(const char* f_filename, GLShaderType* f_type = 0);
+	bool LoadShader(const char* f_filename);
+
+	void NeedShader(const char* f_shaderid);
+
+private:
+	GLShader* lookupshaderincache(const char* f_sid, GLShaderCache::GLShaderType f_type);
 };

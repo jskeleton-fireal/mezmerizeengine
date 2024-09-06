@@ -43,8 +43,16 @@ void MRenderable::SetModel(RModel* model)
 	}
 	m_model = model;
 	m_visible = 1;
-	if (!m_initialized) Upload();
+
+	//Need to regenerate!
+	m_rInterface->UploadShader_Vertex("default3d");
+	m_rInterface->UploadShader("test");
+	m_rInterface->LinkShaderProgram();
 	m_rInterface->UploadVerts(m_model->m_meshes->m_Verts, m_model->m_meshes->m_NumOfVerts);
+
+	//add to renderables list if not there yet.
+	//NOTE: need to do this AFTER. AFTER!!
+	if (!m_initialized) { Upload(); }
 }
 MRenderable::~MRenderable()
 {

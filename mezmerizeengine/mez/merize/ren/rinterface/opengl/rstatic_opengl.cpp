@@ -56,3 +56,8 @@ void RStatic_OpenGL::AfterRender(RINTERFACE_WINDOW_CLASS window)
 	truwindow->display();
 	//need to respect sfml's drawing tools if we are using the sfml window class thing
 }
+
+RStatic_OpenGL* RStatic_OpenGL::Get()
+{
+	return dynamic_cast<RStatic_OpenGL*>(engine->rendersys.m_rstatic);
+}

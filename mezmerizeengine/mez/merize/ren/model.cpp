@@ -59,7 +59,7 @@ RModel* RModel::LoadModelFromFile(const char* filename, bool essential)
     model->m_meshes = new RModel_Mesh[ scene->mNumMeshes ];
     for (int i = 0; i < scene->mNumMeshes; i++)
     {
-        model->m_meshes[i].m_Verts = reintrp_p(scene->mMeshes[i]->mVertices,Vector*);
+        model->m_meshes[i].m_Verts = reintrp_noderef(scene->mMeshes[i]->mVertices,Vector*);
         model->m_meshes[i].m_NumOfVerts = scene->mMeshes[i]->mNumVertices;
     }
     console_printf("Loaded model %s\n", fn);

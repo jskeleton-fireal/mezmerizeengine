@@ -16,7 +16,10 @@ public:
 	//member
 	virtual void Initialize() = 0;
 	virtual void UploadVerts(Vector verts[],int count = -1) = 0;
-	virtual void UploadShader(int shader_id) = 0;
+	virtual void UploadShader_Id(int shader_id) = 0;
+	virtual void UploadShader(const char* shader_id) = 0;
+	virtual void UploadShader_Vertex(const char* shader_id) = 0;
+	virtual void LinkShaderProgram() = 0;
 	virtual void Prepare() = 0; //set schtuff
 	virtual void Draw() = 0;
 	virtual void PostDraw() = 0; //reset stuff set by prepare
