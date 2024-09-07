@@ -5,6 +5,7 @@
 
 void GLShader::LoadFromFile(const char* filename)
 {
+    m_state = 9;
     std::ifstream file;
     file.open(filename);
     assert(file.good());
@@ -17,7 +18,7 @@ void GLShader::LoadFromFile(const char* filename)
     //Trust me bro
     glShaderSource(m_shader, 1, reinterpret_cast<const GLchar *const *>(buffer), NULL);
     glCompileShader(m_shader);
-
+    m_state = 0;
     //error checking. include this in release too!
     {
         int  success;

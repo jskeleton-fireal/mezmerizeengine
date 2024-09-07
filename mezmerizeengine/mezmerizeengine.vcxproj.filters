@@ -44,7 +44,6 @@
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\gl_def.h" />
-    <ClInclude Include="mez\merize\helpers\unique.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader_cache.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rstatic.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.h" />

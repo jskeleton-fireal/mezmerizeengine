@@ -4,8 +4,12 @@
 typedef unsigned int glint_t;
 class GLShader
 {
+	friend class GLShaderCache;
 public:
 	glint_t m_shader;
+private:
+	u8 m_state;
+public:
 	void LoadFromFile(const char* filename);
 
 	//note: since vLoad gets called in LoadFromFile, and it is virtual, we cannot make a constructor here.

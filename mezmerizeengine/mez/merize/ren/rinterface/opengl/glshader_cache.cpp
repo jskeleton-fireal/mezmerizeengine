@@ -30,12 +30,24 @@ GLShader* GLShaderCache::Lookup_sId(const char* f_sid, GLShaderCache::GLShaderTy
 	{
 		//Oh.
 		console_printf("warning: attempt to use nonexistant shader: %s. this will cause issues!\nExpected Filename:%s\n", f_sid,fn.buffer);
+		
+		//todo: need some fallback shaders
+
 		return 0;
 	}
 
 	console_printf("warning: shader %s was not cached. mark shaders as needed please\n", fn.buffer);
 
-	return lookupshaderincache(f_sid,f_type);
+	shader = lookupshaderincache(f_sid, f_type);
+	if (!shader)
+	{
+		//shouldnt happen but im stupid
+#if _DEBUG
+		console_printf("ERROR: SHADER %s FAILED TO BE ASSIGNED!!\n",fn.buffer);
+		assert(0);
+#endif
+	}
+	return shader;
 }
 
 void GLShaderCache::LoadAllAvailableShaders()
@@ -56,7 +68,14 @@ bool GLShaderCache::LoadShader(const char* f_filename)
 	case GLSHADERTYPE_FRAGMENT: l_shader = new GLShaderFragment(f_filename); break;
 	case GLSHADERTYPE_VERTEX: l_shader = new GLShaderVertex(f_filename); break;
 	}
-	return false;
+	if (l_shader->m_state)
+	{
+		//bad
+		return false;
+	}
+	pair.m_shader = l_shader;
+	m_storage.push_back(pair);
+	return 1;
 }
 static_format_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, GLShaderType* f_type /*= 0 */)
 {
@@ -71,7 +90,7 @@ static_format_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, G
 		int whereitends = 0;
 		for (int i = 0; i < len; i++)
 		{
-			if (f_filename[i] == '/' || f_filename[i] == '\\') whereitstarts = i;
+			if (f_filename[i] == '/' || f_filename[i] == '\\') whereitstarts = i+1;
 			if (f_filename[i] == '.' && !whereitends)
 			{
 				whereitends = i;
@@ -88,11 +107,9 @@ static_format_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, G
 		//okay. copy it
 		static_format_t formato = static_format_t();
 		formato.buffer[len] = 0;
-		memcpy(formato.buffer, f_filename + whereitstarts, len);
+		memcpy(formato.buffer, f_filename + whereitstarts, len - whereitends);
 		return formato;
 	}
-	
-	//shouldnt get here.. if we did somehow then thankfully the error label is here to deal with it!
 
 label_badfile:
 	if (f_type) *f_type = GLSHADERTYPE_UNKNOWN;

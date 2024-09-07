@@ -148,7 +148,6 @@
     <ClInclude Include="mez\merize\helpers\coolmacros.h" />
     <ClInclude Include="mez\merize\helpers\include_this_in_staticdefs.h" />
     <ClInclude Include="mez\merize\helpers\static_format.h" />
-    <ClInclude Include="mez\merize\helpers\unique.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />
     <ClInclude Include="mez\merize\ren\model.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader.h" />
