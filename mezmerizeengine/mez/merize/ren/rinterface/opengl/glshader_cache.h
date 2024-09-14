@@ -2,8 +2,8 @@
 
 #include "../../../merize.h"
 #include "glshader.h"
-#include "../../../helpers/static_format.h"
-
+#include "../../../staticdefs.h"
+#include "../../../helpers/mezstring.h"
 
 //shader id = "default"
 //shader filename = "default.vert.txt"
@@ -17,7 +17,7 @@ public:
 	struct GLShaderCache_Stored
 	{
 		u32 m_shadertype;
-		const char* m_sid;
+		mezstring_t m_sid;
 		GLShader* m_shader;
 	};
 
@@ -37,8 +37,8 @@ public:
 	void LoadAllAvailableShaders();
 
 	GLShaderType DetermineShaderTypeFromFilename(const char* f_filename);
-	static_format_t GetShaderFilenameFromId(const char* f_id, GLShaderType f_type);
-	static_format_t GetShaderIdFromFilename(const char* f_filename, GLShaderType* f_type = 0);
+	mezstring_t GetShaderFilenameFromId(const char* f_id, GLShaderType f_type);
+	mezstring_t GetShaderIdFromFilename(const char* f_filename, GLShaderType* f_type = 0);
 	bool LoadShader(const char* f_filename);
 
 	void NeedShader(const char* f_shaderid);

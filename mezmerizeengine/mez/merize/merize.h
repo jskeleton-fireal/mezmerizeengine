@@ -107,7 +107,7 @@ using std::make_unique;
 
 #define possibly_null(v) v
 
-//i cant trust you to just not to use this
+//i cant trust you to just not to use this in c
 #ifdef __cplusplus 
 #define stdvec_findselection(vVector,vSelection)  std::find(vVector.begin(), vVector.end(), vSelection);
 #define stdvec_removeselection(vVector,vSelection) std::erase(vVector,vSelection)
@@ -137,3 +137,13 @@ using std::make_unique;
 
 
 #define INHERIT_CONSTRUCTOR(vClassname) using vClassname::vClassname;
+
+
+//hehehe
+//This is illegal btw
+template <typename TYPE,typename TYPE2>
+TYPE remove_const(const TYPE2 thing)
+{
+	pointer_t test = (pointer_t) & thing;
+	return reintrp_noderef(test,TYPE);
+}

@@ -2,6 +2,7 @@
 #include "../../../merize.h"
 #include "../../../console/cmd.h"
 
+
 const char* thewordfrag = "frag";
 const char* thewordvert = "vert";
 
@@ -24,26 +25,26 @@ GLShader* GLShaderCache::Lookup_sId(const char* f_sid, GLShaderCache::GLShaderTy
 	if (shader) return shader;
 
 	//..alright now try to see if this shader even exists
-	static_format_t fn = GetShaderFilenameFromId(f_sid, f_type);
-	bool r = LoadShader(fn.buffer);
+	mezstring_t fn = GetShaderFilenameFromId(f_sid, f_type);
+	bool r = LoadShader(fn);
 	if (!r)
 	{
 		//Oh.
-		console_printf("warning: attempt to use nonexistant shader: %s. this will cause issues!\nExpected Filename:%s\n", f_sid,fn.buffer);
+		console_printf("warning: attempt to use nonexistant shader: %s. this will cause issues!\nExpected Filename:%s\n", f_sid,fn.cstr());
 		
 		//todo: need some fallback shaders
 
 		return 0;
 	}
 
-	console_printf("warning: shader %s was not cached. mark shaders as needed please\n", fn.buffer);
+	console_printf("warning: shader %s was not cached. mark shaders as needed please\n", fn.cstr());
 
 	shader = lookupshaderincache(f_sid, f_type);
 	if (!shader)
 	{
 		//shouldnt happen but im stupid
 #if _DEBUG
-		console_printf("ERROR: SHADER %s FAILED TO BE ASSIGNED!!\n",fn.buffer);
+		console_printf("ERROR: SHADER %s FAILED TO BE ASSIGNED!!\n",fn.cstr());
 		assert(0);
 #endif
 	}
@@ -57,10 +58,9 @@ void GLShaderCache::LoadAllAvailableShaders()
 bool GLShaderCache::LoadShader(const char* f_filename)
 { 
 	GLShaderType type;
-	static_format_t sid = GetShaderIdFromFilename(f_filename, &type);
-	GLShaderCache_Stored pair = GLShaderCache_Stored();
-	pair.m_shadertype = type;
-	pair.m_sid = sid;
+	mezstring_t sid = GetShaderIdFromFilename(f_filename, &type);
+	
+
 	GLShader* l_shader = 0;
 	//Im not making a factory system for two types
 	switch (type)
@@ -73,11 +73,16 @@ bool GLShaderCache::LoadShader(const char* f_filename)
 		//bad
 		return false;
 	}
+	GLShaderCache_Stored pair = GLShaderCache_Stored();
+	pair.m_sid.clone(&sid);
 	pair.m_shader = l_shader;
+	pair.m_shadertype = type;
 	m_storage.push_back(pair);
+	
+
 	return 1;
 }
-static_format_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, GLShaderType* f_type /*= 0 */)
+mezstring_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, GLShaderType* f_type /*= 0 */)
 {
 	//find the last / or \ in the filename (note: not sure how macos handles filenames.. ik linux works)
 	const int len = strlen(f_filename);
@@ -100,6 +105,7 @@ static_format_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, G
 				case 'v': if (f_type) *f_type = GLSHADERTYPE_VERTEX; break;
 				default: goto label_badfile; break;
 				}
+				break;
 			}
 		}
 		if (whereitstarts == -1 || !whereitends) goto label_badfile;
@@ -107,7 +113,7 @@ static_format_t GLShaderCache::GetShaderIdFromFilename(const char* f_filename, G
 		//okay. copy it
 		static_format_t formato = static_format_t();
 		formato.buffer[len] = 0;
-		memcpy(formato.buffer, f_filename + whereitstarts, len - whereitends);
+		memcpy(formato.buffer, f_filename + whereitstarts, whereitends - whereitstarts);
 		return formato;
 	}
 
@@ -116,7 +122,7 @@ label_badfile:
 	return static_format("\0");
 }
 
-static_format_t GLShaderCache::GetShaderFilenameFromId(const char* id, GLShaderType f_type)
+mezstring_t GLShaderCache::GetShaderFilenameFromId(const char* id, GLShaderType f_type)
 {
 	const char* ptrtotext = f_type == GLSHADERTYPE_FRAGMENT ? thewordfrag : thewordvert;
 	return static_format("content/shader/%s.%s.txt",id,ptrtotext);

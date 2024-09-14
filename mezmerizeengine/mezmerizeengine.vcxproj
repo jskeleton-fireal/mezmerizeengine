@@ -147,6 +147,7 @@
     <ClInclude Include="mez\merize\console\conthing.h" />
     <ClInclude Include="mez\merize\helpers\coolmacros.h" />
     <ClInclude Include="mez\merize\helpers\include_this_in_staticdefs.h" />
+    <ClInclude Include="mez\merize\helpers\mezstring.h" />
     <ClInclude Include="mez\merize\helpers\static_format.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />
     <ClInclude Include="mez\merize\ren\model.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="mez\merize\CachedStuff.cpp" />
     <ClCompile Include="mez\merize\console\conthing.cpp" />
     <ClCompile Include="mez\merize\entity_comms.cpp" />
+    <ClCompile Include="mez\merize\helpers\mezstring.cpp" />
     <ClCompile Include="mez\merize\helpers\static_format.cpp" />
     <ClCompile Include="mez\merize\ren\model.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />

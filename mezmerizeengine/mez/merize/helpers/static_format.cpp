@@ -1,5 +1,5 @@
 #include "static_format.h"
-
+#include "mezstring.h"
 
 void nonstatic_format(char* buffer, const char* format, ...);
 
@@ -18,4 +18,9 @@ void nonstatic_format(char* buffer, const char* format, ...)
 	//if (v) perror(buffer);
 	va_end(args);
 	return;
+}
+
+static_format_t::operator MezString()
+{
+	return MezString(buffer);
 }

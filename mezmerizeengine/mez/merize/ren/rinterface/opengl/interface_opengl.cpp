@@ -80,17 +80,15 @@ void RInterface_OpenGL::LinkShaderProgram()
 	glGetProgramiv(m_ShaderProgram, GL_LINK_STATUS, (int*)&isLinked);
 	if (isLinked == GL_FALSE)
 	{
-		GLint maxLength = 0;
+		GLint maxLength;
 		glGetProgramiv(m_ShaderProgram, GL_INFO_LOG_LENGTH, &maxLength);
 
-		// The maxLength includes the NULL character
-		// fuck u khoronos or whatever ur name is actually i love yall thanks for doing what you did w opengl
-		std::vector<GLchar> infoLog(maxLength);
-		glGetProgramInfoLog(m_ShaderProgram, maxLength, &maxLength, &infoLog[0]);
+		char errormsg[800];
+		glGetProgramInfoLog(m_ShaderProgram, maxLength, &maxLength, errormsg);
 		// Use the infoLog as you see fit.
 
 		//hopefully this works
-		console_printf("%s\n", infoLog);
+		console_printf("%s\n", errormsg);
 
 		// In this simple program, we'll just leave
 		return;
