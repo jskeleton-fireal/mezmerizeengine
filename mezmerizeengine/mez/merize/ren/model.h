@@ -16,7 +16,7 @@ class RModel
 {
 public:
 	bool m_valid = 1;
-	bool m_expected_deallocation = 0;
+	bool m_expected_deallocation = 0; //is this unused?
 	short m_id;
 	stdstring m_name;
 	//need to set a value here in case this gets destructed without loading a model
