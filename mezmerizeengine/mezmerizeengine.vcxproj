@@ -633,6 +633,8 @@
     <ClInclude Include="mez\merize\ren\camera.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />
     <ClInclude Include="mez\merize\ren\model.h" />
+    <ClInclude Include="mez\merize\ren\model_base.h" />
+    <ClInclude Include="mez\merize\ren\model_mesh.h" />
     <ClInclude Include="mez\merize\ren\MRenderableBase.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\gldebughelp.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glmathstuff.h" />
@@ -680,6 +682,7 @@
     <ClCompile Include="mez\merize\helpers\static_format.cpp" />
     <ClCompile Include="mez\merize\mezangles.cpp" />
     <ClCompile Include="mez\merize\ren\model.cpp" />
+    <ClCompile Include="mez\merize\ren\model_base.cpp" />
     <ClCompile Include="mez\merize\ren\MRenderableBase.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glconcommands.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\gldebughelp.c" />

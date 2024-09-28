@@ -530,6 +530,8 @@
     <ClInclude Include="deps\sfml\include\SFML\OpenGL.hpp" />
     <ClInclude Include="deps\sfml\include\SFML\System.hpp" />
     <ClInclude Include="deps\sfml\include\SFML\Window.hpp" />
+    <ClInclude Include="mez\merize\ren\model_base.h" />
+    <ClInclude Include="mez\merize\ren\model_mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
@@ -569,6 +571,7 @@
     <ClCompile Include="mez\merize\ren\rinterface\opengl\gldebughelp.c" />
     <ClCompile Include="deps\glm\detail\glm.cpp" />
     <ClCompile Include="deps\glm\glm.cppm" />
+    <ClCompile Include="mez\merize\ren\model_base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

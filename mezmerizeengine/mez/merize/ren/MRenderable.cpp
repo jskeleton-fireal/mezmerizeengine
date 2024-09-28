@@ -14,7 +14,7 @@ void MRenderable::SetModel_Name(const char* model_name)
 {
 	SetModel(engine->cache.m_models.Lookup(model_name));
 }
-void MRenderable::SetModel(RModel* model)
+void MRenderable::SetModel(RModel_Base* model)
 {
 	if (!model)
 	{
@@ -30,7 +30,7 @@ void MRenderable::SetModel(RModel* model)
 	m_rInterface->UploadShader_Vertex("default3d");
 	m_rInterface->UploadShader("test");
 	m_rInterface->LinkShaderProgram();
-	m_rInterface->UploadVerts(m_model->m_meshes->m_Verts, m_model->m_meshes->m_NumOfVerts);
+	m_rInterface->UploadVerts(m_model->GetVerts(), m_model->GetVertCount());
 
 	//add to renderables list if not there yet.
 	//NOTE: need to do this AFTER. AFTER!!

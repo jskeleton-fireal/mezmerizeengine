@@ -1,9 +1,10 @@
 #pragma once
+class RModel_Base;
 class RModel;
 #include "../cachedstuff.h"
 #include "model.h"
 
-class CachedStuff_RModels : public CachedStuff<RModel>
+class CachedStuff_RModels : public CachedStuff<RModel_Base>
 {
 public:
 	CachedStuff_RModels()

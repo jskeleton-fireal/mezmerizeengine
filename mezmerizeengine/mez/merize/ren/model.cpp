@@ -22,9 +22,7 @@ RModel::~RModel()
     console_printf("freeing rmodel %i %i\n",m_valid, m_expected_deallocation);
     if (m_expected_deallocation) return;
     delete m_;
-    delete m_meshes;
     m_ = 0;
-    m_meshes = 0;
 }
 
 void RModel::unload_internal()

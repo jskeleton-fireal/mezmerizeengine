@@ -4,7 +4,7 @@
 
 class RenderSystem;
 class RInterface;
-class RModel;
+class RModel_Base;
 
 //variant of MRenderableBase that uses the RModel system.
 //This is the best general purpose renderable.
@@ -13,12 +13,12 @@ class MRenderable : public MRenderableBase
 {
 	friend class RenderSystem;
 public:
-	RModel* m_model = 0;
+	RModel_Base* m_model = 0;
 public:
 	//need these to be seperate since numbers are pointer ambiguous (SetModel(0) means id 0 or null string?)
 	virtual void SetModel_Id(int model_id);
 	virtual void SetModel_Name(const char* model_name);
-	virtual void SetModel(RModel* model);
+	virtual void SetModel(RModel_Base* model);
 public:
 	explicit operator MRenderableRSHandle() { return MRenderableRSHandle(this); }
 };
