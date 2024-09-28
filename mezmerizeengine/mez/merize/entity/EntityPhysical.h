@@ -10,6 +10,7 @@ public:
 	virtual void Initialize() {
 		MezEntity3DTransform::Initialize();
 		m_ComponentContainer.AddRenderable();
+		
 	}
 
 	virtual void SetModel(const char* name);

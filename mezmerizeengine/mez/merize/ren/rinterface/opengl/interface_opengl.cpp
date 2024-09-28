@@ -9,6 +9,7 @@
 #include "glshader_cache.h"
 #include "rstatic_opengl.h"
 #include "../../../console/cmd.h"
+#include "glmathstuff.h"
 
 #define AND_GL_DEBUGGING_STUFF 1
 
@@ -33,7 +34,7 @@ void RInterface_OpenGL::UploadVerts(Vector verts[], int count)
 	glBindVertexArray(m_VAO);
 
 	//upload verts
-	glBufferData(GL_ARRAY_BUFFER, 3i64  * count * sizeof(float), verts, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 3i64  * count * sizeof(float), &verts[0], GL_DYNAMIC_DRAW);
 
 	//Position Attribute
 	glEnableVertexAttribArray(RIF_VAO_GL_POSITION);
@@ -102,12 +103,17 @@ void RInterface_OpenGL::Prepare()
 #if 0
 	//respect m_features
 	bool depth = 1;//!(m_features & RIF_FEATURE_GL_NO_DEPTH);
-	if (depth) glEnable(GL_DEPTH); else glDisable(GL_DEPTH);
+	if (depth) glEnable(GL_DEPTH_TEST); else glDisable(GL_DEPTH_TEST);
 	bool cullface = 1;//!(m_features & RIF_FEATURE_GL_TWO_SIDED);
 	if (cullface) glEnable(GL_CULL_FACE); else glDisable(GL_CULL_FACE);
 #else
-	glEnable(GL_DEPTH);
+#if 0
+	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+#else
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+#endif
 #endif
 	assert(RIF_ISENABLED(m_VertexBuffer));
 	assert(RIF_ISENABLED(m_VAO));
@@ -119,9 +125,19 @@ void RInterface_OpenGL::Prepare()
 
 	//bind everything... yadda yadda
 
-
 	glUseProgram(m_ShaderProgram);
 
+	unsigned int pvmloc = glGetUniformLocation(m_ShaderProgram, "pvm");
+
+	//This shader wants a pvm
+	if (pvmloc >= 0)
+	{
+		//todo: need to have pv cached before
+		matrix4_t matrix = GLMathStuff::GetPV(engine->rendersys.m_camera) * GLMathStuff::GetTransformationMatrix(m_transform);
+
+
+		glUniformMatrix4fv(pvmloc, 1, GL_FALSE, reinterpret_cast<const GLfloat*>(&matrix[0]));
+	}
 
 	
 }
@@ -135,4 +151,5 @@ void RInterface_OpenGL::Draw()
 void RInterface_OpenGL::PostDraw()
 {
 	glDisableVertexAttribArray(RIF_VAO_GL_POSITION);
+	
 }

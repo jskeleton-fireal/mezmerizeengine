@@ -101,5 +101,7 @@ extern ConsoleVariableBool cv_developer;
 #define CREATE_CONSOLEVARIABLE_CONSTRAINED(vName,vType,vFlags,vDefaultValue,vMin,vMax) ConsoleVariable_Typed<CVHandler_##vType,vType> cv_##vName = ConsoleVariable_Typed<CVHandler_##vType,vType>(#vName, vFlags, vDefaultValue, {1,vMin,vMax}) 
 #define CREATE_CONSOLEVARIABLE_BOOL(vName,vFlags,vDefaultValue) CREATE_CONSOLEVARIABLE_CONSTRAINED(vName,bool,vFlags,vDefaultValue,0,1)
 
+//i KNOW youre gonna see this and forget everything abt this so HERES SOME BASIC DOCS.
+// args are (cmdname,flags) cmdname IS NOT A STRING. return 0 if everything went well
 #define CREATE_CONSOLECOMMAND_WFUNC(vName,vFlags) static int __cmdfunc__##vName(ConCommandArgs* f_args);  static ConsoleCommand __cmd__##vName = ConsoleCommand(#vName,vFlags,__cmdfunc__##vName); int __cmdfunc__##vName(ConCommandArgs* f_args)
 

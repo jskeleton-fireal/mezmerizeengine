@@ -47,6 +47,13 @@
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader_cache.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rstatic.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.h" />
+    <ClInclude Include="mez\merize\helpers\mezstring.h" />
+    <ClInclude Include="mez\merize\miscobjects\MezMiscRenderable.h" />
+    <ClInclude Include="mez\merize\ren\MRenderableBase.h" />
+    <ClInclude Include="mez\merize\ren\camera.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\glmathstuff.h" />
+    <ClInclude Include="mez\merize\mezangles.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\gldebughelp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
@@ -78,5 +85,11 @@
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader_cache.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.cpp" />
+    <ClCompile Include="mez\merize\helpers\mezstring.cpp" />
+    <ClCompile Include="mez\merize\ren\MRenderableBase.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glmathstuff.cpp" />
+    <ClCompile Include="mez\merize\mezangles.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glconcommands.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\gldebughelp.c" />
   </ItemGroup>
 </Project>

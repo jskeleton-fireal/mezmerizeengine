@@ -11,8 +11,6 @@ class MezBaseEntity;
 class EHandle;
 
 
-
-
 enum
 {
 	LIFESTATE_DEAD,
@@ -22,10 +20,21 @@ enum
 class MezBaseEntity
 {
 public:
+	enum MEZENTITYSTATE
+	{
+		MEZENTSTATE_INVALID_STATE, //Doesnt do anything on updates.
+		MEZENTSTATE_INITIALIZE_NEEDED, //Calls Initialize on updates.
+		MEZENTSTATE_INITIALIZING, 
+		MEZENTSTATE_READY, //Calls Update on updates
+	};
+public:
 	//id in the edef. gets updated on Spawn()
 	int m_DefId = ENTITY_INVALID_DEFID;
 	//hidden id to prevent ehandle clashing. gets updated on Spawn()
 	short m_InternalId = -1;
+	//Should this be public?
+	//dont change this to a u16, no matter how tempting it is
+	MEZENTITYSTATE m_State;
 
 	ComponentContainer m_ComponentContainer;
 
@@ -40,8 +49,15 @@ public:
 	virtual void Update() {}
 	virtual void Pre_Update() {}
 	virtual void Post_Update() {}
-public:
 	virtual void Initialize() {}
+public:
+	inline void Update_Calls()
+	{
+		Pre_Update();
+		Update();
+		Post_Update();
+	}
+	virtual bool HandleStates();
 };
 
 //Use EHandles in place of Entity pointers Please

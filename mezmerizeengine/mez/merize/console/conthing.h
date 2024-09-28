@@ -16,7 +16,7 @@ public:
 	int m_engine; //if SUPPORT_MULTIPLE_ENGINES is 0, this is unused padding
 public:
 	virtual possibly_null(pointer_t) Execute(const char* f_i) = 0;
-
+	virtual bool Access(pointer_t* f_pointer, int f_pointer_size) { return 0; }
 public:
 	ConsoleThing(const char* f_name, bitfield16_t f_flags = 0);
 	virtual const char* ct_type_name() { return "undef"; }

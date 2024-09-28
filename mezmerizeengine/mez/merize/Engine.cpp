@@ -49,7 +49,7 @@ void console_thread(console_thread_pass f_pass)
         f_pass.m_console->process(f_pass.m_engine);
     }
 }
-
+sf::Clock* clockp;
 
 int Engine::run()
 {
@@ -100,7 +100,8 @@ int Engine::run()
     //load cache house
 
     cache.m_models.setup();
-
+    sf::Clock clock; // starts the clock
+    clockp = &clock;
     //THIS IS THE LOOP!!!
     while (window.isOpen())
     {
@@ -115,6 +116,14 @@ int Engine::run()
 
 
         engine = this;
+        if (m_immediate_operation)
+        {
+            m_immediate_operation();
+            m_immediate_operation = 0;
+        }
+
+        time = clock.getElapsedTime().asSeconds();
+        time_alt = clock.getElapsedTime().asMicroseconds();
         //update
         (this->*upd)();
 
@@ -140,6 +149,18 @@ void Engine::show_messagebox(const char* f_msg, ENGINE_MSGBOXTYPE_T f_type)
 {
     printf(f_msg);
     int r = MessageBoxA(m_Window->getSystemHandle(), f_msg, static_format("Engine - %s",msgbox_descr[f_type-1]), f_type << 4);
+}
+
+void Engine::push_immediate_operation(voidfunction_t& function)
+{
+    assert(!m_immediate_operation);
+    if (m_immediate_operation) { abort(); }
+    m_immediate_operation = function;
+}
+
+void Engine::reset_globals()
+{
+    clockp->restart();
 }
 
 void Engine::update()

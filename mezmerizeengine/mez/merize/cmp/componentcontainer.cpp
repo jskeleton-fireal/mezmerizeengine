@@ -1,6 +1,6 @@
 #include "componentcontainer.h"
 #include "cmp_transform.h"
-
+#include "../ren/rinterface/rinterface.h"
 possibly_null(MezComponent*) ComponentContainer::FindComponent(const char* internal_name)
 {
     for (int i = 0; i < m_components.size(); i++)
@@ -34,4 +34,6 @@ void ComponentContainer::AddRenderable()
 {
     assert(!FindRenderable());
     AddReserved(new MezComponent_Renderable(), RESERVED_RENDERABLE);
+    MezComponent_Renderable* ren = FindRenderable();
+    ren->m_Renderable->m_rInterface->m_transform = &FindTransform()->m_Transform;
 }

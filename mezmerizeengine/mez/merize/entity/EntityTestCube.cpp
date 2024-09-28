@@ -5,6 +5,7 @@ ENTITY_LINK("testcube", MezEntityTestCube);
 
 void MezEntityTestCube::Update()
 {
-	const char* model_name = m_ComponentContainer.FindRenderable()->m_Renderable->m_model->m_name.c_str();
-	console_printf("%s\n", model_name);
+	GetTransform()->m_Position.z = sinf(engine->time / 3.14f);
+	GetTransform()->m_Position.x = cosf(engine->time / 3.14f);
+	GetTransform()->m_Position.y = cosf(engine->time);
 }

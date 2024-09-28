@@ -6,8 +6,7 @@ void MezBaseEntity::Spawn()
 	assert(m_DefId == ENTITY_INVALID_DEFID);
 	bool p = engine->elist.add(this);
 	assert(p);
-	Initialize();
-	GetDef()->m_Status = EDEF_STATUS_READY;
+	m_State = MEZENTSTATE_INITIALIZE_NEEDED;
 }
 
 EDef* MezBaseEntity::GetDef()
@@ -24,6 +23,17 @@ void MezBaseEntity::Destroy()
 EHandle MezBaseEntity::GetEHandle()
 {
 	return EHandle(this);
+}
+
+bool MezBaseEntity::HandleStates()
+{
+	switch (m_State)
+	{
+	case (MEZENTSTATE_INITIALIZE_NEEDED):
+		m_State = MEZENTSTATE_INITIALIZING; Initialize(); m_State = MEZENTSTATE_READY; return 1;
+	case MEZENTSTATE_READY:
+		Update_Calls(); return 1;
+	}
 }
 
 MezBaseEntity* EHandle::get()

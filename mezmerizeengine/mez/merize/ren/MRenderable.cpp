@@ -4,25 +4,7 @@
 #include "rinterface/rinterface_def.h"
 //called before draw
 
-void MRenderable::Create()
-{
-	m_rInterface = new RInterface_Default();
-	m_rInterface->Initialize();
-	printf("Created an r_interface\n");
-}
 
-inline void MRenderable::Prepare() { setdebugvar(m_Ready, 1); m_rInterface->Prepare(); }
-
-void MRenderable::Draw()
-{
-	//todo: there has got to be a faster way to do this
-	if (m_visible)
-	m_rInterface->Draw();
-}
-
-//called after draw. 
-
-inline void MRenderable::PostDraw() { setdebugvar(m_Ready, 0); m_rInterface->PostDraw(); }
 void MRenderable::SetModel_Id(int model_id)
 {
 	//this sucks
@@ -54,27 +36,4 @@ void MRenderable::SetModel(RModel* model)
 	//NOTE: need to do this AFTER. AFTER!!
 	if (!m_initialized) { Upload(); }
 }
-MRenderable::~MRenderable()
-{
-	if (m_expecteddeallocation) return;
-	delete m_rInterface;
-	m_rInterface = 0;
-	printf("deallocated the m_rinterface\n");
-}
-void MRenderable::Upload()
-{
-	assert(!m_initialized);
-	RenderSystem* system = &engine->rendersys;
-	system->operator[](DesignatedSystem())->renderables.push_back(this);
-	m_initialized = 1;
-}
 
-bool MRenderable::RequestRemoval()
-{
-	assert(m_initialized);
-	assert(DesignatedSystem() < NUMBER_OF_RENDERABLE_SYSTEMS);
-	RenderSystem* system = &engine->rendersys;
-	stdvec_removeselection(system->operator[](DesignatedSystem())->renderables, this);
-	m_initialized = 0;
-	return 1;
-}

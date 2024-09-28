@@ -1,6 +1,7 @@
 #pragma once
 #include "../merize.h"
-#include "MRenderable.h"
+#include "MRenderableBase.h"
+#include "camera.h"
 
 
 #define NUMBER_OF_RENDERABLE_SYSTEMS 1
@@ -15,6 +16,7 @@ class Engine;
 class RStatic;
 class RenderSystem
 {
+	friend class MRenderableBase;
 	friend class MRenderable;
 	friend class Engine;
 	
@@ -37,8 +39,11 @@ private:
 public:
 	RStatic* m_rstatic=0;
 	RSRenderableSystem* operator [] (int i);
+	MezCamera* m_camera = &default_camera;
 private:
 	void Render_CallThisInEnginePlease();
 	void Render();
 	void Engine_Setup(void* window);
+
+	MezCamera default_camera;
 };

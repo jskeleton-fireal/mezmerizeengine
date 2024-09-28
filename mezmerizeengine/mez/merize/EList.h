@@ -17,14 +17,10 @@ class EDef
 public:
 	MezBaseEntity* m_Entity=0;
 	bool m_DeleteMe=0;
-	//Sometimes entities may be created & spawned from seperate threads (ex: from the console)
-	//so we need to make sure entities are initialized properly before doing stuff with them
-	// 0 = ready
-	s8 m_Status = -1;
 	bool IsFree() { return  !m_Entity; }
 	bool IsGoodToUpdate()
 	{
-		return !IsFree() && !m_Status;
+		return !IsFree();
 	}
 };
 class EList

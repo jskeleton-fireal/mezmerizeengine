@@ -13,6 +13,7 @@ class RModel;
 class RInterface
 {
 public:
+	Transform* m_transform;
 	//member
 	virtual void Initialize() = 0;
 	virtual void UploadVerts(Vector verts[],int count = -1) = 0;
@@ -24,8 +25,30 @@ public:
 	virtual void Draw() = 0;
 	virtual void PostDraw() = 0; //reset stuff set by prepare
 	//.. include a destructor as well
+
+	//non virtual functions :)
+	inline Vector GetPosition()
+	{
+		if (m_transform)
+		{
+			return m_transform->m_Position;
+		}
+		return Vector(0, 0, 0);
+	}
+
+	inline MezAngles GetAngles()
+	{
+		if (m_transform)
+		{
+			return m_transform->m_Angles;
+		}
+		return MezAngles(0, 0, 0);
+	}
+
 public:
 	//defined by the interface
+
+	//Note: This is unused as of now.
 	bitfield64_t m_features = 0;
 };
 

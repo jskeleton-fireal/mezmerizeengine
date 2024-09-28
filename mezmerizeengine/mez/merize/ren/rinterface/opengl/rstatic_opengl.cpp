@@ -2,7 +2,14 @@
 #include "gl_def.h"
 #include "../rinterface.h"
 
+extern "C"
+{
+#include "gldebughelp.h"
+}
+
 const float half = 0.501960784f;
+
+
 
 void RStatic_OpenGL::InitializeWindow(RINTERFACE_WINDOW_CLASS window)
 {
@@ -10,10 +17,13 @@ void RStatic_OpenGL::InitializeWindow(RINTERFACE_WINDOW_CLASS window)
 	truwindow->setActive(true);
 	GLenum glewError = glewInit();
 	assert(!glewError);
-	glEnable(GL_DEPTH); //enable depth buffer
+
+	gldebughelpSETUPNOW();
+
+	glEnable(GL_DEPTH_TEST); //enable depth buffer
 	glDepthFunc(GL_LESS); //Dont change this
 	glPointSize(8);
-	glLineWidth(3);
+	//glLineWidth(3.0f); (Deprecated)
 
 	//do a bunch of stuff i copy pasted this from phototropic idk what thsi doe
 	glMatrixMode(GL_PROJECTION);
@@ -22,12 +32,16 @@ void RStatic_OpenGL::InitializeWindow(RINTERFACE_WINDOW_CLASS window)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	
+
 	glClearColor(0, half, half, 1.0f);
 
 	glViewport(0, 0, 400, 600);
 
 	BeforeRender(window);
 	AfterRender(window);
+
+	
 }
 
 void RStatic_OpenGL::BeforeRender(RINTERFACE_WINDOW_CLASS window)

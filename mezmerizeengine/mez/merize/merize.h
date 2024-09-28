@@ -6,6 +6,7 @@
 
 #ifdef __cplusplus
 //assertions for debugging
+
 #include <assert.h>
 //stdvector
 #include <vector>
@@ -18,14 +19,19 @@
 //smart pointers
 #include <memory>
 #else
+
 //memory allocation
 #include <malloc.h>
+
 //printf
-#include <cstdio>
+#include <stdio.h>
+
 //math stuff
-#include <cmath>
+#include <math.h>
+
 //assertions for debugging
-#include <cassert>
+#include <assert.h>
+
 #endif
 
 //illegal pun cast
@@ -138,7 +144,7 @@ using std::make_unique;
 
 #define INHERIT_CONSTRUCTOR(vClassname) using vClassname::vClassname;
 
-
+#ifdef __cplusplus
 //hehehe
 //This is illegal btw
 template <typename TYPE,typename TYPE2>
@@ -147,3 +153,4 @@ TYPE remove_const(const TYPE2 thing)
 	pointer_t test = (pointer_t) & thing;
 	return reintrp_noderef(test,TYPE);
 }
+#endif

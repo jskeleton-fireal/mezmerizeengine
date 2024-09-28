@@ -11,9 +11,7 @@ void EList::update()
 	{
 		if (!defs[i].IsGoodToUpdate()) continue;
 		MezBaseEntity* entity = defs[i].m_Entity;
-		entity->Pre_Update();
-		entity->Update();
-		entity->Post_Update();
+		assert(entity->HandleStates());
 		if (defs[i].m_DeleteMe) numtodelete++;
 	}
 

@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\joel\source\repos\mezmerizeengine\mezmerizeengine\deps;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -149,8 +152,14 @@
     <ClInclude Include="mez\merize\helpers\include_this_in_staticdefs.h" />
     <ClInclude Include="mez\merize\helpers\mezstring.h" />
     <ClInclude Include="mez\merize\helpers\static_format.h" />
+    <ClInclude Include="mez\merize\mezangles.h" />
+    <ClInclude Include="mez\merize\miscobjects\MezMiscRenderable.h" />
+    <ClInclude Include="mez\merize\ren\camera.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />
     <ClInclude Include="mez\merize\ren\model.h" />
+    <ClInclude Include="mez\merize\ren\MRenderableBase.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\gldebughelp.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\glmathstuff.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader_cache.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\gl_def.h" />
@@ -191,7 +200,12 @@
     <ClCompile Include="mez\merize\entity_comms.cpp" />
     <ClCompile Include="mez\merize\helpers\mezstring.cpp" />
     <ClCompile Include="mez\merize\helpers\static_format.cpp" />
+    <ClCompile Include="mez\merize\mezangles.cpp" />
     <ClCompile Include="mez\merize\ren\model.cpp" />
+    <ClCompile Include="mez\merize\ren\MRenderableBase.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glconcommands.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\gldebughelp.c" />
+    <ClCompile Include="mez\merize\ren\rinterface\opengl\glmathstuff.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader_cache.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\interface_opengl.cpp" />
