@@ -34,7 +34,17 @@ void RModel::unload_internal()
 RModel* RModel::LoadModelFromFile(const char* filename, bool essential)
 {
     RModel* model =new RModel();
-    const char* fn = static_format("%s/%s.obj", "content/models", filename);
+    //this whole system is terrible
+    const char* desired_folder = "content/models";
+    const char* fn;
+    if (strstr(filename, ".")) //this has a filetype attached to it
+    {
+        fn = static_format("%s/%s", desired_folder, filename);
+    }
+    else //assume .obj
+    {
+        fn = static_format("%s/%s.obj", desired_folder, filename);
+    }
     const aiScene* scene = model->m_->m_importer.ReadFile(fn,0);
     if (!scene)
     {

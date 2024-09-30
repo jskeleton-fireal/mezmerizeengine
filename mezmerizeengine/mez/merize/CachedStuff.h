@@ -56,12 +56,29 @@ public:
 	virtual void  preupload(const char* name, handle_t instance) {}
 	virtual void  postupload(const char* name, handle_t instance) {}
 
+	virtual bool Exists(const char* key,int* id_storage);
+
+
 	CachedStuff()
 	{
 		
 	}
 };
 
+
+
+
+
+template<class Cls>
+inline bool CachedStuff<Cls>::Exists(const char* key, int* id_storage)
+{
+	for (int i = 0; i < m_vec.size(); i++)
+	{
+		ValPair pair = m_vec[i];
+		if (!strcmp(pair.first.c_str(), key)) { if (id_storage) *id_storage = i; return true; }
+	}
+	return false;
+}
 
 
 #endif

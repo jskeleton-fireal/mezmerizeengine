@@ -39,3 +39,12 @@ void MRenderable::SetModel(RModel_Base* model)
 	if (!m_initialized) { Upload(); }
 }
 
+int MRenderable::PrecacheModel_Name(const char* model_name)
+{
+	int i;
+	bool exists = engine->cache.m_models.Exists(model_name, &i);
+	if (exists) return 1;
+	engine->cache.m_models.Upload(model_name, RModel::LoadModelFromFile(model_name, 0));
+	return 0;
+}
+

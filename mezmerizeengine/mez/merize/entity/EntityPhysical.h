@@ -14,5 +14,8 @@ public:
 	}
 
 	virtual void SetModel(const char* name);
+	virtual int PrecacheModel(const char* name);
+	//precache + set. For Initialize() only! please!
+	virtual void InitModel(const char* name);
 };
 
