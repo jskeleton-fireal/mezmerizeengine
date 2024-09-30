@@ -6,7 +6,7 @@ class MezEntityTestCube : public MezEntityPhysical
 	virtual void Initialize()
 	{
 		MezEntityPhysical::Initialize();
-		SetModel(MODEL_MISSING); //need null object
+		SetModel("test1.obj"); //need null object
 	}
 
 	virtual void Update();

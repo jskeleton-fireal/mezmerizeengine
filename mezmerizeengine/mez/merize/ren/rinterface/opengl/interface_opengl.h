@@ -38,11 +38,13 @@ public:
 	virtual void Draw();
 	virtual void PostDraw();//reset stuff set by prepare
 
+	virtual void SetDrawMode(RModel_Mesh::MESH_DRAWMODE mode) { m_drawmode = mode; }
 
 	glint_t m_vertcount=-1;
 	glint_t m_ShaderProgram;
 	glint_t m_VertexBuffer;
 	glint_t m_VAO;
+	int m_drawmode;
 };
 
 #endif

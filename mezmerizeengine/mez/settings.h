@@ -18,5 +18,5 @@ enum
 #define RENDERABLE_MODE RENDER_MODE_OPENGL
 
 
-//support sfml's drawing tools. 0 by default due to extra cpu usage
+//support sfml's drawing tools. 0 by default
 #define RENDER_SUPPORT_SFML_GRAPHICS 0

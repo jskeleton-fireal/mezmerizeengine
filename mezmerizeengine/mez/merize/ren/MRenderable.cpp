@@ -27,10 +27,12 @@ void MRenderable::SetModel(RModel_Base* model)
 	m_visible = 1;
 
 	//Need to regenerate!
+	//todo: need to have the model have shaders
 	m_rInterface->UploadShader_Vertex("default3d");
 	m_rInterface->UploadShader("test");
 	m_rInterface->LinkShaderProgram();
 	m_rInterface->UploadVerts(m_model->GetVerts(), m_model->GetVertCount());
+	m_rInterface->SetDrawMode((RModel_Mesh::MESH_DRAWMODE)m_model->GetDrawMode());
 
 	//add to renderables list if not there yet.
 	//NOTE: need to do this AFTER. AFTER!!
