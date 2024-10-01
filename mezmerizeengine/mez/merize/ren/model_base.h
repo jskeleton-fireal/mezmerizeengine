@@ -2,6 +2,7 @@
 #include "../merize.h"
 
 
+//todo: need to move shaders into models. or at least give the models some control
 
 //abstract
 class RModel_Base

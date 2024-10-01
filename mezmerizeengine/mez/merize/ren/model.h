@@ -8,6 +8,8 @@
 class RModel_Internal;
 
 
+//handles .obj files and whatnot in the rmodel system
+
 class RModel : public RModel_BaseMesh
 {
 public:

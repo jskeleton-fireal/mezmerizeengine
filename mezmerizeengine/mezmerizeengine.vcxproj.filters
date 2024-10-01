@@ -532,6 +532,7 @@
     <ClInclude Include="deps\sfml\include\SFML\Window.hpp" />
     <ClInclude Include="mez\merize\ren\model_base.h" />
     <ClInclude Include="mez\merize\ren\model_mesh.h" />
+    <ClInclude Include="mez\merize\ren\model_selfdef.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
@@ -572,6 +573,7 @@
     <ClCompile Include="deps\glm\detail\glm.cpp" />
     <ClCompile Include="deps\glm\glm.cppm" />
     <ClCompile Include="mez\merize\ren\model_base.cpp" />
+    <ClCompile Include="mez\merize\ren\model_selfdef.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

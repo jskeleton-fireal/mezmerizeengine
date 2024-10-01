@@ -22,3 +22,10 @@ void MezEntityPhysical::InitModel(const char* name)
 	if (precache_result == -1) return;
 	SetModel(name);
 }
+
+void MezEntityPhysical::SetModel(RModel_Base* raw_model)
+{
+	MezComponent_Renderable* l_renderable = dynamic_cast<MezComponent_Renderable*>(m_ComponentContainer.FindRenderable());
+	assert(l_renderable);
+	l_renderable->m_Renderable->SetModel(raw_model);
+}

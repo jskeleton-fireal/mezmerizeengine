@@ -1,7 +1,7 @@
 #pragma once
 
-
-class RModel_Mesh
+//this is final since the name is confusing with basemesh
+class RModel_Mesh final
 {
 public:
 	//this needs to be moved..

@@ -4,6 +4,7 @@
 #include "../merize.h"
 #include "Entity3D.h"
 //an entity that exists physically. has a 3d model and whatnot
+class RModel_Base;
 class MezEntityPhysical : public MezEntity3DTransform
 {
 public:
@@ -17,5 +18,7 @@ public:
 	virtual int PrecacheModel(const char* name);
 	//precache + set. For Initialize() only! please!
 	virtual void InitModel(const char* name);
+	//for dorks
+	virtual void SetModel(RModel_Base* raw_model);
 };
 

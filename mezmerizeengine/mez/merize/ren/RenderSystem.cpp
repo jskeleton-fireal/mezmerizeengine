@@ -3,7 +3,7 @@
 #include "../Engine.h"
 
 //prevents rendering when no renderables exist
-#define RENDER_OPTIMIZATION 1
+#define RENDER_OPTIMIZATION 0
 
 //need to allocate a minimum amount 
 
