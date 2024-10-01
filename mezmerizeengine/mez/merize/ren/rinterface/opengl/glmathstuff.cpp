@@ -1,4 +1,14 @@
 #include "glmathstuff.h"
+#include "../../../console/cmd.h"
+void debug_log_matrix(matrix4_t it)
+{
+    console_printf("Matrix 4x4\n");
+    for (int i = 0; i < 4; i++)
+    {
+        console_printf("> [%.2f,%.2f,%.2f,%.2f]\n", it[i][0], it[i][1], it[i][2], it[i][3]);
+    }
+
+}
 
 matrix4_t GLMathStuff::GetProjection_Perspective_Degrees(float f_fov, float f_aspect, float f_nearplane, float f_farplane)
 {
@@ -30,7 +40,9 @@ matrix4_t GLMathStuff::RotateMatrix(matrix4_t f_mat, MezAngles f_pos)
 
 matrix4_t GLMathStuff::GetTransformationMatrix(Transform* f_transform)
 {
-    matrix4_t matrix = RotateMatrix(matrix4_t(),f_transform->m_Angles);
+    matrix4_t matrix = matrix4_t();
+    matrix[0].w = 1;
+    matrix = RotateMatrix(matrix,f_transform->m_Angles);
     return TransformMatrix(matrix,f_transform->m_Position);
 }
 
@@ -38,5 +50,7 @@ matrix4_t GLMathStuff::GetPV(MezCamera* f_camera)
 {
     matrix4_t camera_projection = GetProjection(f_camera);
     matrix4_t camera_view = GetTransformationMatrix(&f_camera->m_transform);
+    debug_log_matrix(camera_projection);
+    debug_log_matrix(camera_view);
     return camera_projection * camera_view;
 }

@@ -27,15 +27,15 @@ void RInterface_OpenGL::Initialize()
 void RInterface_OpenGL::UploadVerts(Vector verts[], int count)
 {
 	m_vertcount = count;
-	assert_msg(count > 0,"Cannot count verts in opengl"); //cannot count verts in opengl
+	assert_msg(count > 0,"Cannot count verts in opengl"); //cannot count verts in opengl bc im lazy
 	assert(RIF_ISENABLED(m_VertexBuffer));
 	
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-	glBindVertexArray(m_VAO);
 
 	//upload verts
 	glBufferData(GL_ARRAY_BUFFER, 3i64  * count * sizeof(float), &verts[0], GL_DYNAMIC_DRAW);
 
+	glBindVertexArray(m_VAO);
 	//Position Attribute
 	glEnableVertexAttribArray(RIF_VAO_GL_POSITION);
 	glVertexAttribPointer(
@@ -46,6 +46,8 @@ void RInterface_OpenGL::UploadVerts(Vector verts[], int count)
 		0,                  // stride
 		(void*)0
 	);
+
+
 }
 
 void RInterface_OpenGL::UploadShader_Id(int shader_numeric_id)
@@ -101,19 +103,11 @@ void RInterface_OpenGL::LinkShaderProgram()
 void RInterface_OpenGL::Prepare()
 {
 #if 0
-	//respect m_features
-	bool depth = 1;//!(m_features & RIF_FEATURE_GL_NO_DEPTH);
-	if (depth) glEnable(GL_DEPTH_TEST); else glDisable(GL_DEPTH_TEST);
-	bool cullface = 1;//!(m_features & RIF_FEATURE_GL_TWO_SIDED);
-	if (cullface) glEnable(GL_CULL_FACE); else glDisable(GL_CULL_FACE);
-#else
-#if 0
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 #else
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
-#endif
 #endif
 	assert(RIF_ISENABLED(m_VertexBuffer));
 	assert(RIF_ISENABLED(m_VAO));
@@ -127,10 +121,11 @@ void RInterface_OpenGL::Prepare()
 
 	glUseProgram(m_ShaderProgram);
 
+	//needs to be moved to the shader itself
 	unsigned int pvmloc = glGetUniformLocation(m_ShaderProgram, "pvm");
 
 	//This shader wants a pvm
-	if (pvmloc >= 0)
+	if ((int)pvmloc >= 0)
 	{
 		//todo: need to have pv cached before
 		matrix4_t matrix = GLMathStuff::GetPV(engine->rendersys.m_camera) * GLMathStuff::GetTransformationMatrix(m_transform);

@@ -6,7 +6,7 @@ class MezEntityTestCube : public MezEntityPhysical
 	virtual void Initialize()
 	{
 		MezEntityPhysical::Initialize();
-		InitModel("suzanne.obj"); //need null object
+		InitModel("suzanne.obj");
 	}
 
 	virtual void Update();
