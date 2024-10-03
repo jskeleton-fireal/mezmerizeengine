@@ -9,13 +9,16 @@ inline void MezEntityTestCube::Initialize()
 	MezEntityPhysical::Initialize();
 	RModel_SelfDef* testingmodel = new RModel_SelfDef();
 
-	const int z = 0;
-	Vector* points = new Vector[3];
-	points[0] = Vector(0,0,z);
-	points[1] = Vector(0,0.9f,z);
-	points[2] = Vector(0.9f,0,z);
+	const float z = 0;
+	const float bigpos = 0.9f;
+	const float smalpos = 0.0f;
+	Vector* points = new Vector[4];
+	points[0] = Vector(smalpos,smalpos,z);
+	points[1] = Vector(smalpos,bigpos,z);
+	points[2] = Vector(bigpos,smalpos,z);
+	points[3] = Vector(bigpos, bigpos,z);
 
-	testingmodel->SelfDef_Create(points, 3);
+	testingmodel->SelfDef_Create(points, 4);
 	testingmodel->SelfDef_SetDrawmode(RModel_Mesh::DM_TriangleStrip);
 	SetModel(testingmodel);
 }
@@ -26,3 +29,4 @@ void MezEntityTestCube::Update()
 	GetTransform()->m_Position.x = cosf(engine->time / 3.14f);
 	GetTransform()->m_Position.y = cosf(engine->time);
 }
+

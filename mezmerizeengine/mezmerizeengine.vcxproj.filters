@@ -533,6 +533,8 @@
     <ClInclude Include="mez\merize\ren\model_base.h" />
     <ClInclude Include="mez\merize\ren\model_mesh.h" />
     <ClInclude Include="mez\merize\ren\model_selfdef.h" />
+    <ClInclude Include="mez\merize\io\input.h" />
+    <ClInclude Include="mez\merize\io\mezkeycode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
@@ -574,6 +576,7 @@
     <ClCompile Include="deps\glm\glm.cppm" />
     <ClCompile Include="mez\merize\ren\model_base.cpp" />
     <ClCompile Include="mez\merize\ren\model_selfdef.cpp" />
+    <ClCompile Include="mez\merize\io\input.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

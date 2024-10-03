@@ -6,5 +6,6 @@ class MezEntityTestCube : public MezEntityPhysical
 	virtual void Initialize();
 
 	virtual void Update();
+
 };
 
