@@ -615,6 +615,7 @@
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowStyle.hpp" />
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
     <ClInclude Include="mez\merize\console\cmdargs.h" />
+    <ClInclude Include="mez\merize\console\console.h" />
     <ClInclude Include="mez\merize\entityprivate\efactory.h" />
     <ClInclude Include="mez\merize\entity\EntityTestCube.h" />
     <ClInclude Include="mez\merize\console\conhelper.h" />

@@ -3,7 +3,6 @@
 #include "cvhandler.h"
 #include "../staticdefs.h"
 #include "cmdargs.h"
-
 //Temporary
 #define console_printf printf
 //#define console_printf 
