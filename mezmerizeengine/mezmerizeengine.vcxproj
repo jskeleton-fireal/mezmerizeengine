@@ -632,6 +632,7 @@
     <ClInclude Include="mez\merize\io\input.h" />
     <ClInclude Include="mez\merize\io\mezkeycode.h" />
     <ClInclude Include="mez\merize\mezangles.h" />
+    <ClInclude Include="mez\merize\mezvector.h" />
     <ClInclude Include="mez\merize\miscobjects\MezMiscRenderable.h" />
     <ClInclude Include="mez\merize\ren\camera.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />

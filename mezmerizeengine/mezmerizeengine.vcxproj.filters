@@ -536,6 +536,7 @@
     <ClInclude Include="mez\merize\io\input.h" />
     <ClInclude Include="mez\merize\io\mezkeycode.h" />
     <ClInclude Include="mez\merize\console\console.h" />
+    <ClInclude Include="mez\merize\mezvector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\Engine.cpp" />
