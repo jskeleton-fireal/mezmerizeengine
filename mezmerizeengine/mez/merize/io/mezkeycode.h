@@ -1,6 +1,6 @@
 #pragma once
 
-
+//these are actually scancodes :P
 enum
 {
     MKC_Unknown = -1,

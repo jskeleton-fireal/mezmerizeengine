@@ -10,6 +10,7 @@
 #include "eng_console.h"
 #include "entityprivate/efactory.h"
 #include "ren/rinterface/rstatic.h"
+#include "io/input.h"
 
 
 //holy what a mess
@@ -112,6 +113,7 @@ int Engine::run()
     //THIS IS THE LOOP!!!
     while (window.isOpen())
     {
+        Input::tic();
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -127,6 +129,17 @@ int Engine::run()
                 rendersys.m_rstatic->Window_Resized(event.size.width,event.size.height);
                 break;
             }
+            if (event.type == sf::Event::KeyPressed)
+            {
+                Input::notify_key_pressed(event.key.scancode);
+                break;
+            }
+            if (event.type == sf::Event::KeyReleased)
+            {
+                Input::notify_key_released(event.key.scancode);
+                break;
+            }
+
         }
 
 
