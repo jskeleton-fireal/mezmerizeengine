@@ -672,6 +672,7 @@
   <ItemGroup>
     <ClCompile Include="deps\glm\detail\glm.cpp" />
     <ClCompile Include="deps\glm\glm.cppm" />
+    <ClCompile Include="mez\merize\cmp\component.cpp" />
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
     <ClCompile Include="mez\merize\entityprivate\efactory.cpp" />
     <ClCompile Include="mez\merize\entity\EntityTestCube.cpp" />

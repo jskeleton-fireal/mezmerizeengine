@@ -579,6 +579,7 @@
     <ClCompile Include="mez\merize\ren\model_base.cpp" />
     <ClCompile Include="mez\merize\ren\model_selfdef.cpp" />
     <ClCompile Include="mez\merize\io\input.cpp" />
+    <ClCompile Include="mez\merize\cmp\component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

@@ -9,5 +9,6 @@ public:
 
 	MRenderable* m_Renderable = new MRenderable();
 	~MezComponent_Renderable() { delete m_Renderable; }
+	virtual void Initialize();
 };
 

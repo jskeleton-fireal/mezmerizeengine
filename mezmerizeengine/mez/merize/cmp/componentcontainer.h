@@ -32,10 +32,10 @@ public:
 	inline possibly_null(MezComponent_Transform*) FindTransform() { return dynamic_cast<MezComponent_Transform*>(m_reserved[RESERVED_TRANSFORM]); }
 	inline possibly_null(MezComponent_Renderable*) FindRenderable() { return dynamic_cast<MezComponent_Renderable*>(m_reserved[RESERVED_RENDERABLE]); }
 
-	inline void AddReserved(MezComponent* new_component, int slot)
-	{
-		assert(slot < RESERVED_C_COUNT && slot > -1);
-		m_reserved[slot] = new_component;
-	}
+	void AddReserved(MezComponent* new_component, int slot);
+
+protected:
+	typedef void (*componentfunc_t)(ComponentContainer*,MezComponent*);
+	void ForeachComponent(componentfunc_t function);
 
 };
