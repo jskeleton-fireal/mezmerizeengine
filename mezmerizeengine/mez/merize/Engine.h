@@ -55,6 +55,7 @@ public:
 
 	float time = 0.0f;
 	u64 time_alt;
+	float time_delta;
 private:
 	EngineLaunchParameters m_launchparameters = EngineLaunchParameters();
 public:
@@ -76,6 +77,7 @@ private:
 	void render();
 	void updateloop_win();
 	void updateloop_txt();
+	void render_setup();
 
 	trustmeptr(RENDER_WINDOW_CLASS) m_Window;
 public:
@@ -90,6 +92,7 @@ public:
 	{
 		return dynamic_cast<TYPE*>(reinterpret_cast<MezBaseEntity*>(CreateEntityByName_Typeless(m_name)));
 	}
+
 };
 
 

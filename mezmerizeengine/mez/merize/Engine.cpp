@@ -9,7 +9,10 @@
 #include "helpers/static_format.h"
 #include "eng_console.h"
 #include "entityprivate/efactory.h"
+#include "ren/rinterface/rstatic.h"
 
+
+//holy what a mess
 
 //this system sucks
 #define ALLOW_RENDERING RENDERABLE_MODE || m_launchparameters.m_textmode
@@ -91,7 +94,10 @@ int Engine::run()
     std::cout << "build: " << BUILD_DATE << "," << BUILD_TIME << "\n";
 
     engine = this;
-    if (ALLOW_RENDERING)  rendersys.Engine_Setup(m_Window);
+    if (ALLOW_RENDERING)
+    {
+        render_setup();
+    }
    
     EngineConsole econ = EngineConsole();
     console_thread_pass pass = { this,m_Window,&econ };
@@ -99,6 +105,7 @@ int Engine::run()
     cthread.launch();
     //load cache house
 
+    //yes. this needs to be called regardless of rendering setting.
     cache.m_models.setup();
     sf::Clock clock; // starts the clock
     clockp = &clock;
@@ -109,9 +116,17 @@ int Engine::run()
         sf::Event event;
         while (window.pollEvent(event))
         {
+            //this may need to be changed to a switch statement later
             // Close window: exit
             if (event.type == sf::Event::Closed)
-                window.close();
+            {
+                break;
+            }
+            if (event.type == sf::Event::Resized)
+            {
+                rendersys.m_rstatic->Window_Resized(event.size.width,event.size.height);
+                break;
+            }
         }
 
 
@@ -122,15 +137,22 @@ int Engine::run()
             m_immediate_operation = 0;
         }
 
+        float old_time = time;
         time = clock.getElapsedTime().asSeconds();
         time_alt = clock.getElapsedTime().asMicroseconds();
+        time_delta = time - old_time;
         //update
         (this->*upd)();
 
         // Update the window
         //window.display();
     }
+    if (window.isOpen())
+    {
+        window.close();
+    }
 
+    cthread.terminate();
     return EXIT_SUCCESS;
 }
 
@@ -182,6 +204,12 @@ void Engine::updateloop_win()
 void Engine::updateloop_txt()
 {
     update();
+}
+
+void Engine::render_setup()
+{
+    rendersys.Engine_Setup(m_Window);
+    rendersys.m_rstatic->Window_Resized(800, 600);
 }
 
 int Engine::RunEngine()

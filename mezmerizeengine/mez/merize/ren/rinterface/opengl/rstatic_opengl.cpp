@@ -71,6 +71,11 @@ void RStatic_OpenGL::AfterRender(RINTERFACE_WINDOW_CLASS window)
 	//need to respect sfml's drawing tools if we are using the sfml window class thing
 }
 
+void RStatic_OpenGL::Window_Resized(int new_width, int new_height)
+{
+	glViewport(0, 0, new_width, new_height);
+}
+
 RStatic_OpenGL* RStatic_OpenGL::Get()
 {
 	return dynamic_cast<RStatic_OpenGL*>(engine->rendersys.m_rstatic);

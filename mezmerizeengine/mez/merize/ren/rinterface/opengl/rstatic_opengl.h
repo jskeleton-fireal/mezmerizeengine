@@ -7,6 +7,8 @@ class RStatic_OpenGL : public RStatic
 	virtual void InitializeWindow(RINTERFACE_WINDOW_CLASS window);
 	virtual void BeforeRender(RINTERFACE_WINDOW_CLASS window);
 	virtual void AfterRender(RINTERFACE_WINDOW_CLASS window);
+
+	virtual void Window_Resized(int new_width, int new_height);
 public:
 	GLShaderCache m_cache_shader = GLShaderCache();
 public:

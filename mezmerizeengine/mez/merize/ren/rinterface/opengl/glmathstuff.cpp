@@ -41,8 +41,8 @@ matrix4_t GLMathStuff::RotateMatrix(matrix4_t f_mat, MezAngles f_pos)
 matrix4_t GLMathStuff::GetTransformationMatrix(Transform* f_transform)
 {
     matrix4_t matrix = matrix4_t(1.0f);
-    matrix = RotateMatrix(matrix,f_transform->m_Angles);
-    return TransformMatrix(matrix,f_transform->m_Position);
+    matrix = TransformMatrix(matrix, f_transform->m_Position);
+    return RotateMatrix(matrix, f_transform->m_Angles);
 }
 
 matrix4_t GLMathStuff::GetPV(MezCamera* f_camera)
