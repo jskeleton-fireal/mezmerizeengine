@@ -11,6 +11,11 @@ public:
 	const char* cstr_const();
 	void set_cstr(const char* cstr);
 	void append(const char* cstr);
+	MezString substring(int start);
+	MezString substring(int start,int end);
+	MezString substring_until(const char until_this_char);
+	MezString substring_until(int start,const char until_this_char);
+	int length();
 	inline void clone(MezString* other)
 	{
 		m_buffer.m_ = other->m_buffer.m_;

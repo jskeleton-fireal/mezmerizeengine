@@ -1,7 +1,7 @@
 #include "mezstring.h"
 #include <string.h>
 #include "static_format.h"
-#define MEZSTRING_DEBUG 0
+#define MEZSTRING_DEBUG 1
 #if MEZSTRING_DEBUG
 
 #else
@@ -101,5 +101,49 @@ void MezString::append(const char* cstr)
     set_cstr(superbuffer);
     delete[] superbuffer;
 }
+
+MezString MezString::substring(int start)
+{
+    return mezstring_t(m_buffer.m_ + start);
+}
+
+MezString MezString::substring(int start, int end)
+{
+    assert(end > start);
+    mezstring_t one = substring(start);
+    one.m_buffer.m_[end] = '\0';
+    return one;
+}
+
+MezString MezString::substring_until(const char until_this_char)
+{
+    for (int i =0;i<strlen(m_buffer.m_const);i++)
+    {
+        if (m_buffer.m_[i] == until_this_char)
+        {
+            return substring(0, i-1);
+        }
+    }
+    return "";
+}
+
+MezString MezString::substring_until(int start,const char until_this_char)
+{
+    for (int i = start; i < strlen(m_buffer.m_const); i++)
+    {
+        if (m_buffer.m_[i] == until_this_char)
+        {
+            return substring(start, i-1);
+        }
+    }
+    return "";
+}
+
+int MezString::length()
+{
+    return strlen(this->cstr_const());
+}
+
+
 
 
