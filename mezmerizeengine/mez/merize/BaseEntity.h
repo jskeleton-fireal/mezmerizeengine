@@ -5,6 +5,7 @@
 #include "cmp/component.h"
 #include "cmp/componentcontainer.h"
 #include "entityprivate/efactory.h"
+#include "miscobjects/serializable/serializable.h"
 #define ENTITY_INVALID_DEFID -1
 class EDef;
 class MezBaseEntity;
@@ -17,7 +18,7 @@ enum
 	LIFESTATE_ALIVE,
 };
 
-class MezBaseEntity
+class MezBaseEntity : public MezSerializable
 {
 public:
 	enum MEZENTITYSTATE
