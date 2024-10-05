@@ -137,10 +137,11 @@ using std::make_unique;
 #ifdef __cplusplus
 //hehehe
 //This is illegal btw
+//usage = char* vOut = remove_const<char*>(vTheConst);
 template <typename TYPE,typename TYPE2>
 TYPE remove_const(const TYPE2 thing)
 {
-	pointer_t test = (pointer_t) & thing;
+	pointer_t test = (pointer_t) &thing;
 	return reintrp_noderef(test,TYPE);
 }
 #endif
