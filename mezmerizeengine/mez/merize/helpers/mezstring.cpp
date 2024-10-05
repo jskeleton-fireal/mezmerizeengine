@@ -1,6 +1,6 @@
 #include "mezstring.h"
 #include <string.h>
-
+#include "static_format.h"
 #define MEZSTRING_DEBUG 0
 #if MEZSTRING_DEBUG
 
@@ -24,7 +24,7 @@ void MezString::newbuffer(int size,bool copy_previous, bool deallocate_previous)
     {
         size = strlen(m_buffer.m_) + 1;
     }
-        char* oldbuffer = m_buffer.m_;
+    char* oldbuffer = m_buffer.m_;
     m_buffer.m_ = new char[size];
     if (copy_previous)
     {
@@ -32,7 +32,7 @@ void MezString::newbuffer(int size,bool copy_previous, bool deallocate_previous)
     }
     if (deallocate_previous)
     {
-        delete[] m_buffer.m_;
+        delete[] oldbuffer;
     }
     debug_logself(this);
     printf("has a new buffer!\n");
@@ -88,6 +88,18 @@ void MezString::set_cstr(const char* cstr)
     m_buffer.m_const = cstr;
 
     newbuffer();
+}
+
+void MezString::append(const char* cstr)
+{
+    int mesize = strlen(m_buffer.m_const);
+    int theysize = strlen(cstr);
+    int total_size = mesize + theysize;
+    char* superbuffer = new char[total_size+1];
+    memcpy(superbuffer, m_buffer.m_, mesize);
+    memcpy(superbuffer + mesize, cstr, theysize + 1); //copy terminator as well
+    set_cstr(superbuffer);
+    delete[] superbuffer;
 }
 
 
