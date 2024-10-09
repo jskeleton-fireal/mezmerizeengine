@@ -1,13 +1,11 @@
 #pragma once
 #include "settings.h"
 
-//Modify this file PLEASE
+//include your own version system somewhere
 
+#define MEZ_VERSION "v1.0_0"
+#define MEZ_VERSION_NUMBERIC 0
 
-
-#define VERSION_MAJOR 0x002c
-#define VERSION_MINOR 0x0007
-#define VERSION_BUILD 0x10000000
 
 #if 1
 #define BUILD_DATE __DATE__

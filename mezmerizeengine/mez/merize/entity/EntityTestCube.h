@@ -1,6 +1,6 @@
 #pragma once
 #include "EntityPhysical.h"
-#include "../CachedStuff.h"
+#include "mez/merize/engine/CachedStuff.h"
 class MezEntityTestCube : public MezEntityPhysical
 {
 	virtual void Initialize();

@@ -12,13 +12,13 @@
 
 
 struct MRenderableHandle;
-class Engine;
+class BaseEngine;
 class RStatic;
 class RenderSystem
 {
 	friend class MRenderableBase;
 	friend class MRenderable;
-	friend class Engine;
+	friend class BaseEngine;
 	
 private:
 

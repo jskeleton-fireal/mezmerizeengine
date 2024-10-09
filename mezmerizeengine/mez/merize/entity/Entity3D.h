@@ -1,7 +1,7 @@
 #pragma once
-#include "../baseentity.h"
-#include "../entity_macros.h"
-#include "../merize.h"
+#include "mez/merize/entity/baseentity.h"
+#include "mez/merize/data/entity_macros.h"
+#include "mez/merize/merize.h"
 
 class MezEntity3DTransform : public MezBaseEntity
 {

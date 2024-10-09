@@ -1,7 +1,7 @@
 #include "input.h"
 #include <SFML/Window/Keyboard.hpp>
-#include "../merize.h"
-#include "../Engine.h"
+#include "mez/merize/merize.h"
+#include "mez/merize/engine/baseengine.h"
 
 //yeah. this sucks. BUT! BUT! a bitmask would use more CPU.. we can throw away 1.3 kb of space for this? right?
 struct input_helper

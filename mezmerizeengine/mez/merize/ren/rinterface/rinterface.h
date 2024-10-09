@@ -1,8 +1,8 @@
 #ifndef RINTERFACE
 #define RINTERFACE
-#include "../../../version.h"
-#include "../../merize.h"
-#include "../../engine.h"
+#include "mez/merize/version.h"
+#include "mez/merize/merize.h"
+#include "mez/merize/engine/baseengine.h"
 //rinterfaces are what connect renderables to the render system of choice
 
 namespace sf

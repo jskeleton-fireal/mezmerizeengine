@@ -1,6 +1,6 @@
 #ifndef CACHEDSTUFF_H
 #define CACHEDSTUFF_H
-#include "merize.h"
+#include "mez/merize/merize.h"
 
 
 #define MODEL_MISSING "null.obj"

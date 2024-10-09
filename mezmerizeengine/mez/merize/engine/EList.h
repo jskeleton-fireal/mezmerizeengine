@@ -1,6 +1,6 @@
 #pragma once
-#include "hybridarray.h"
-#include "merize.h"
+//#include "hybridarray.h"
+#include "mez/merize/merize.h"
 #define MAX_ENTITIES 0xff
 //This must be big enough to hold MAX_ENTITIES
 typedef short edef_tight_t;
@@ -26,7 +26,7 @@ public:
 };
 class EList
 {
-	friend class Engine;
+	friend class BaseEngine;
 	friend class MezBaseEntity;
 public:
 	EDef defs[MAX_ENTITIES];

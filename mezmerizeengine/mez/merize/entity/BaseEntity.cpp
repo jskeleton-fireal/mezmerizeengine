@@ -1,6 +1,6 @@
 #include "BaseEntity.h"
-#include "EList.h"
-#include "Engine.h"
+#include "mez/merize/engine/EList.h"
+#include "mez/merize/engine/BaseEngine.h"
 void MezBaseEntity::Spawn()
 {
 	assert(m_DefId == ENTITY_INVALID_DEFID);

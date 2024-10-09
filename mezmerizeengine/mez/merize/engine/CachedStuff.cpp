@@ -1,6 +1,6 @@
 #include "CachedStuff.h"
-#include "Engine.h"
-#include "staticdefs.h"
+#include "BaseEngine.h"
+#include "mez/merize/staticdefs.h"
 //okay so templates need to have all their stuff defined in the header file because of how they work
 //but if its being created in the engine header file it cannot access the engine (it hasn't been defined yet)
 //so im avoiding that by having this lameness

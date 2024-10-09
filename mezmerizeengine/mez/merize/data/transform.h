@@ -1,6 +1,6 @@
 #pragma once
-#include "merize.h"
-#include "mezangles.h"
+#include "mez/merize/merize.h"
+#include "mez/merize/data/mezangles.h"
 class Transform
 {
 public:

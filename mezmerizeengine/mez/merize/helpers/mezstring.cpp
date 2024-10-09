@@ -35,7 +35,7 @@ void MezString::newbuffer(int size,bool copy_previous, bool deallocate_previous)
         delete[] oldbuffer;
     }
     debug_logself(this);
-    printf("has a new buffer!\n");
+    printf("has a new buffer! (was %x)\n",oldbuffer);
 
 }
 
@@ -76,7 +76,7 @@ void MezString::debug_logself(bool selfisvalid)
 {
     if (selfisvalid)
     {
-        printf("%x (%s @ %x) ", this, m_buffer.m_, m_buffer.m_);
+        printf("%x (.. @ %x) ", this, m_buffer.m_);
     }
     else
     {

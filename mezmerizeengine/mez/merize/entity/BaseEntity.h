@@ -1,11 +1,11 @@
 #pragma once
-#include "merize.h"
-#include "EList.h"
-#include "transform.h"
-#include "cmp/component.h"
-#include "cmp/componentcontainer.h"
-#include "entityprivate/efactory.h"
-#include "miscobjects/serializable/serializable.h"
+#include "mez/merize/merize.h"
+#include "mez/merize/engine/EList.h"
+#include "mez/merize/data/transform.h"
+#include "mez/merize/cmp/component.h"
+#include "mez/merize/cmp/componentcontainer.h"
+#include "mez/merize/entityprivate/efactory.h"
+#include "mez/merize/miscobjects/serializable/serializable.h"
 #define ENTITY_INVALID_DEFID -1
 class EDef;
 class MezBaseEntity;

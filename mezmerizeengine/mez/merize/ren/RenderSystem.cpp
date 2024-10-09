@@ -1,6 +1,6 @@
 #include "RenderSystem.h"
 #include "rinterface/rinterface_def.h"
-#include "../Engine.h"
+#include "mez/merize/engine/baseengine.h"
 
 //prevents rendering when no renderables exist
 #define RENDER_OPTIMIZATION 0

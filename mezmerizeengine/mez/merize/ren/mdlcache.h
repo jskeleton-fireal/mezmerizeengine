@@ -1,7 +1,7 @@
 #pragma once
 class RModel_Base;
 class RModel;
-#include "../cachedstuff.h"
+#include "mez/merize/engine/cachedstuff.h"
 #include "model.h"
 
 class CachedStuff_RModels : public CachedStuff<RModel_Base>

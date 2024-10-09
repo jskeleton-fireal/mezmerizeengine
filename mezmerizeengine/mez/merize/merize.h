@@ -1,8 +1,8 @@
 #pragma once
 
 //this should be included in everything related to merize.
-#include "../version.h"
-#include "../settings.h"
+#include "mez/merize/version.h"
+#include "mez/merize/settings.h"
 
 #ifdef __cplusplus
 //assertions for debugging
@@ -45,7 +45,7 @@
 #endif
 
 
-#include "mezvector.h"
+#include "data/mezvector.h"
 
 
 typedef unsigned char u8;

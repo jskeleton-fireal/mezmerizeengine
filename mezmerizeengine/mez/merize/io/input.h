@@ -6,7 +6,7 @@
 //standard keyboard / mouse input
 static class Input
 {
-	friend class Engine;
+	friend class BaseEngine;
 public:
 	static bool KeyPressed(MezKeyCode key);
 	static bool KeyHeld(MezKeyCode key);

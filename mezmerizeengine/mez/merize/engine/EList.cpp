@@ -1,5 +1,5 @@
 #include "EList.h"
-#include "BaseEntity.h"
+#include "mez/merize/entity/BaseEntity.h"
 
 //#define MAX_ENTS_CHECK defs.size()
 #define MAX_ENTS_CHECK MAX_ENTITIES

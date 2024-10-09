@@ -2,10 +2,10 @@
 #include <string>
 #include <iostream>
 
-#include "console/conthing.h"
-#include "console/cmd.h"
-#include "console/cvhandler.h"
-#include "console/conhelper.h"
+#include "mez/merize/console/conthing.h"
+#include "mez/merize/console/cmd.h"
+#include "mez/merize/console/cvhandler.h"
+#include "mez/merize/console/conhelper.h"
 
 #define s_helper ConsoleHelper::FindCurrent()
 
@@ -17,7 +17,7 @@ static bool validate_session()
 	return 0;
 }
 
-void EngineConsole::process(Engine* f_engine)
+void EngineConsole::process(BaseEngine* f_engine)
 {
 	std::string str;
 	std::getline(std::cin, str);
@@ -27,7 +27,7 @@ void EngineConsole::process(Engine* f_engine)
 	
 }
 
-void EngineConsole::process_single(Engine* f_engine,const char* input)
+void EngineConsole::process_single(BaseEngine* f_engine,const char* input)
 {
 	if (!input) return;
 	if (!input[0]) return;

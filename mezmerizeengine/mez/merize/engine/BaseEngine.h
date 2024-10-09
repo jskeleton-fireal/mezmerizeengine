@@ -1,9 +1,9 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 #include "EList.h"
-#include "ren/RenderSystem.h"
-#include "cachedstuffmgr.h"
-#include "console/conhelper.h"
+#include "mez/merize/ren/RenderSystem.h"
+#include "mez/merize/engine/cachedstuffmgr.h"
+#include "mez/merize/console/conhelper.h"
 
 struct EngineLaunchParameters
 {
@@ -12,14 +12,10 @@ struct EngineLaunchParameters
 
 struct EngineVersion
 {
-	friend class Engine;
+	friend class BaseEngine;
 public:
-	u16 m_major;
-	u16 m_minor;
-	u32 m_build;
-private:
-	//These should only be called internally by the engine
 	const char* tostring();
+	int tonumeric();
 };
 extern EngineVersion engine_version;
 namespace sf
@@ -36,10 +32,10 @@ enum ENGINE_MSGBOXTYPE_T
 	ENGINE_MSGBOXTYPE_WARNING = 0x3,
 	ENGINE_MSGBOXTYPE_INFORMATION = 0x4,
 };
-class Engine;
-extern Engine* engine;
+class BaseEngine;
+extern BaseEngine* engine;
 
-class Engine
+class BaseEngine
 {
 	friend RenderSystem;
 public:
@@ -61,8 +57,8 @@ private:
 public:
 #pragma warning (push)
 #pragma warning (disable: 26495)
-	Engine(EngineLaunchParameters launchparams);
-	Engine() { eng_initialize(); }
+	BaseEngine(EngineLaunchParameters launchparams);
+	BaseEngine() { eng_initialize(); }
 private:
 	void eng_initialize();
 #pragma warning (pop)

@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Engine.h"
+#include "mez/merize/engine/baseengine.h"
 //This is what handles some more static stuff about rendering.
 #define RINTERFACE_WINDOW_CLASS RENDER_WINDOW_CLASS*
 

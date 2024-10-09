@@ -1,10 +1,11 @@
-#include "mez/merize/Engine.h"
+#include "mez/merize/Engine_Testing.h"
 
 
 int main()
 {
 	{
-		return Engine::RunEngine();
+		BaseEngine* engine = new Engine_Testing();
+		return engine->run();
 	}
-	return 12041204;
+	return -1;
 }

@@ -1,5 +1,5 @@
-#include "BaseEntity.h"
-#include "console/cmd.h"
+#include "mez/merize/entity/BaseEntity.h"
+#include "mez/merize/console/cmd.h"
 
 CREATE_CONSOLECOMMAND_WFUNC(entity_create, 0)
 {

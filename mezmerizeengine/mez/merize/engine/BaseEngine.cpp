@@ -1,16 +1,16 @@
 
-#include "Engine.h"
+#include "BaseEngine.h"
 #include <SFML/Graphics.hpp>
 //TODO: need to use gtk
 #include <Windows.h>
-#include "../version.h"
+#include "mez/merize/version.h"
 #include <stdio.h>
 #include <iostream>
-#include "helpers/static_format.h"
+#include "mez/merize/helpers/static_format.h"
 #include "eng_console.h"
-#include "entityprivate/efactory.h"
-#include "ren/rinterface/rstatic.h"
-#include "io/input.h"
+#include "mez/merize/entityprivate/efactory.h"
+#include "mez/merize/ren/rinterface/rstatic.h"
+#include "mez/merize/io/input.h"
 
 
 //holy what a mess
@@ -19,16 +19,16 @@
 #define ALLOW_RENDERING RENDERABLE_MODE || m_launchparameters.m_textmode
 #define FORBID_RENDERING !(ALLOW_RENDERING)
 
-Engine* engine;
-EngineVersion engine_version = { VERSION_MAJOR,VERSION_MINOR,VERSION_BUILD };
+BaseEngine* engine;
+EngineVersion engine_version;
 #pragma warning (push)
 #pragma warning (disable: 26495)
-Engine::Engine(EngineLaunchParameters launchparams)
+BaseEngine::BaseEngine(EngineLaunchParameters launchparams)
 {
 	m_launchparameters = launchparams;
     eng_initialize();
 }
-void Engine::eng_initialize()
+void BaseEngine::eng_initialize()
 {
     m_id = 0;
 #if SUPPORT_MULTIPLE_ENGINES
@@ -41,7 +41,7 @@ void Engine::eng_initialize()
 
 struct console_thread_pass
 {
-    Engine* m_engine;
+    BaseEngine* m_engine;
     RENDER_WINDOW_CLASS* m_window;
     EngineConsole* m_console;
 };
@@ -55,10 +55,10 @@ void console_thread(console_thread_pass f_pass)
 }
 sf::Clock* clockp;
 
-int Engine::run()
+int BaseEngine::run()
 {
     //
-    typedef void (Engine::* updateloop)();
+    typedef void (BaseEngine::* updateloop)();
 
 	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(800, 600), "mezmerize");
@@ -83,11 +83,11 @@ int Engine::run()
     //this is ugly.. but hey this is init so whatever
     if (FORBID_RENDERING)
     {
-        upd = &Engine::updateloop_txt;
+        upd = &BaseEngine::updateloop_txt;
     }
     else
     {
-        upd = &Engine::updateloop_win;
+        upd = &BaseEngine::updateloop_win;
 
     }
     const char* enginever = engine_version.tostring();
@@ -169,7 +169,7 @@ int Engine::run()
     return EXIT_SUCCESS;
 }
 
-void Engine::fatalmsg(const char* msg)
+void BaseEngine::fatalmsg(const char* msg)
 {
     //todo: use gtk to show an error message or something
 #if _DEBUG
@@ -180,60 +180,60 @@ void Engine::fatalmsg(const char* msg)
 //#1 is question which is deprecated by windows
 const char* msgbox_descr[] = {"Error","","Warning","Information"};
 
-void Engine::show_messagebox(const char* f_msg, ENGINE_MSGBOXTYPE_T f_type)
+void BaseEngine::show_messagebox(const char* f_msg, ENGINE_MSGBOXTYPE_T f_type)
 {
     printf(f_msg);
     int r = MessageBoxA(m_Window->getSystemHandle(), f_msg, static_format("Engine - %s",msgbox_descr[f_type-1]), f_type << 4);
 }
 
-void Engine::push_immediate_operation(voidfunction_t& function)
+void BaseEngine::push_immediate_operation(voidfunction_t& function)
 {
     assert(!m_immediate_operation);
     if (m_immediate_operation) { abort(); }
     m_immediate_operation = function;
 }
 
-void Engine::reset_globals()
+void BaseEngine::reset_globals()
 {
     clockp->restart();
 }
 
-void Engine::update()
+void BaseEngine::update()
 {
     elist.update();
 }
 
-void Engine::render()
+void BaseEngine::render()
 {
     rendersys.Render_CallThisInEnginePlease();
 }
 
-void Engine::updateloop_win()
+void BaseEngine::updateloop_win()
 {
     update();
     render();
 }
 
-void Engine::updateloop_txt()
+void BaseEngine::updateloop_txt()
 {
     update();
 }
 
-void Engine::render_setup()
+void BaseEngine::render_setup()
 {
     rendersys.Engine_Setup(m_Window);
     rendersys.m_rstatic->Window_Resized(800, 600);
 }
 
-int Engine::RunEngine()
+int BaseEngine::RunEngine()
 {
-    Engine* engine = new Engine();
+    BaseEngine* engine = new BaseEngine();
     int c = engine->run();
     delete engine;
     return c;
 }
 
-MezBaseEntity* Engine::CreateEntityByName_Typeless(const char* m_name)
+MezBaseEntity* BaseEngine::CreateEntityByName_Typeless(const char* m_name)
 {
     efactory_t* f = entity_factories_t::find(m_name);
     if (!f) return 0;
@@ -243,7 +243,10 @@ MezBaseEntity* Engine::CreateEntityByName_Typeless(const char* m_name)
 #pragma warning (disable: 4172)
 const char* EngineVersion::tostring()
 {
-    char buffer[300];
-    sprintf_s(buffer, "%04x.%04x.%08x", engine_version.m_major, engine_version.m_minor, engine_version.m_build);
-    return buffer;
+    return MEZ_VERSION;
+}
+
+int EngineVersion::tonumeric()
+{
+    return MEZ_VERSION_NUMBERIC;
 }

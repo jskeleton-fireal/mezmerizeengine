@@ -1,6 +1,6 @@
 #pragma once
 #include "component.h"
-#include "../transform.h"
+#include "mez/merize/data/transform.h"
 class MezComponent_Transform : public MezComponent
 {
 public:

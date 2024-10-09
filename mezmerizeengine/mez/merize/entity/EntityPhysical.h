@@ -1,8 +1,8 @@
 #pragma once
-#include "../baseentity.h"
-#include "../entity_macros.h"
-#include "../merize.h"
-#include "Entity3D.h"
+#include "mez/merize/entity/baseentity.h"
+#include "mez/merize/data/entity_macros.h"
+#include "mez/merize/merize.h"
+#include "mez/merize/entity/Entity3D.h"
 //an entity that exists physically. has a 3d model and whatnot
 class RModel_Base;
 class MezEntityPhysical : public MezEntity3DTransform

@@ -1,6 +1,6 @@
 #include "EntityPhysical.h"
-#include "../cmp/cmp_renderable.h"
-#include "../Engine.h"
+#include "mez/merize/cmp/cmp_renderable.h"
+#include "mez/merize/engine/baseengine.h"
 
 void MezEntityPhysical::SetModel(const char* name)
 {
