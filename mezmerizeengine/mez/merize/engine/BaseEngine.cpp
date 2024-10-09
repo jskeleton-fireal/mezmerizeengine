@@ -53,7 +53,15 @@ void console_thread(console_thread_pass f_pass)
         f_pass.m_console->process(f_pass.m_engine);
     }
 }
-sf::Clock* clockp;
+
+class EngineSuperSecret
+{
+public:
+    sf::Clock* clockp;
+    EngineConsole console;
+};
+
+
 
 int BaseEngine::run()
 {
@@ -76,7 +84,7 @@ int BaseEngine::run()
         ::ShowWindow(::GetConsoleWindow(), SW_HIDE);
 #endif
     }
-
+    m_supersecret = new EngineSuperSecret();
     //using function pointers here to avoid ugly if statement
     updateloop upd;
 
@@ -90,9 +98,14 @@ int BaseEngine::run()
         upd = &BaseEngine::updateloop_win;
 
     }
+
+
     const char* enginever = engine_version.tostring();
-    printf("mez: %s\n", enginever);
+    printf("mezmerize version %s\n", enginever);
+    //print the name of the engine
+    printf("%s %s\n", this->GetName(), this->GetVersion_String());
     std::cout << "build: " << BUILD_DATE << "," << BUILD_TIME << "\n";
+
 
     engine = this;
     if (ALLOW_RENDERING)
@@ -100,8 +113,7 @@ int BaseEngine::run()
         render_setup();
     }
    
-    EngineConsole econ = EngineConsole();
-    console_thread_pass pass = { this,m_Window,&econ };
+    console_thread_pass pass = { this,m_Window,&m_supersecret->console };
     sf::Thread cthread(&console_thread, pass);
     cthread.launch();
     //load cache house
@@ -109,7 +121,8 @@ int BaseEngine::run()
     //yes. this needs to be called regardless of rendering setting.
     cache.m_models.setup();
     sf::Clock clock; // starts the clock
-    clockp = &clock;
+    m_supersecret->clockp = &clock;
+    OnInitialized();
     //THIS IS THE LOOP!!!
     while (window.isOpen())
     {
@@ -195,7 +208,7 @@ void BaseEngine::push_immediate_operation(voidfunction_t& function)
 
 void BaseEngine::reset_globals()
 {
-    clockp->restart();
+    this->m_supersecret->clockp->restart();
 }
 
 void BaseEngine::update()
@@ -238,6 +251,17 @@ MezBaseEntity* BaseEngine::CreateEntityByName_Typeless(const char* m_name)
     efactory_t* f = entity_factories_t::find(m_name);
     if (!f) return 0;
     return f->m_func();
+}
+
+bool BaseEngine::RunCommand(const char* cmd)
+{
+    m_supersecret->console.process_single(this,cmd);
+    return false;
+}
+
+EngineConsole* BaseEngine::GetEngineConsole()
+{
+    return &this->m_supersecret->console;
 }
 
 #pragma warning (disable: 4172)

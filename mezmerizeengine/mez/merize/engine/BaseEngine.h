@@ -54,6 +54,7 @@ public:
 	float time_delta;
 private:
 	EngineLaunchParameters m_launchparameters = EngineLaunchParameters();
+	class EngineSuperSecret* m_supersecret;
 public:
 #pragma warning (push)
 #pragma warning (disable: 26495)
@@ -77,7 +78,7 @@ private:
 
 	trustmeptr(RENDER_WINDOW_CLASS) m_Window;
 public:
-	//call this in main.cpp or similar
+	//dont use this anymore.
 	static int RunEngine();
 
 public:
@@ -88,7 +89,18 @@ public:
 	{
 		return dynamic_cast<TYPE*>(reinterpret_cast<MezBaseEntity*>(CreateEntityByName_Typeless(m_name)));
 	}
-
+	//run a commmand as if it were typed at the console
+	bool RunCommand(const char* cmd);
+public:
+	//virtuals
+	virtual const char* GetVersion_String() { return "v1.0_0"; }
+	virtual int GetVersion_Numeric() { return 1; }
+	virtual const char* GetName() { return "unknown"; }
+protected:
+	//some hidden functions :)
+	class EngineConsole* GetEngineConsole();
+	//more virtuals. to be overridden by whoever inherits this
+	virtual void OnInitialized() {}
 };
 
 
