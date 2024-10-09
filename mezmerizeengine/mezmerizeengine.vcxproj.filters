@@ -39,7 +39,7 @@
     <ClInclude Include="mez\merize\engine\eng_console.h" />
     <ClInclude Include="mez\merize\console\conhelper.h" />
     <ClInclude Include="mez\merize\entityprivate\efactory.h" />
-    <ClInclude Include="mez\merize\entity\EntityTestCube.h" />
+    <ClInclude Include="mez\testing\EntityTestCube.h" />
     <ClInclude Include="mez\merize\console\cmdargs.h" />
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\glshader.h" />
@@ -543,7 +543,7 @@
     <ClInclude Include="mez\merize\miscobjects\serializable\datatype.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\format\format.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\format\format_mez.h" />
-    <ClInclude Include="mez\merize\Engine_Testing.h" />
+    <ClInclude Include="mez\testing\Engine_Testing.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -569,7 +569,7 @@
     <ClCompile Include="mez\merize\console\conhelper.cpp" />
     <ClCompile Include="mez\merize\helpers\static_format.cpp" />
     <ClCompile Include="mez\merize\entityprivate\efactory.cpp" />
-    <ClCompile Include="mez\merize\entity\EntityTestCube.cpp" />
+    <ClCompile Include="mez\testing\EntityTestCube.cpp" />
     <ClCompile Include="mez\merize\data\entity_comms.cpp" />
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\glshader.cpp" />
@@ -591,7 +591,7 @@
     <ClCompile Include="mez\merize\miscobjects\serializable\datatype.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\property_raw.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\format\format_mez.cpp" />
-    <ClCompile Include="mez\merize\Engine_Testing.cpp" />
+    <ClCompile Include="mez\testing\Engine_Testing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

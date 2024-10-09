@@ -1,7 +1,7 @@
 #include "EntityTestCube.h"
-#include "../console/cmd.h"
-#include "../ren/model_selfdef.h"
-#include "../io/input.h"
+#include "mez/merize/console/cmd.h"
+#include "mez/merize/ren/model_selfdef.h"
+#include "mez/merize/io/input.h"
 
 ENTITY_LINK("testcube", MezEntityTestCube);
 

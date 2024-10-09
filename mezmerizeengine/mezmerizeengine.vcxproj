@@ -613,12 +613,12 @@
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowBase.hpp" />
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowStyle.hpp" />
-    <ClInclude Include="mez\merize\Engine_Testing.h" />
+    <ClInclude Include="mez\testing\Engine_Testing.h" />
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
     <ClInclude Include="mez\merize\console\cmdargs.h" />
     <ClInclude Include="mez\merize\console\console.h" />
     <ClInclude Include="mez\merize\entityprivate\efactory.h" />
-    <ClInclude Include="mez\merize\entity\EntityTestCube.h" />
+    <ClInclude Include="mez\testing\EntityTestCube.h" />
     <ClInclude Include="mez\merize\console\conhelper.h" />
     <ClInclude Include="mez\merize\engine\eng_console.h" />
     <ClInclude Include="mez\merize\engine\cachedstuffmgr.h" />
@@ -679,11 +679,11 @@
   <ItemGroup>
     <ClCompile Include="deps\glm\detail\glm.cpp" />
     <ClCompile Include="deps\glm\glm.cppm" />
-    <ClCompile Include="mez\merize\Engine_Testing.cpp" />
+    <ClCompile Include="mez\testing\Engine_Testing.cpp" />
     <ClCompile Include="mez\merize\cmp\component.cpp" />
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
     <ClCompile Include="mez\merize\entityprivate\efactory.cpp" />
-    <ClCompile Include="mez\merize\entity\EntityTestCube.cpp" />
+    <ClCompile Include="mez\testing\EntityTestCube.cpp" />
     <ClCompile Include="mez\merize\console\conhelper.cpp" />
     <ClCompile Include="mez\merize\engine\eng_console.cpp" />
     <ClCompile Include="mez\merize\engine\cachedstuffmgr.cpp" />
