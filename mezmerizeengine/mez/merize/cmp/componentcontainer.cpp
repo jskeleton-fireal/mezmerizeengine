@@ -65,6 +65,18 @@ void ComponentContainer::AddReserved(MezComponent* new_component, int slot)
     m_reserved[slot] = new_component;
 }
 
+ComponentContainer::~ComponentContainer()
+{
+    for (int i = 0; i < RESERVED_C_COUNT; i++)
+    {
+        delete m_reserved[i];
+    }
+    for (int i = 0; i < m_components.size(); i++)
+    {
+        delete m_components[i];
+    }
+}
+
 void ComponentContainer::ForeachComponent(componentfunc_t function)
 {
 }

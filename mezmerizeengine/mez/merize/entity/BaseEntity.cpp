@@ -36,6 +36,17 @@ bool MezBaseEntity::HandleStates()
 	}
 }
 
+MezBaseEntity* MezBaseEntity::Find_Typeless(const char* f_classname)
+{
+	for (int i = 0; i < MAX_ENTITIES; i++)
+	{
+		if (engine->elist.defs[i].IsFree()) continue;
+		if (strcmp(f_classname, engine->elist.defs[i].m_Entity->GetClassname())) continue;
+		return f_classname, engine->elist.defs[i].m_Entity;
+	}
+	return nullptr;
+}
+
 MezBaseEntity* EHandle::get()
 {
 	MezBaseEntity* ref = engine->elist.defs[m_DefId].m_Entity;

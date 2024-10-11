@@ -59,6 +59,11 @@ public:
 		Post_Update();
 	}
 	virtual bool HandleStates();
+public:
+	virtual const char* GetClassname() = 0;
+	static MezBaseEntity* Find_Typeless(const char* f_classname);
+	template <class T>
+	static T* Find(const char* f_classname) { return dynamic_cast<T*>(Find_Typeless(f_classname)); }
 };
 
 //Use EHandles in place of Entity pointers Please
@@ -74,4 +79,10 @@ public:
 	T* get() { return dynamic_cast<T*>(get()); }
 	EHandle() {}
 	EHandle(MezBaseEntity* ref) { m_DefId = ref->m_DefId; m_InternalId = ref->m_InternalId; }
+};
+
+template <class T>
+class EHandle_Typed : public EHandle
+{
+	T* get() { return dynamic_cast<T*>(get()); }
 };

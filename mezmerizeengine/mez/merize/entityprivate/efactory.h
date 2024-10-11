@@ -17,4 +17,4 @@ public:
 	static efactory_t* find(const char* f_name);
 };
 
-#define ENTITY_LINK(vEName,vEClassType) static void* ___fcrf() {return new vEClassType();} static efactory_t ____fc = efactory_t(vEName,reinterpret_cast<mezcreatefunc_t*>(&___fcrf));
+#define ENTITY_LINK(vEName,vEClassType) const char* vEClassType::GetClassname() {return vEName;} static void* ___fcrf##vEClassType##() {return new vEClassType();} static efactory_t ____fc = efactory_t(vEName,reinterpret_cast<mezcreatefunc_t*>(&___fcrf##vEClassType##));

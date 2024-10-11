@@ -4,8 +4,6 @@
 #include "cmp_renderable.h"
 
 
-//todo: THIS DOES NOT FREE COMPONENTS AT THE MOMEMTN PLEASE FIX THIS GOD 
-
 class ComponentContainer
 {
 public:
@@ -33,7 +31,7 @@ public:
 	inline possibly_null(MezComponent_Renderable*) FindRenderable() { return dynamic_cast<MezComponent_Renderable*>(m_reserved[RESERVED_RENDERABLE]); }
 
 	void AddReserved(MezComponent* new_component, int slot);
-
+	~ComponentContainer();
 protected:
 	typedef void (*componentfunc_t)(ComponentContainer*,MezComponent*);
 	void ForeachComponent(componentfunc_t function);
