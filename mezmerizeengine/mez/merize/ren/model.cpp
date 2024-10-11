@@ -70,6 +70,7 @@ RModel* RModel::LoadModelFromFile(const char* filename, bool essential)
     for (int i = 0; i < scene->mNumMeshes; i++)
     {
         model->m_meshes[i].m_Verts = reintrp_noderef(scene->mMeshes[i]->mVertices,Vector*);
+        model->m_meshes[i].m_Normals = reintrp_noderef(scene->mMeshes[i]->mNormals,Vector*);
         model->m_meshes[i].m_NumOfVerts = scene->mMeshes[i]->mNumVertices;
         model->m_meshes[i].m_DrawMode = RModel_Mesh::DM_Triangles; //test
     }

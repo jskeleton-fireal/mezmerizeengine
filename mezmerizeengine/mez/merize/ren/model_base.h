@@ -15,12 +15,16 @@ public:
 
 	virtual bool is_valid() { return m_valid; }
 
+	//probably need to move these into an individual mesh thing but idk
 	virtual Vector* GetVerts() = 0;
 	virtual int GetVertCount() = 0;	
 	virtual int GetMeshCount() { return is_valid(); }
 	virtual Vector* GetVerts(int f_mesh_index) { if (!f_mesh_index) return GetVerts();  return 0; }
 	virtual int GetVertCount(int f_mesh_index) { if (!f_mesh_index) return GetVertCount(); return 0; }
 	virtual int GetDrawMode(int f_mesh_index = 0) { return 4; }
+
+	virtual bool HasNormals() { return false; }
+	virtual Vector* GetNormals() = 0;
 protected:
 	RModel_Base() {}
 };

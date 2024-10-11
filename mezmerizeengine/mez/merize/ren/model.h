@@ -7,6 +7,8 @@
 
 class RModel_Internal;
 
+//note.. should this be moved? models may be used for raycasting, and boundings checks...
+
 
 //handles .obj files and whatnot in the rmodel system
 

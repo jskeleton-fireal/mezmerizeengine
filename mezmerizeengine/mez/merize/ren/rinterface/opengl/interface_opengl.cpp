@@ -10,6 +10,7 @@
 #include "rstatic_opengl.h"
 #include "../../../console/cmd.h"
 #include "glmathstuff.h"
+#include "rtemplate/template_def.h"
 
 #define AND_GL_DEBUGGING_STUFF 1
 
@@ -32,14 +33,13 @@ void RInterface_OpenGL::UploadVerts(Vector verts[], int count)
 	
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 
-	//upload verts
-	glBufferData(GL_ARRAY_BUFFER, 3i64  * count * sizeof(float), &verts[0], GL_DYNAMIC_DRAW);
+
 
 	glBindVertexArray(m_VAO);
 	//Position Attribute
 	glEnableVertexAttribArray(RIF_VAO_GL_POSITION);
 	glVertexAttribPointer(
-		0,
+		RIF_VAO_GL_POSITION,
 		3,                  // size
 		GL_FLOAT,
 		GL_FALSE,
@@ -47,6 +47,36 @@ void RInterface_OpenGL::UploadVerts(Vector verts[], int count)
 		(void*)0
 	);
 
+	//upload verts
+	glBufferData(GL_ARRAY_BUFFER, 3i64 * count * sizeof(float), verts, GL_DYNAMIC_DRAW);
+}
+
+void RInterface_OpenGL::UploadNormals(Vector normals[], int count)
+{
+	m_vertcount = count;
+	assert_msg(count > 0, "Cannot count normals in opengl"); //cannot count normals in opengl bc im lazy
+	assert(RIF_ISENABLED(m_VertexBuffer));
+	glBindVertexArray(m_VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+
+	if (m_VAO_normal ==-1)
+	{
+		glGenBuffers(1, &m_VAO_normal);
+	}
+	glBindBuffer(GL_ARRAY_BUFFER,m_VAO_normal);
+	//normal Attribute
+	glEnableVertexAttribArray(RIF_VAO_GL_NORMAL);
+	glVertexAttribPointer(
+		RIF_VAO_GL_NORMAL,
+		3,                  // size
+		GL_FLOAT,
+		GL_TRUE, //GL_FALSE,
+		0,                  // stride
+		(void*)0
+	);
+
+	//upload normals
+	glBufferData(GL_ARRAY_BUFFER, 3i64 * count * sizeof(float), normals, GL_DYNAMIC_DRAW);
 
 }
 
@@ -102,7 +132,7 @@ void RInterface_OpenGL::LinkShaderProgram()
 
 void RInterface_OpenGL::Prepare()
 {
-#if 0
+#if 1
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 #else
@@ -112,28 +142,26 @@ void RInterface_OpenGL::Prepare()
 	assert(RIF_ISENABLED(m_VertexBuffer));
 	assert(RIF_ISENABLED(m_VAO));
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-	glBindVertexArray(m_VAO);
-	//Need to transform matricies
 
 	glEnableVertexAttribArray(RIF_VAO_GL_POSITION);
+	glBindVertexArray(m_VAO);
+
+	glEnableVertexAttribArray(RIF_VAO_GL_NORMAL);
+	glBindBuffer(GL_ARRAY_BUFFER,m_VAO_normal);
+
+	//Need to transform matricies
+
 
 	//bind everything... yadda yadda
 
 	glUseProgram(m_ShaderProgram);
 
-	//needs to be moved to the shader itself
-	unsigned int pvmloc = glGetUniformLocation(m_ShaderProgram, "pvm");
-
-	//This shader wants a pvm
-	if ((int)pvmloc >= 0)
+	if (m_template)
 	{
-		//todo: need to have pv cached before
-		matrix4_t matrix = GLMathStuff::GetPV(engine->rendersys.m_camera) * GLMathStuff::GetTransformationMatrix(m_transform);
-
-
-		glUniformMatrix4fv(pvmloc, 1, GL_FALSE, reinterpret_cast<const GLfloat*>(&matrix[0]));
+		m_template->ProgramUsed(this);
 	}
 
+	
 	
 }
 
@@ -158,5 +186,28 @@ void RInterface_OpenGL::Draw()
 void RInterface_OpenGL::PostDraw()
 {
 	glDisableVertexAttribArray(RIF_VAO_GL_POSITION);
+	glDisableVertexAttribArray(RIF_VAO_GL_NORMAL);
 	
+}
+
+
+
+void RInterface_OpenGL::RequestFeature(rinterface_feature_t feature)
+{
+	switch (feature)
+	{
+	case RINTERFACE_FEATURE_NONE:
+		if (m_template) delete m_template;
+		m_template = 0;
+		break;
+	case RINTERFACE_FEATURE_3D:
+		if (m_template) delete m_template;
+		m_template = new RTemplate_3D();
+		break;	
+	case RINTERFACE_FEATURE_3DLIGHTING:
+		if (m_template) delete m_template;
+
+		m_template = new RTemplate_3DLighting();
+		break;
+	}
 }

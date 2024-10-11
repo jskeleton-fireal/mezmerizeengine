@@ -2,6 +2,7 @@
 #include "../merize.h"
 #include "MRenderableBase.h"
 #include "camera.h"
+#include "mez/merize/data/instance_ptr.h"
 
 
 #define NUMBER_OF_RENDERABLE_SYSTEMS 1
@@ -39,11 +40,9 @@ private:
 public:
 	RStatic* m_rstatic=0;
 	RSRenderableSystem* operator [] (int i);
-	MezCamera* m_camera = &default_camera;
+	instance_ptr<MezCamera> m_camera;
 private:
 	void Render_CallThisInEnginePlease();
 	void Render();
 	void Engine_Setup(void* window);
-
-	MezCamera default_camera;
 };

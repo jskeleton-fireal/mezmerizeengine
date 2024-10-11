@@ -32,6 +32,10 @@ void MRenderable::SetModel(RModel_Base* model)
 	m_rInterface->UploadShader("test");
 	m_rInterface->LinkShaderProgram();
 	m_rInterface->UploadVerts(m_model->GetVerts(), m_model->GetVertCount());
+	if (m_model->HasNormals())
+	{
+	m_rInterface->UploadNormals(m_model->GetNormals(), m_model->GetVertCount());
+	}
 	m_rInterface->SetDrawMode((RModel_Mesh::MESH_DRAWMODE)m_model->GetDrawMode());
 
 	//add to renderables list if not there yet.

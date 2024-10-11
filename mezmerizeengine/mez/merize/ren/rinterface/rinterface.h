@@ -3,6 +3,8 @@
 #include "mez/merize/version.h"
 #include "mez/merize/merize.h"
 #include "mez/merize/engine/baseengine.h"
+#include "mez/merize/ren/rinterface/rtemplate/template.h"
+#include "mez/merize/ren/rinterface/rinterface_feature.h"
 //rinterfaces are what connect renderables to the render system of choice
 
 namespace sf
@@ -10,13 +12,17 @@ namespace sf
 	class Window;
 }
 class RModel;
+
+
 class RInterface
 {
 public:
+	RTemplate* m_template = 0;
 	Transform* m_transform;
 	//member
 	virtual void Initialize() = 0;
 	virtual void UploadVerts(Vector verts[],int count = -1) = 0;
+	virtual void UploadNormals(Vector normals[],int count = -1) = 0;
 	virtual void UploadShader_Id(int shader_id) = 0;
 	virtual void UploadShader(const char* shader_id) = 0;
 	virtual void UploadShader_Vertex(const char* shader_id) = 0;
@@ -47,11 +53,13 @@ public:
 		return MezAngles(0, 0, 0);
 	}
 
-public:
-	//defined by the interface
+	~RInterface()
+	{
+		delete m_template;
+	}
 
-	//Note: This is unused as of now.
-	bitfield64_t m_features = 0;
+public:
+	virtual void RequestFeature(rinterface_feature_t f_feature) = 0;
 };
 
 

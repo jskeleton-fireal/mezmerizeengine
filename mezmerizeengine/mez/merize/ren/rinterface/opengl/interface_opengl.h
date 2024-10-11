@@ -12,6 +12,7 @@
 enum
 {
 	RIF_VAO_GL_POSITION = 0,
+	RIF_VAO_GL_NORMAL = 1,
 };
 
 typedef u32 glint_t;
@@ -23,6 +24,7 @@ class RInterface_OpenGL : public RInterface
 public:
 	virtual void Initialize();
 	virtual void UploadVerts(Vector verts[],int count = -1);
+	virtual void UploadNormals(Vector normals[], int count = -1);
 	//not implemented. dont use this.
 	virtual void UploadShader_Id(int shader_numeric_id);
 	//uploads a FRAGMENT shader to the shader program. USE LinkShaderProgram() when you finished uploading!!!!
@@ -40,10 +42,15 @@ public:
 
 	virtual void SetDrawMode(RModel_Mesh::MESH_DRAWMODE mode) { m_drawmode = mode; }
 
+	virtual void RequestFeature(rinterface_feature_t feature);
+
 	glint_t m_vertcount=-1;
 	glint_t m_ShaderProgram;
 	glint_t m_VertexBuffer;
-	glint_t m_VAO;
+
+	glint_t m_VAO; //position
+	glint_t m_VAO_normal = -1; //normals
+
 	int m_drawmode;
 };
 
