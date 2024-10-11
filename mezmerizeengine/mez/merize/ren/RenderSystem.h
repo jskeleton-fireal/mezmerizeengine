@@ -3,6 +3,7 @@
 #include "MRenderableBase.h"
 #include "camera.h"
 #include "mez/merize/data/instance_ptr.h"
+#include "mez/merize/data/environment.h"
 
 
 #define NUMBER_OF_RENDERABLE_SYSTEMS 1
@@ -21,9 +22,11 @@ class RenderSystem
 	friend class MRenderable;
 	friend class BaseEngine;
 	
-private:
+public:
+	instance_ptr<environment_sky_t> enviro_sky;
+	RStatic* m_rstatic = 0;
+	instance_ptr<MezCamera> m_camera;
 
-	
 	typedef stdvector<MRenderableRSHandle> RenderableVector;
 	struct RSRenderableSystem {
 		//im not sure about the performance of this system, an array would obviously be much faster but the memory issues and clear limits are kind of lame
@@ -38,9 +41,8 @@ private:
 private:
 	RSRenderableSystem systems[NUMBER_OF_RENDERABLE_SYSTEMS] = { RSRenderableSystem() };
 public:
-	RStatic* m_rstatic=0;
 	RSRenderableSystem* operator [] (int i);
-	instance_ptr<MezCamera> m_camera;
+
 private:
 	void Render_CallThisInEnginePlease();
 	void Render();

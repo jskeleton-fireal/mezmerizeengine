@@ -28,9 +28,7 @@ public:
 		matrix4_t rotation_matrix = matrix4_t(1.0f);
 		rotation_matrix = GLMathStuff::RotateMatrix(rotation_matrix, f_rinterface->m_transform->m_Angles);
 
-		//for testing.
-		environment_sky_t sky_LOOL = environment_sky_t();
-		environment_sky_t* sky = &sky_LOOL;
+		environment_sky_t* sky = engine->rendersys.enviro_sky;
 
 		//this is terrible
 		MezColorF colors[3]{ sky->m_ambient.Float(),sky->m_specular.Float() ,sky->m_light_sun.Float() };

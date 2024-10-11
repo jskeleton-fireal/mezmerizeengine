@@ -3,9 +3,9 @@
 #include "mez/merize/ren/model_selfdef.h"
 #include "mez/merize/io/input.h"
 
-ENTITY_LINK("testcube", MezEntityTestCube);
+ENTITY_LINK("testcube", TstEntityTestCube);
 
-inline void MezEntityTestCube::Initialize()
+inline void TstEntityTestCube::Initialize()
 {
 	MezEntityPhysical::Initialize();
 #if 0
@@ -24,14 +24,14 @@ inline void MezEntityTestCube::Initialize()
 	testingmodel->SelfDef_SetDrawmode(RModel_Mesh::DM_TriangleStrip);
 	SetModel(testingmodel);
 #else
-	InitModel("testcube.obj");
+	InitModel("freakbot.obj");
 #endif
 }
 
 mezstring_t serialized;
-void MezEntityTestCube::Update()
+void TstEntityTestCube::Update()
 {
-	const float scale = engine->time_delta * 3;
+	const float scale = engine->time_delta * 0.2f;
 	float forward_move = Input::KeyFWAxis(MKC_W, MKC_S);
 	float sideways_move = Input::KeyFWAxis(MKC_A, MKC_D);
 	GetTransform()->m_Position.z += forward_move * scale * 20;
@@ -54,16 +54,14 @@ void MezEntityTestCube::Update()
 	{
 		console_printf("fps = %.2f\n",1.0f / engine->time_delta);
 	}
-	if (Input::KeyPressed(MKC_K))
-	{
-		mezstring_t ser = Serialize();
-		console_printf("\n ------ \n %s\n -----\n\n", ser);
-		serialized.clone(&ser);
-	}
+
 	if (Input::KeyPressed(MKC_L))
 	{
-		bool workd = DeSerialize(serialized);
-		console_printf("YOU SHOULD SEE 1 BELOW\n%x", workd);
+		static bool lit = 0;
+		lit = !lit;
+		SetLighting(lit);
+		const char* travis = lit ? " " : " NOT ";
+		console_printf("its%slit!!",travis);
 	}
 }
 
