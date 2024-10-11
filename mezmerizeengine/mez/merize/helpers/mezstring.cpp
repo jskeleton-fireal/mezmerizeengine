@@ -1,7 +1,7 @@
 #include "mezstring.h"
 #include <string.h>
 #include "static_format.h"
-#define MEZSTRING_DEBUG 1
+#define MEZSTRING_DEBUG 0
 #if MEZSTRING_DEBUG
 
 #else

@@ -544,6 +544,16 @@
     <ClInclude Include="mez\merize\miscobjects\serializable\format\format.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\format\format_mez.h" />
     <ClInclude Include="mez\testing\Engine_Testing.h" />
+    <ClInclude Include="mez\merize\entity\EntityEnvironment.h" />
+    <ClInclude Include="mez\merize\data\color.h" />
+    <ClInclude Include="mez\merize\data\environment.h" />
+    <ClInclude Include="mez\merize\entity\BaseEnvironment.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rtemplate\template.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template3d.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template_def.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rinterface_feature.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template3dlighting.h" />
+    <ClInclude Include="mez\merize\data\instance_ptr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -592,6 +602,7 @@
     <ClCompile Include="mez\merize\miscobjects\serializable\property_raw.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\format\format_mez.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
+    <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

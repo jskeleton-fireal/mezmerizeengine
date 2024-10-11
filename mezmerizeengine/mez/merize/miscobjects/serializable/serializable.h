@@ -35,4 +35,6 @@ public:
 	virtual bool DeSerialize(const char* f_string,SerializeFormat f_format = SFMT_AutoDetermine);
 protected:
 	virtual void DeclareProperties(PropertiesVector* vector) { }
+public:
+	virtual const char* GetClassname() { return 0; }
 };

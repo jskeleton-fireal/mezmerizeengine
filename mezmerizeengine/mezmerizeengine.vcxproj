@@ -613,6 +613,16 @@
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowBase.hpp" />
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="deps\sfml\include\SFML\Window\WindowStyle.hpp" />
+    <ClInclude Include="mez\merize\data\color.h" />
+    <ClInclude Include="mez\merize\data\environment.h" />
+    <ClInclude Include="mez\merize\data\instance_ptr.h" />
+    <ClInclude Include="mez\merize\entity\BaseEnvironment.h" />
+    <ClInclude Include="mez\merize\entity\EntityEnvironment.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template3d.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template3dlighting.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template_def.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rinterface_feature.h" />
+    <ClInclude Include="mez\merize\ren\rinterface\rtemplate\template.h" />
     <ClInclude Include="mez\testing\Engine_Testing.h" />
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
     <ClInclude Include="mez\merize\console\cmdargs.h" />
@@ -679,6 +689,7 @@
   <ItemGroup>
     <ClCompile Include="deps\glm\detail\glm.cpp" />
     <ClCompile Include="deps\glm\glm.cppm" />
+    <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
     <ClCompile Include="mez\merize\cmp\component.cpp" />
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
