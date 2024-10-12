@@ -2,6 +2,7 @@
 #include "../../helpers/static_format.h"
 #include "format/format.h"
 #include "format/format_mez.h"
+#include <fstream>
 
 //todo: move formats into their own classes? im not sure how exactly that would work.. but it would be so so nice
 
@@ -57,4 +58,16 @@ bool MezSerializable::DeSerialize(const char* f_string, SerializeFormat f_format
 	PropertiesVector props = GetProperties();
 	shared_ptr<MezSFormat_Base> formatter = make_formatter(f_format);
 	return formatter.get()->Deserialize(f_string,&props);
+}
+
+bool MezSerializable::SerializeToFile(const char* f_file, SerializeFormat f_format)
+{
+	mezstring_t str = Serialize();
+	if (!str.length()) return false;
+	std::fstream output;
+	output.open(f_file,std::ios::out);
+	if (output.bad()) return false;
+	output.write(str.cstr_const(), str.length());
+	output.close();
+	return true;
 }

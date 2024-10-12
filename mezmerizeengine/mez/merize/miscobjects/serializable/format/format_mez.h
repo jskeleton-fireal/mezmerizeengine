@@ -7,7 +7,7 @@ class MezSFormat_Mez : public MezSFormat_Base
 public:
 
 
-	virtual mezstring_t ToLine(RawProperty f_property);
+	virtual mezstring_t ToLine(PropBase* f_property);
 
 	virtual void OnSerializeStart(mezstring_t* final_string);
 

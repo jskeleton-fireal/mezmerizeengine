@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../helpers/mezstring.h"
 #include "../property_raw.h"
+#include "../property_section.h"
 #include "../serializable.h"
 
 
@@ -11,9 +12,11 @@ public:
 	int m_prop_count;
 protected:
 	int m_current_line = 0;
+	int m_section_index = 0;
+	std::vector<RawPropSection*> m_section_depth;
 public:
 	virtual void OnSerializeStart(mezstring_t* final_string) {}
-	virtual mezstring_t ToLine(RawProperty f_property) = 0;
+	virtual mezstring_t ToLine(PropBase* f_property) = 0;
 	virtual void OnSerializeEnd(mezstring_t* final_string) {}
 
 	virtual bool Deserialize(const char* f_text,PropertiesVector* f_target) = 0;

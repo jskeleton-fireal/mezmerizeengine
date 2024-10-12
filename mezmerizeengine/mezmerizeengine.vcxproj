@@ -617,6 +617,15 @@
     <ClInclude Include="mez\merize\data\environment.h" />
     <ClInclude Include="mez\merize\data\instance_ptr.h" />
     <ClInclude Include="mez\merize\entity\EntityEnvironment.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propbase.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_color.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_def.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_environment.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_standard.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_transform.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\property_section.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\prop_container.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template3d.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template3dlighting.h" />
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template_def.h" />

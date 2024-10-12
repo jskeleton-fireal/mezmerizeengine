@@ -31,7 +31,7 @@ inline void TstEntityTestCube::Initialize()
 #endif
 }
 
-mezstring_t serialized;
+#include <fstream>
 void TstEntityTestCube::Update()
 {
 	const float scale = engine->time_delta * 0.2f;
@@ -80,6 +80,27 @@ void TstEntityTestCube::Update()
 	{
 		RStatic_OpenGL::Get()->m_cache_shader.wipe();
 		console_printf("wipe\n");
+	}	
+	if (Input::KeyPressed(MKC_M))
+	{
+		const char* fn = "test.mzsr.txt";
+		SerializeToFile(fn);
+		console_printf("wrote to %s\n", fn);
+	}	
+	if (Input::KeyPressed(MKC_Comma))
+	{
+		const char* fn = "test.mzsr.txt";
+		console_printf("reading from to %s\n", fn);
+
+		char buffer[4000];
+
+		std::fstream i;
+		i.open(fn,std::ios::in);
+		i.seekg(0, std::ios::beg);
+		i.read(buffer, 4000);
+		i.close();
+		bool w = DeSerialize(buffer);
+		console_printf("(should be 1) =====> %i\n",w);
 	}
 }
 

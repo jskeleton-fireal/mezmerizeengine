@@ -3,9 +3,11 @@
 #include "property_raw.h"
 #include "../../helpers/mezstring.h"
 #include <vector>
+#include "prop_container.h"
 
 
-typedef stdvector<RawProperty> PropertiesVector;
+//typedef stdvector<PropBase> PropertiesVector;
+#define PropertiesVector PropertyContainer
 //generic class for serialziing.
 //Uses properties.
 class MezSerializable
@@ -28,6 +30,7 @@ public:
 	PropertiesVector GetProperties();
 	virtual mezstring_t Serialize(SerializeFormat f_format = SFMT_Default);
 	virtual bool DeSerialize(const char* f_string,SerializeFormat f_format = SFMT_Default);
+	bool SerializeToFile(const char* f_file,SerializeFormat f_format = SFMT_Default);
 protected:
 	virtual void DeclareProperties(PropertiesVector* vector) { }
 public:

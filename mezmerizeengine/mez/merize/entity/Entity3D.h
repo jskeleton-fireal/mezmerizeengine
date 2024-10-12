@@ -2,6 +2,7 @@
 #include "mez/merize/entity/baseentity.h"
 #include "mez/merize/data/entity_macros.h"
 #include "mez/merize/merize.h"
+#include <mez/merize/miscobjects/serializable/propdef/propdef_transform.h>
 
 //an entity that lives in 3d space.
 
@@ -21,16 +22,9 @@ public:
 
 	Vector GetPosition() { return GetTransform()->m_Position; }
 
-	//need a better way to do this
 	virtual void DeclareProperties(PropertiesVector* vector)
 	{
-		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Position.x, sizeof(float), DataType::DT_Float, "Position_X"));
-		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Position.y,sizeof(float),DataType::DT_Float,"Position_Y"));
-		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Position.z,sizeof(float),DataType::DT_Float,"Position_Z"));
-	
-		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Angles.m_angles[0], sizeof(float), DataType::DT_Float, "Angles_0"));
-		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Angles.m_angles[1], sizeof(float), DataType::DT_Float, "Angles_1"));
-		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Angles.m_angles[2], sizeof(float), DataType::DT_Float, "Angles_2"));
+		PropDef_Transform::create(vector, &m_ComponentContainer.FindTransform()->m_Transform);
 	}
 };
 
