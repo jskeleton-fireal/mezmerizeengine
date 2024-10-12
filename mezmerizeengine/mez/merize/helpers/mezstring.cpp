@@ -1,7 +1,7 @@
 #include "mezstring.h"
 #include <string.h>
 #include "static_format.h"
-#define MEZSTRING_DEBUG 0
+#define MEZSTRING_DEBUG 1
 #if MEZSTRING_DEBUG
 
 #else
@@ -76,11 +76,11 @@ void MezString::debug_logself(bool selfisvalid)
 {
     if (selfisvalid)
     {
-        printf("%x (.. @ %x) ", this, m_buffer.m_);
+        printf("%x (%s @ %x) ", this, m_buffer.m_);
     }
     else
     {
-        printf("%x ( <invalid> )", this);
+        printf("%x ( ?? )", this);
     }
 }
 void MezString::set_cstr(const char* cstr)
@@ -109,9 +109,9 @@ MezString MezString::substring(int start)
 
 MezString MezString::substring(int start, int end)
 {
-    assert(end > start);
+    assert(end >= start);
     mezstring_t one = substring(start);
-    one.m_buffer.m_[end] = '\0';
+    one.m_buffer.m_[end - start] = '\0';
     return one;
 }
 

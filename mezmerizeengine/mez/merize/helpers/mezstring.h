@@ -28,6 +28,30 @@ public:
 	operator char* () { return cstr(); }
 	operator const char* () { return cstr_const(); }
 	MezString operator=(const char* cstring) { return MezString(cstring); }
+	MezString operator=(MezString* copy)
+	{
+		this->m_buffer = copy->m_buffer;
+		newbuffer();
+		return *this;
+	}
+	MezString operator=(MezString& copy)
+	{
+		this->m_buffer = copy.m_buffer;
+		newbuffer();
+		return *this;
+	}	
+	MezString operator=(const MezString* copy)
+	{
+		this->m_buffer = copy->m_buffer;
+		newbuffer();
+		return *this;
+	}	
+	MezString operator=(const MezString& copy)
+	{
+		this->m_buffer = copy.m_buffer;
+		newbuffer();
+		return *this;
+	}
 	//MezString& operator=(const MezString& other); 
 	void free();
 	MezString(); 
