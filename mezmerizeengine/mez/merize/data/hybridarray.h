@@ -1,7 +1,7 @@
 #pragma once
+#if 0
 #include "merize.h"
 
-#if 0
 //types for quick switching between arrays/stdvectors without having to modify code
 
 class hybridarray_base

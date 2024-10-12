@@ -1,6 +1,6 @@
+#if 0
 #include "hybridarray.h"
 
-#if 0
 int hybridarray_base::arraysafety(int spot)
 {
     bool in_bounds = spot >= 0 && spot < size();
