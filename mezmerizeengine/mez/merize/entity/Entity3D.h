@@ -3,6 +3,8 @@
 #include "mez/merize/data/entity_macros.h"
 #include "mez/merize/merize.h"
 
+//an entity that lives in 3d space.
+
 class MezEntity3DTransform : public MezBaseEntity
 {
 public:
@@ -19,6 +21,7 @@ public:
 
 	Vector GetPosition() { return GetTransform()->m_Position; }
 
+	//need a better way to do this
 	virtual void DeclareProperties(PropertiesVector* vector)
 	{
 		vector->push_back(RawProperty(&m_ComponentContainer.FindTransform()->m_Transform.m_Position.x, sizeof(float), DataType::DT_Float, "Position_X"));

@@ -28,8 +28,8 @@ void MRenderable::SetModel(RModel_Base* model)
 
 	//Need to regenerate!
 	//todo: need to have the model have shaders
-	m_rInterface->UploadShader_Vertex("default3d");
-	m_rInterface->UploadShader("test");
+	m_rInterface->UploadShader_Vertex("fallback");
+	m_rInterface->UploadShader("fallback");
 	m_rInterface->LinkShaderProgram();
 	m_rInterface->UploadVerts(m_model->GetVerts(), m_model->GetVertCount());
 	if (m_model->HasNormals())

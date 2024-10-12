@@ -24,6 +24,11 @@ public:
 
 	void initialize2();
 
+	void RequestFeature(rinterface_feature_t f_featureid);
+	//sets the lighting feature. note: does not actually change shaders.
 	void SetLighting(bool f_lighting);
+
+	//0 for no change.
+	void SetShader(const char* f_fragment, const char* f_vertex = 0);
 };
 

@@ -37,7 +37,21 @@ void MezEntityPhysical::initialize2()
 	l_renderable->m_Renderable->m_rInterface->RequestFeature(RINTERFACE_FEATURE_3D);
 }
 
+void MezEntityPhysical::RequestFeature(rinterface_feature_t f_featureid)
+{
+	return m_ComponentContainer.FindRenderable()->m_Renderable->m_rInterface->RequestFeature(f_featureid);
+}
+
 void MezEntityPhysical::SetLighting(bool f_lighting)
 {
-	return m_ComponentContainer.FindRenderable()->m_Renderable->m_rInterface->RequestFeature(f_lighting ? RINTERFACE_FEATURE_3D : RINTERFACE_FEATURE_3DLIGHTING);;
+	return RequestFeature(f_lighting ? RINTERFACE_FEATURE_3D : RINTERFACE_FEATURE_3DLIGHTING);
+}
+
+void MezEntityPhysical::SetShader(const char* f_fragment, const char* f_vertex)
+{
+	RInterface* rinterface = m_ComponentContainer.FindRenderable()->m_Renderable->m_rInterface;
+	if (f_vertex)
+	rinterface->UploadShader_Vertex(f_vertex);
+	if (f_fragment)
+	rinterface->UploadShader(f_fragment);
 }
