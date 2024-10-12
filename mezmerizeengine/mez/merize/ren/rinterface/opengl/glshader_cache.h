@@ -19,6 +19,11 @@ public:
 		u32 m_shadertype;
 		mezstring_t m_sid;
 		GLShader* m_shader;
+		void free()
+		{
+			delete m_shader;
+			m_shader = 0;
+		}
 	};
 
 	enum GLShaderType
@@ -42,6 +47,15 @@ public:
 	bool LoadShader(const char* f_filename);
 
 	void NeedShader(const char* f_shaderid);
+
+	void wipe()
+	{
+		for (int i = 0; i < m_storage.size(); i++)
+		{
+			m_storage[i].free();
+		}
+		m_storage.clear();
+	}
 
 private:
 	GLShader* lookupshaderincache(const char* f_sid, GLShaderCache::GLShaderType f_type);

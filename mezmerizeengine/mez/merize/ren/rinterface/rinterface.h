@@ -27,9 +27,11 @@ public:
 	virtual void UploadShader(const char* shader_id) = 0;
 	virtual void UploadShader_Vertex(const char* shader_id) = 0;
 	virtual void LinkShaderProgram() = 0;
+	virtual void RegenerateProgram() = 0;
 	virtual void Prepare() = 0; //set schtuff
 	virtual void Draw() = 0;
 	virtual void PostDraw() = 0; //reset stuff set by prepare
+
 
 	virtual void SetDrawMode(RModel_Mesh::MESH_DRAWMODE mode) = 0;
 	//.. include a destructor as well

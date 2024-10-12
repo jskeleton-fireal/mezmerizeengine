@@ -36,6 +36,9 @@ public:
 	//CALL THIS when you finished w shader schtuff.
 	//note: probably should be renamed for other apis or somethign
 	virtual void LinkShaderProgram();
+
+	virtual void RegenerateProgram();
+
 	virtual void Prepare();//set schtuff
 	virtual void Draw();
 	virtual void PostDraw();//reset stuff set by prepare

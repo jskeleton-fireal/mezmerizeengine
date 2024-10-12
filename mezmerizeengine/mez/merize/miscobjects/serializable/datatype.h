@@ -18,8 +18,6 @@ public:
 	};
 
 	typedef int bitcount_t;
-	bool IsIntType() { return m_data_type & 0x1; }
-	bool IsFloatType() { return m_data_type & 0x2; }
 	bitcount_t GetDataSize();
 	bitcount_t GetMinimumDataSize();
 	const char* ToString();

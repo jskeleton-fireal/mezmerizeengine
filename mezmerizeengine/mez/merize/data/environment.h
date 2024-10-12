@@ -10,7 +10,7 @@ struct environment_sky_t
 {
 	//sky related stuff
 	MezColor m_ambient = MezColor(0x263F7F);
-	MezColor m_light_sun = MezColor(0xFFDC9B);
+	MezColor m_diffuse = MezColor(0xFFDC9B);
 	MezColor m_specular = MezColor(0xFFFFFF);
 	Vector m_sun = Vector(0.5f, 0.8f, 0.0f);
 };

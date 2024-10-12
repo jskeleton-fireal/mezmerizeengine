@@ -20,7 +20,7 @@ public:
 			initialized = 1;
 			uniforms[0] = glGetUniformLocation(f_rinterface->m_ShaderProgram, "l_ambient");
 			uniforms[1] = glGetUniformLocation(f_rinterface->m_ShaderProgram, "l_specular");
-			uniforms[2] = glGetUniformLocation(f_rinterface->m_ShaderProgram, "l_sunlight");
+			uniforms[2] = glGetUniformLocation(f_rinterface->m_ShaderProgram, "l_diffuse");
 			uniforms[3] = glGetUniformLocation(f_rinterface->m_ShaderProgram, "l_sun");
 			uniforms[4] = glGetUniformLocation(f_rinterface->m_ShaderProgram, "l_rotation");
 		}
@@ -31,7 +31,7 @@ public:
 		environment_sky_t* sky = engine->rendersys.enviro_sky;
 
 		//this is terrible
-		MezColorF colors[3]{ sky->m_ambient.Float(),sky->m_specular.Float() ,sky->m_light_sun.Float() };
+		MezColorF colors[3]{ sky->m_ambient.Float(),sky->m_specular.Float() ,sky->m_diffuse.Float() };
 		Vector sun = sky->m_sun;
 		//sun.y = -sun.y; //in opengl -y = up
 

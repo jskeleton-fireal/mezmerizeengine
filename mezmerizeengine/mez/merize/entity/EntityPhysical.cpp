@@ -50,8 +50,12 @@ void MezEntityPhysical::SetLighting(bool f_lighting)
 void MezEntityPhysical::SetShader(const char* f_fragment, const char* f_vertex)
 {
 	RInterface* rinterface = m_ComponentContainer.FindRenderable()->m_Renderable->m_rInterface;
-	if (f_vertex)
+
+	rinterface->RegenerateProgram();
+
 	rinterface->UploadShader_Vertex(f_vertex);
-	if (f_fragment)
+
 	rinterface->UploadShader(f_fragment);
+
+	rinterface->LinkShaderProgram();
 }

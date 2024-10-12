@@ -2,6 +2,7 @@
 #include "mez/merize/console/cmd.h"
 #include "mez/merize/ren/model_selfdef.h"
 #include "mez/merize/io/input.h"
+#include <mez/merize/ren/rinterface/opengl/rstatic_opengl.h>
 
 ENTITY_LINK("testcube", TstEntityTestCube);
 
@@ -24,7 +25,9 @@ inline void TstEntityTestCube::Initialize()
 	testingmodel->SelfDef_SetDrawmode(RModel_Mesh::DM_TriangleStrip);
 	SetModel(testingmodel);
 #else
-	InitModel("freakbot.obj");
+	InitModel("ball.obj");
+	SetShader("modifiedphong", "default3d");
+	SetLighting(true);
 #endif
 }
 
@@ -61,7 +64,22 @@ void TstEntityTestCube::Update()
 		lit = !lit;
 		SetLighting(lit);
 		const char* travis = lit ? " " : " NOT ";
-		console_printf("its%slit!!",travis);
+		console_printf("its%slit!!\n",travis);
+	}
+
+	if (Input::KeyPressed(MKC_P))
+	{
+		static bool shader = 0;
+		shader = !shader;
+		const char* which = shader ? "phong" : "modifiedphong";
+		SetShader(which,"default3d");
+		console_printf("using %s\n", which);
+	}
+
+	if (Input::KeyPressed(MKC_Period))
+	{
+		RStatic_OpenGL::Get()->m_cache_shader.wipe();
+		console_printf("wipe\n");
 	}
 }
 
