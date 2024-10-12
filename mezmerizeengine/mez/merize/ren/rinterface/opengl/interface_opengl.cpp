@@ -123,6 +123,9 @@ void RInterface_OpenGL::LinkShaderProgram()
 		//hopefully this works
 		console_printf("%s\n", errormsg);
 
+		engine->show_messagebox(errormsg, ENGINE_MSGBOXTYPE_ERROR);
+			
+
 		// In this simple program, we'll just leave
 		return;
 	}

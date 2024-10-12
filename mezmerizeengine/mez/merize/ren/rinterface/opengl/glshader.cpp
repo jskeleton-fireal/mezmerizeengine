@@ -32,7 +32,10 @@ void GLShader::LoadFromFile(const char* filename)
         if (!success)
         {
             glGetShaderInfoLog(m_shader, 512, NULL, infoLog);
+
             console_printf("Shader compile failed!\n\n\n%s\n", infoLog);
+
+            engine->show_messagebox(infoLog, ENGINE_MSGBOXTYPE_ERROR);
         }
     }
 
