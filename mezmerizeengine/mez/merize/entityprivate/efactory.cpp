@@ -21,6 +21,15 @@ efactory_t::efactory_t(const char* f_name, const mezcreatefunc_t* f_func)
 	f.upload(this);
 }
 
+efactory_t::efactory_t(const char* f_name, const mezcreatefunc_t* f_func, bool f_enabled)
+{
+	if (f_enabled)
+	{
+		efactory_t::efactory_t(f_name, f_func);
+	}
+	
+}
+
 efactory_t* entity_factories_t::find(const char* f_name)
 {
 	assert(f.factories.size());
