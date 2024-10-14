@@ -1,6 +1,6 @@
 #pragma once
 #include "mez/merize/engine/baseengine.h"
-
+#ifdef PROJECT_TESTING
 class Engine_Testing : public BaseEngine
 {
 public:
@@ -11,3 +11,4 @@ public:
 	}
 };
 
+#endif

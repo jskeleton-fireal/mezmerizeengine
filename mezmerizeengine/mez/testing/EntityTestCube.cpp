@@ -4,7 +4,7 @@
 #include "mez/merize/io/input.h"
 #include <mez/merize/ren/rinterface/opengl/rstatic_opengl.h>
 
-ENTITY_LINK("testcube", TstEntityTestCube);
+ENTITY_LINK(PROJECT_TESTING, "testcube", TstEntityTestCube);
 
 inline void TstEntityTestCube::Initialize()
 {

@@ -1,6 +1,6 @@
 #pragma once
-
-
+#ifndef MEZ_VECTOR_H
+#define MEZ_VECTOR_H
 struct Vector
 {
 	//for easy
@@ -12,3 +12,4 @@ struct Vector
 	float operator [] (int i) { return (&reintrp(*this, float))[i]; }
 #endif
 };
+#endif
