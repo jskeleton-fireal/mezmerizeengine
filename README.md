@@ -27,3 +27,9 @@ you only have to compile assimp the rest have pre-built binaries
 alright i kind of set it up weird so heres the general structure
 <br>
 the mez folder is where some general config and stuff is, the merize folder is where the actual code of the engine is. in YOUR main.cpp you need to call Engine::RunEngine() to run the engine. (THIS IS A LOOP). If you need more control you can create an instance of the engine (on the heap would be nice) and calling some stuff before finally calling run. You do not need to inherit the engine. (todo: more docs! for the people!)
+
+# How to setup a project in MSVC
+the easiest way is to just clone the repo. get the deps and put them where they need to be get the dlls put them where they need to go and boom you have it working. This should work
+<br>
+## How to setup as a multi project solution in MSVC
+okay this kind of sucks but i'll break it down for you. You need mez and your project in the same solution, and you need to change mez to compile as a static library (.lib) instead of an executable. note: on msvc2022 this breaks library settings so set those back. and then on your project go to linker -> general and set Additional Library Dependencies to $(OutDir), and add "mezmerizeengine.lib" to Additional Dependencies in the input tab. this is how i got it to work i'll drop a better guide to set this up soon since this is how i want yall to use this
