@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef MERIZE_H
+#define MERIZE_H
+
 //this should be included in everything related to merize.
 #include "mez/merize/version.h"
 #include "mez/merize/settings.h"
@@ -144,4 +147,6 @@ TYPE remove_const(const TYPE2 thing)
 	pointer_t test = (pointer_t) &thing;
 	return reintrp_noderef(test,TYPE);
 }
+#endif
+
 #endif
