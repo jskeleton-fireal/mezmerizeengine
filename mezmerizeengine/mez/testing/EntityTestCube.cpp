@@ -3,7 +3,7 @@
 #include "mez/merize/ren/model_selfdef.h"
 #include "mez/merize/io/input.h"
 #include <mez/merize/ren/rinterface/opengl/rstatic_opengl.h>
-
+#ifdef PROJECT_TESTING
 ENTITY_LINK("testcube", TstEntityTestCube);
 
 inline void TstEntityTestCube::Initialize()
@@ -104,3 +104,4 @@ void TstEntityTestCube::Update()
 	}
 }
 
+#endif

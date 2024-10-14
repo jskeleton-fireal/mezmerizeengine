@@ -1,6 +1,11 @@
 #pragma once
 
+//note: You! define your own PROJECT_<NAME> here!
 
+//Enable if you want to include "testing"
+#if 0
+#define PROJECT_TESTING
+#endif
 
 enum
 {
