@@ -26,7 +26,7 @@ you only have to compile assimp the rest have pre-built binaries
 ### how to setup
 alright i kind of set it up weird so heres the general structure
 <br>
-the mez folder is where some general config and stuff is, the merize folder is where the actual code of the engine is. in YOUR main.cpp you need to call Engine::RunEngine() to run the engine. (THIS IS A LOOP). If you need more control you can create an instance of the engine (on the heap would be nice) and calling some stuff before finally calling run. You do not need to inherit the engine. (todo: more docs! for the people!)
+the mez folder is where some general config and stuff is, the merize folder is where the actual code of the engine is. in YOUR program you need to make your engine class that inherits BaseEngine, and in main main.cpp you need to call (your engine)->run() to run the engine. (THIS IS A LOOP). 
 
 # How to setup a project in MSVC
 the easiest way is to just clone the repo. get the deps and put them where they need to be get the dlls put them where they need to go and boom you have it working. This should work
