@@ -12,6 +12,8 @@ this is not an engine to replace unity or unreal or whatever use those engines i
 
 ### should i use this engine for my next project?
 no. only i can use this engine muhahaha cause im EVIL!!!!!
+<br>
+okay i just found out that if you dont put a license on some github stuff its automatically like "You cannot use this" or something for your stuff so i need to put a license no this i want all yall to use this but i gotta figure a thang out so DONT USE this just yet i dont want yall to get in trubs
 
 
 ## ! dependencies !
