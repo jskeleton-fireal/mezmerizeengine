@@ -56,9 +56,8 @@ public:
 		Create();
 	}
 
-	bool m_visible = 0;
-	bool m_initialized = 0;
-	bool m_expecteddeallocation = 0;
+	bool m_visible = 0; //if 0, will ignore draw calls
+	bool m_initialized = 0; //are we currently uploaded to the engine's rendersystem?
 protected:
 	debugvar(bool  m_Ready); //for debugging
 	void Upload();

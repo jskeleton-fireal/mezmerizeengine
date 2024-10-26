@@ -26,4 +26,6 @@ public:
 
 		glUniformMatrix4fv(pvmloc, 1, GL_FALSE, reinterpret_cast<const GLfloat*>(&matrix[0]));
 	}
+
+	virtual void Invalidate(RInterface_OpenGL* f_rinterface) { pvmloc = -1; }
 };

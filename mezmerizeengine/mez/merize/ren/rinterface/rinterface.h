@@ -62,6 +62,8 @@ public:
 
 public:
 	virtual void RequestFeature(rinterface_feature_t f_feature) = 0;
+	virtual void KillTemplate();
+	virtual void InvalidateTemplate();
 };
 
 

@@ -44,7 +44,7 @@ void MezEntityPhysical::RequestFeature(rinterface_feature_t f_featureid)
 
 void MezEntityPhysical::SetLighting(bool f_lighting)
 {
-	return RequestFeature(f_lighting ? RINTERFACE_FEATURE_3D : RINTERFACE_FEATURE_3DLIGHTING);
+	return RequestFeature(!f_lighting ? RINTERFACE_FEATURE_3D : RINTERFACE_FEATURE_3DLIGHTING);
 }
 
 void MezEntityPhysical::SetShader(const char* f_fragment, const char* f_vertex)

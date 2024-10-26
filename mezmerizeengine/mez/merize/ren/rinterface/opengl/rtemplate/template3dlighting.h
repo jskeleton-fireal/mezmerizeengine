@@ -42,4 +42,6 @@ public:
 		glUniformMatrix4fv(uniforms[4], 1, GL_FALSE,reinterpret_cast<const GLfloat*>(&rotation_matrix[0]));
 
 	}
+
+	virtual void Invalidate(RInterface_OpenGL* f_rinterface) { initialized = 0; }
 };

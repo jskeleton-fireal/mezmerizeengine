@@ -137,6 +137,9 @@ void RInterface_OpenGL::RegenerateProgram()
 	glDeleteProgram(m_ShaderProgram);
 	m_ShaderProgram = -1;
 	m_ShaderProgram = glCreateProgram();
+
+	//invalidate, dont kill
+	InvalidateTemplate();
 }
 
 

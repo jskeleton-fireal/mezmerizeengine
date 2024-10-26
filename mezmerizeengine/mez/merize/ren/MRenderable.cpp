@@ -27,7 +27,7 @@ void MRenderable::SetModel(RModel_Base* model)
 	m_visible = 1;
 
 	//Need to regenerate!
-	//todo: need to have the model have shaders
+	m_rInterface->RegenerateProgram();
 	m_rInterface->UploadShader_Vertex("fallback");
 	m_rInterface->UploadShader("fallback");
 	m_rInterface->LinkShaderProgram();

@@ -27,15 +27,15 @@ void MRenderableBase::Draw()
 
 inline void MRenderableBase::PostDraw() { setdebugvar(m_Ready, 0); m_rInterface->PostDraw(); }
 
-
+//note: what about the model? if its a custom model should we delete it?
 MRenderableBase::~MRenderableBase()
 {
-	if (m_expecteddeallocation) return;
 	delete m_rInterface;
 	m_rInterface = 0;
 	printf("deallocated the m_rinterface\n");
 }
 
+//push this to the rendersys
 void MRenderableBase::Upload()
 {
 	assert(!m_initialized);
