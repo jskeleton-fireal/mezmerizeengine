@@ -14,7 +14,7 @@
     <ClInclude Include="mez\merize\ren\MRenderable.h" />
     <ClInclude Include="mez\merize\entity\EntityPhysical.h" />
     <ClInclude Include="mez\merize\data\entity_macros.h" />
-    <ClInclude Include="mez\merize\settings.h" />
+    <ClInclude Include="mez\settings.h" />
     <ClInclude Include="mez\merize\ren\RenderSystem.h" />
     <ClInclude Include="mez\merize\staticdefs.h" />
     <ClInclude Include="mez\merize\data\hybridarray.h" />
@@ -611,6 +611,7 @@
     <ClCompile Include="mez\merize\miscobjects\serializable\format\format_mez.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
     <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
+    <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

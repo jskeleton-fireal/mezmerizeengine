@@ -25,10 +25,23 @@ inline void TstEntityTestCube::Initialize()
 	testingmodel->SelfDef_SetDrawmode(RModel_Mesh::DM_TriangleStrip);
 	SetModel(testingmodel);
 #else
-	InitModel("ball.obj");
+	PrecacheModel("freakbot.obj");
+	PrecacheModel("ball.obj");
+	SetModel("freakbot.obj");
 	SetShader("modifiedphong", "default3d");
 	SetLighting(true);
 #endif
+	console_printf("> mezmerize testing : <testcube>\n");
+	console_printf("wasd - move\n");
+	console_printf("b - print pos\n");
+	console_printf("v - reset pos\n");
+	console_printf("n - print fps\n");
+	console_printf("L - toggle lighting\n");
+	console_printf("P - toggle lighting model\n");
+	console_printf(". - wipe all cached items\n");
+	console_printf("M - test serialization\n");
+	console_printf(", - test deserialization\n");
+	console_printf("1 - toggle model\n");
 }
 
 #include <fstream>
@@ -101,6 +114,15 @@ void TstEntityTestCube::Update()
 		i.close();
 		bool w = DeSerialize(buffer);
 		console_printf("(should be 1) =====> %i\n",w);
+	}	
+	if (Input::KeyPressed(MKC_Num1))
+	{
+		console_printf("switched model\n");
+		static bool c = 0;
+		c = !c;
+		SetModel(!c ? "freakbot.obj" : "ball.obj");
+		SetShader("modifiedphong", "default3d");
+		SetLighting(true);
 	}
 }
 
