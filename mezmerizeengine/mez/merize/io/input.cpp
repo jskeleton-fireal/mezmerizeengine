@@ -2,11 +2,14 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "mez/merize/merize.h"
 #include "mez/merize/engine/baseengine.h"
+#include <mez/merize/console/cmd.h>
 
-//yeah. this sucks. BUT! BUT! a bitmask would use more CPU.. we can throw away 1.3 kb of space for this? right?
+#define mezkeycode_search 0 
+
+//yeah. this sucks. BUT! BUT! a bitmask would use more CPU..
 struct input_helper
 {
-    static const int tracking = 101;
+    static const int tracking = 0xff;
     float last_tic = -1;
     u8 keys_pressed[tracking];
 
@@ -45,13 +48,16 @@ float Input::KeyFWAxis(MezKeyCode forward_key, MezKeyCode backward_key)
 
 void Input::notify_key_pressed(MezKeyCode key)
 {
-    assert(key <= 0x1ff && key >= 0);
+#if mezkeycode_search
+    console_printf("%x (%i) was pressed\n", key,key);
+#endif
+    assert(key <= input_helper::tracking && key >= 0);
     helper.set_pressed(key);
 }
 
 void Input::notify_key_released(MezKeyCode key)
 {
-    assert(key <= 0x1ff && key >= 0);
+    assert(key <= input_helper::tracking && key >= 0);
     helper.set_released(key);
 }
 
