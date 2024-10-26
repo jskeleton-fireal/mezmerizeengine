@@ -1,10 +1,10 @@
 #pragma once
-#include "settings.h"
+#include <mez/settings.h>
 
 //include your own version system somewhere
 
 #define MEZ_VERSION "v1.0_0"
-#define MEZ_VERSION_NUMBERIC 0
+#define MEZ_VERSION_NUMERIC 0
 
 
 #if 1

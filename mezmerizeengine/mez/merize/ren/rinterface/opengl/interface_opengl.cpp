@@ -207,6 +207,8 @@ void RInterface_OpenGL::PostDraw()
 
 void RInterface_OpenGL::RequestFeature(rinterface_feature_t feature)
 {
+	//dont put anything outside of the switch. dont include a default.
+	//need to make sure if anyone wants to inherit this class they can add custom features
 	switch (feature)
 	{
 	case RINTERFACE_FEATURE_NONE:

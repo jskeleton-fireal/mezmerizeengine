@@ -5,7 +5,7 @@
 
 //this should be included in everything related to merize.
 #include "mez/merize/version.h"
-#include "mez/merize/settings.h"
+#include "mez/settings.h"
 
 #ifdef __cplusplus
 //assertions for debugging

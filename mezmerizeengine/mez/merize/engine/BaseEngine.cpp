@@ -272,5 +272,5 @@ const char* EngineVersion::tostring()
 
 int EngineVersion::tonumeric()
 {
-    return MEZ_VERSION_NUMBERIC;
+    return MEZ_VERSION_NUMERIC;
 }

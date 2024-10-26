@@ -6,7 +6,7 @@
 //built in stuff, disable if you really really want to
 #define PROJECT_MEZMERIZE 1
 //testing engine stuff. mostly debugging stuff. disabled by default
-#define PROJECT_TESTING 0
+#define PROJECT_TESTING 1
 
 
 enum
