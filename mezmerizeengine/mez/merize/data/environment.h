@@ -9,10 +9,15 @@
 struct environment_sky_t
 {
 	//sky related stuff
-	MezColor m_ambient = MezColor(0x263F7F);
-	MezColor m_diffuse = MezColor(0xFFDC9B);
-	MezColor m_specular = MezColor(0xFFFFFF);
+	MezColor m_ambient;
+	MezColor m_diffuse;
+	MezColor m_specular;
 	Vector m_sun = Vector(0.5f, 0.8f, 0.0f);
+	environment_sky_t()
+	{
+		load_default_colors();
+	}
+	void load_default_colors();
 };
 //planet specific stuff. probably should rename this to world or something 
 struct environment_planet_t
