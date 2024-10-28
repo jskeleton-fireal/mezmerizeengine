@@ -27,6 +27,7 @@ EHandle MezBaseEntity::GetEHandle()
 
 bool MezBaseEntity::HandleStates()
 {
+	//featurereq: this MIGHT be faster if you have a functionptr set or something.. so if its ready it'll be updatecalls and if its not its this func. maybe thats faster
 	switch (m_State)
 	{
 	case (MEZENTSTATE_INITIALIZE_NEEDED):
@@ -42,7 +43,8 @@ MezBaseEntity* MezBaseEntity::Find_Typeless(const char* f_classname)
 	{
 		if (engine->elist.defs[i].IsFree()) continue;
 		if (strcmp(f_classname, engine->elist.defs[i].m_Entity->GetClassname())) continue;
-		return f_classname, engine->elist.defs[i].m_Entity;
+		//return f_classname, engine->elist.defs[i].m_Entity; //What the hell?
+		return engine->elist.defs[i].m_Entity;
 	}
 	return nullptr;
 }
