@@ -1,7 +1,7 @@
 #pragma once
 //#include "hybridarray.h"
 #include "mez/merize/merize.h"
-#define MAX_ENTITIES 0xff
+#define MAX_ENTITIES 0x7fff
 //This must be big enough to hold MAX_ENTITIES
 typedef short edef_tight_t;
 
@@ -30,7 +30,7 @@ class EList
 	friend class MezBaseEntity;
 public:
 	EDef defs[MAX_ENTITIES];
-	//hybridarray_dynamic_tight<EDef> defs = hybridarray_dynamic_tight<EDef>(MAX_ENTITIES);
+	int def_highest=0;
 protected:
 	void update();
 	bool add(MezBaseEntity* e);

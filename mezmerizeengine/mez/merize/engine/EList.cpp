@@ -2,7 +2,21 @@
 #include "mez/merize/entity/BaseEntity.h"
 
 //#define MAX_ENTS_CHECK defs.size()
-#define MAX_ENTS_CHECK MAX_ENTITIES
+#define MAX_ENTS_CHECK def_highest + 1
+
+void find_highest_2(EList* r,int range = MAX_ENTITIES)
+{
+	int c = 0;
+	for (int i = 0; i < range; i++)
+	{
+		if (r->defs[i].IsNotFree())
+		{
+			//dont need to check anything else. its always gonna be higher number than the last
+			c = i;
+		}
+	}
+	r->def_highest = c;
+}
 
 void EList::update()
 {
@@ -24,6 +38,10 @@ void EList::update()
 			{
 				delete defs[i].m_Entity;
 				defs[i].m_Entity = 0;
+				if (i >= def_highest)
+				{
+					find_highest_2(this,MAX_ENTS_CHECK);
+				}
 			}
 		}
 	}
@@ -39,7 +57,10 @@ bool EList::add(MezBaseEntity* e)
 		e->m_DefId = i;
 		e->m_InternalId = m_internalidcounter;
 		m_internalidcounter++;
-
+		if (i >= def_highest)
+		{
+			def_highest = i;
+		}
 		return 1;
 	}
 
