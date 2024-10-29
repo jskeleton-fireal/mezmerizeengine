@@ -612,6 +612,7 @@
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
     <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
+    <ClCompile Include="mez\merize\data\environment.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

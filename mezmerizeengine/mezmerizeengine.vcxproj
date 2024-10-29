@@ -714,6 +714,7 @@
   <ItemGroup>
     <ClCompile Include="deps\glm\detail\glm.cpp" />
     <ClCompile Include="deps\glm\glm.cppm" />
+    <ClCompile Include="mez\merize\data\environment.cpp" />
     <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />

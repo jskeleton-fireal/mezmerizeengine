@@ -42,11 +42,13 @@ inline void TstEntityTestCube::Initialize()
 	console_printf("M - test serialization\n");
 	console_printf(", - test deserialization\n");
 	console_printf("1 - toggle model\n");
+	console_printf("0 - delete self\n");
 }
 
 #include <fstream>
 void TstEntityTestCube::Update()
 {
+#if 1
 	const float scale = engine->time_delta * 0.2f;
 	float forward_move = Input::KeyFWAxis(MKC_W, MKC_S);
 	float sideways_move = Input::KeyFWAxis(MKC_A, MKC_D);
@@ -123,6 +125,11 @@ void TstEntityTestCube::Update()
 		SetModel(!c ? "freakbot.obj" : "ball.obj");
 		SetShader("modifiedphong", "default3d");
 		SetLighting(true);
+	}	
+	if (Input::KeyPressed(MKC_Num0))
+	{
+		Destroy();
 	}
+#endif
 }
 

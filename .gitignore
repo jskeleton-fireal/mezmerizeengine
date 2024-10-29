@@ -367,3 +367,6 @@ FodyWeavers.xsd
 
 *.dll
 /run.bat
+/doxygen-test/te
+/.gitignore
+/.gitignore
