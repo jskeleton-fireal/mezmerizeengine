@@ -4,6 +4,7 @@
 //#define MAX_ENTS_CHECK defs.size()
 #define MAX_ENTS_CHECK def_highest + 1
 
+//Unused
 void find_highest_2(EList* r,int range = MAX_ENTITIES)
 {
 	int c = 0;
@@ -21,12 +22,16 @@ void find_highest_2(EList* r,int range = MAX_ENTITIES)
 void EList::update()
 {
 	int numtodelete = 0;
+	int highest_recorded = -1;
 	for (int i = 0; i < MAX_ENTS_CHECK; i++)
 	{
 		if (!defs[i].IsGoodToUpdate()) continue;
 		MezBaseEntity* entity = defs[i].m_Entity;
 		assert(entity->HandleStates());
-		if (defs[i].m_DeleteMe) numtodelete++;
+		if (defs[i].m_DeleteMe)
+			numtodelete++;
+		else
+			highest_recorded = i;
 	}
 
 	if (numtodelete)
@@ -38,12 +43,9 @@ void EList::update()
 			{
 				delete defs[i].m_Entity;
 				defs[i].m_Entity = 0;
-				if (i >= def_highest)
-				{
-					find_highest_2(this,MAX_ENTS_CHECK);
-				}
 			}
 		}
+		def_highest = highest_recorded;
 	}
 }
 
