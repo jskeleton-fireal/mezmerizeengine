@@ -61,6 +61,7 @@ public:
 protected:
 	debugvar(bool  m_Ready); //for debugging
 	void Upload();
+public:
 	bool RequestRemoval();
 public:
 	explicit operator MRenderableRSHandle() { return MRenderableRSHandle(this); }

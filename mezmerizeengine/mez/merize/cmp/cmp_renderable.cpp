@@ -3,6 +3,11 @@
 #include "../ren/rinterface/rinterface.h"
 #include "componentcontainer.h"
 
+inline MezComponent_Renderable::~MezComponent_Renderable() 
+{
+	Deletion();
+}
+
 void MezComponent_Renderable::Initialize()
 {
 	MezComponent_Transform* transform = m_parent->FindTransform();
@@ -12,4 +17,10 @@ void MezComponent_Renderable::Initialize()
 void MezComponent_Renderable::RequestFeature(rinterface_feature_t f_feature)
 {
 	m_Renderable->m_rInterface->RequestFeature(f_feature);
+}
+
+void MezComponent_Renderable::Deletion()
+{
+	m_Renderable->RequestRemoval();
+	delete m_Renderable;
 }

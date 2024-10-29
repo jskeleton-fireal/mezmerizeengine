@@ -29,6 +29,8 @@ public:
 
 	virtual void Initialize() {}
 
+	virtual void Deletion() {}
+
 public:
 	//for communicating to the container.
 	virtual void Container_ComponentWasAdded(MezComponent* f_component) {}

@@ -35,5 +35,4 @@ public:
 protected:
 	typedef void (*componentfunc_t)(ComponentContainer*,MezComponent*);
 	void ForeachComponent(componentfunc_t function);
-
 };

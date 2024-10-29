@@ -69,10 +69,12 @@ ComponentContainer::~ComponentContainer()
 {
     for (int i = 0; i < RESERVED_C_COUNT; i++)
     {
+        m_reserved[i]->Deletion();
         delete m_reserved[i];
     }
     for (int i = 0; i < m_components.size(); i++)
     {
+        m_components[i]->Deletion();
         delete m_components[i];
     }
 }
