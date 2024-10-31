@@ -31,6 +31,11 @@ public:
 		m_allocated = f_allocated;
 	}
 	operator Type* () { return get(); }
+	void reset()
+	{
+		deallocate_if_needed();
+		create();
+	}
 private:
 	void create()
 	{
