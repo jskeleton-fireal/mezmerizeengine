@@ -73,16 +73,20 @@ class EHandle
 	//todo: make some operators
 public:
 	edef_tight_t m_DefId = ENTITY_INVALID_DEFID;
-	short m_InternalId = -1;
+	signed short m_InternalId = -1;
 	MezBaseEntity* get();
 	template <class T>
 	T* get() { return dynamic_cast<T*>(get()); }
 	EHandle() {}
 	EHandle(MezBaseEntity* ref) { m_DefId = ref->m_DefId; m_InternalId = ref->m_InternalId; }
+	bool good() { return (m_DefId & m_InternalId) + 1; } //hopefully this is faster than inversion
+	bool bad() { return (m_DefId & m_InternalId) == -1; } //hopefully this is faster than inversion
+	operator bool() { return good(); }
 };
 
 template <class T>
 class EHandle_Typed : public EHandle
 {
+public:
 	T* get() { return dynamic_cast<T*>(get()); }
 };
