@@ -22,7 +22,10 @@ static struct GLMathStuff
 	static matrix4_t TransformMatrix(matrix4_t f_mat,Vector f_pos);
 	static matrix4_t RotateMatrix(matrix4_t f_mat,MezAngles f_pos);
 	//this is the M in PVM
+	//processes transformation before rotation. You want this for most models
 	static matrix4_t GetTransformationMatrix(Transform* f_transform);
+	//processes rotation before transformation. You want this for the camera
+	static matrix4_t GetTransformationMatrix_Inverted(Transform* f_transform);
 
 	//this is the PV in PVM
 	static matrix4_t GetPV(MezCamera* f_camera);
