@@ -29,4 +29,5 @@ public:
 		m_refstr = f_ref;
 	}
 	single_t Get(int argnum);
+	int Length();
 };

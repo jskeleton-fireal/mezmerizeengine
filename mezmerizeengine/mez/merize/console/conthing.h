@@ -22,6 +22,8 @@ public:
 	virtual const char* ct_type_name() { return "undef"; }
 	bool is_global_reference();
 	virtual bool is_oneshot() { return false; }
+
+	virtual bool console_execute(class ConCommandArgs args,const char* input) = 0;
 protected:
 	void Upload();
 	int get_engine_id();

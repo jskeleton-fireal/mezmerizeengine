@@ -45,14 +45,37 @@ void EngineConsole::process_single(BaseEngine* f_engine,const char* input)
 		return;
 	}
 
-	if (ting->is_oneshot())
-	{
-		console_printf(" - Executing operation: %s\n", tingname);
-		int res = (int)ting->Execute(input);
-		//..
-		if (res)
-			console_printf(" - Operation failed with error code %x\n", res);
-
-		return;
-	}
+	ting->console_execute(args, input);
 }
+
+bool ConsoleCommand::console_execute(class ConCommandArgs args, const char* input)
+{
+	console_printf(" - Executing operation: %s\n", m_Name);
+	int res = (int)Execute(input);
+	//..
+	if (res)
+	{
+		console_printf(" - Operation failed with error code %x\n", res);
+		return false;
+	}
+
+	return true;
+}
+
+
+bool ConsoleVariable_Generic::console_execute(class ConCommandArgs args, const char* input)
+{
+	if (args.Length())
+	{
+		char new_value[800];
+		args.Get(1).GetString(new_value, 800);
+		//Bug: does not respect constraints
+		GetHandler()->ParseFromString(new_value);
+	}
+
+
+	console_printf(" - %s (%s) : %s\n", m_Name, ct_type_name(), this->GetHandler()->GetDisplayString());
+	return true;
+}
+
+

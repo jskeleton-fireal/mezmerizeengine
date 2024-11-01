@@ -31,3 +31,4 @@ CREATE_CONSOLECOMMAND_WFUNC(dump_factories, 0)
 
 	return 0;
 }
+

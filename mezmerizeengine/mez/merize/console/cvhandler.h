@@ -48,6 +48,8 @@ public:
 };
 
 
+//note: this system may look swell awesome and saving space but it really isnt. the virtual funcs use up much more space than is needed, it would have been better as a single 8 byte value for everything.
+//if you wanna create a system like this do not follow this template please
 
 class CVHandler_int : public CVHandler
 {

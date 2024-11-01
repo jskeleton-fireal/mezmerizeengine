@@ -47,6 +47,7 @@ ConCommandArgs::single_t ConCommandArgs::Get(int argnum)
 {
     if (!argnum) return single_t(m_refstr);
 
+    //what is this bro. could this be better?
 
         int spot = 0; //our spot in the string
         int counta = 0; //Which arg are we on right now?
@@ -78,4 +79,25 @@ ConCommandArgs::single_t ConCommandArgs::Get(int argnum)
     assert(0);
     return single_t(0);
 
+}
+
+int ConCommandArgs::Length()
+{
+    int i = 0;
+    int c = 0;
+    bool last_was_space = 0;
+    while (1)
+    {
+        if (!m_refstr[i]) return c;
+        if (m_refstr[i] == ' ')
+        {
+            last_was_space = 1;
+        }
+        else if (last_was_space)
+        {
+            c++;
+            last_was_space = 0;
+        }
+        i++;
+    }
 }

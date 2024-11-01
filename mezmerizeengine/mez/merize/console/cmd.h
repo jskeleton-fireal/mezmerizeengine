@@ -34,6 +34,8 @@ public:
 	}
 	virtual const char* ct_type_name() { return "cmd"; }
 	virtual bool is_oneshot() { return true; }
+
+	virtual bool console_execute(class ConCommandArgs args, const char* input);
 };
 template <typename CVType = int>
 class CV_Constraint
@@ -57,6 +59,13 @@ public:
 public:
 	virtual const char* ct_type_name() { return "var??"; }
 
+	virtual int GetInt() = 0;
+	virtual float GetFloat() = 0;
+	virtual const char* GetString() = 0;
+	virtual bool GetBool() = 0;
+
+	virtual bool console_execute(class ConCommandArgs args, const char* input);
+	virtual CVHandler* GetHandler() = 0;
 };
 
 
@@ -83,6 +92,13 @@ public:
 	CV_Constraint<RootType> m_constraint;
 
 	virtual const char* ct_type_name() { return static_format("val.%02x",m_handler->GetType()); }
+
+	virtual int GetInt() { return m_handler->GetInt(); }
+	virtual float GetFloat() { return m_handler->GetFloat(); }
+	virtual const char* GetString() { return m_handler->GetString(); }
+	virtual bool GetBool() { return m_handler->GetBool(); }
+
+	virtual CVHandler* GetHandler() { return m_handler; }
 };
 
 
