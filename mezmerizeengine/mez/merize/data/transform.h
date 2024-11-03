@@ -6,5 +6,7 @@ class Transform
 public:
 	Vector m_Position;
 	MezAngles m_Angles;
+
+	void LookAt(Vector f_worldspace_position);
 };
 
