@@ -562,6 +562,7 @@
     <ClInclude Include="mez\merize\miscobjects\serializable\prop_container.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_environment.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_color.h" />
+    <ClInclude Include="mez\testing\EntityCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -580,7 +581,6 @@
     <ClCompile Include="mez\merize\engine\CachedStuff.cpp" />
     <ClCompile Include="mez\merize\console\cmd.cpp" />
     <ClCompile Include="mez\merize\console\conthing.cpp" />
-    <ClCompile Include="mez\merize\console\cvhandler.cpp" />
     <ClCompile Include="mez\merize\ren\model.cpp" />
     <ClCompile Include="mez\merize\engine\cachedstuffmgr.cpp" />
     <ClCompile Include="mez\merize\engine\eng_console.cpp" />
@@ -613,6 +613,9 @@
     <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
     <ClCompile Include="mez\merize\data\environment.cpp" />
+    <ClCompile Include="mez\merize\ren\camera.cpp" />
+    <ClCompile Include="mez\merize\data\mezvector.cpp" />
+    <ClCompile Include="mez\testing\EntityCameraController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

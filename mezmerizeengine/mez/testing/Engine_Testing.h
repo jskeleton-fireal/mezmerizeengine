@@ -8,6 +8,7 @@ public:
 	virtual void OnInitialized()
 	{
 		RunCommand("entity_create testcube");
+		RunCommand("entity_create controller_camera");
 	}
 };
 

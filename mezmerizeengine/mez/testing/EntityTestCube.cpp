@@ -4,9 +4,10 @@
 #include "mez/merize/io/input.h"
 #include <mez/merize/ren/rinterface/opengl/rstatic_opengl.h>
 
-ENTITY_LINK(PROJECT_TESTING, "testcube", TstEntityTestCube);
+ENTITY_LINK(PROJECT_TESTING, "testcube", TstEntityTestCube_1);
+ENTITY_LINK(PROJECT_TESTING, "testcube2", TstEntityTestCube_2);
 
-inline void TstEntityTestCube::Initialize()
+inline void TstEntityTestCube_1::Initialize()
 {
 	MezEntityPhysical::Initialize();
 #if 0
@@ -26,11 +27,49 @@ inline void TstEntityTestCube::Initialize()
 	SetModel(testingmodel);
 #else
 	PrecacheModel("freakbot.obj");
+	PrecacheModel("testmodel.obj");
 	PrecacheModel("ball.obj");
-	SetModel("freakbot.obj");
+	SetModel("testmodel.obj");
 	SetShader("modifiedphong", "default3d");
 	SetLighting(true);
 #endif
+
+}
+
+ConsoleVariableFloat cv_tc_scale = ConsoleVariableFloat("tc_scale", 0, 10.0f);
+ConsoleVariableFloat cv_tc_x = ConsoleVariableFloat("tc_x", 0, 10.0f);
+ConsoleVariableFloat cv_tc_z = ConsoleVariableFloat("tc_z", 0, 10.0f);
+ConsoleVariableBool cv_tc_freeze = ConsoleVariableBool("tc_freeze", 0, false);
+ConsoleVariableBool cv_tc_freeze2 = ConsoleVariableBool("tc_t", 0, 0);
+
+void TstEntityTestCube_1::Update()
+{
+	if (Input::KeyPressed(MKC_B))
+	{
+		console_printf("cube %.2f,%.2f,%.2f\n", GetTransform()->m_Position.x, GetTransform()->m_Position.y, GetTransform()->m_Position.z);
+	}	
+	if (Input::KeyPressed(MKC_C))
+	{
+		console_printf("freeze\n");
+		static bool x = 0;
+		x = !x;
+		cv_tc_freeze2.GetHandler()->Set_Internal(&x);
+	}
+	if (cv_tc_freeze2.GetBool())
+	{
+		GetTransform()->m_Position.x = cv_tc_x.GetFloat();
+		GetTransform()->m_Position.z = cv_tc_z.GetFloat();
+		return;
+	}
+	if (cv_tc_freeze.GetBool()) return;
+	GetTransform()->m_Position.x = cosf(engine->time) * cv_tc_scale.GetFloat();
+	GetTransform()->m_Position.z = sinf(engine->time) * cv_tc_scale.GetFloat();
+}
+
+#include <fstream>
+void TstEntityTestCube_2::Initialize()
+{
+	TstEntityTestCube_1::Initialize();
 	console_printf("> mezmerize testing : <testcube>\n");
 	console_printf("wasd - move\n");
 	console_printf("b - print pos\n");
@@ -44,9 +83,7 @@ inline void TstEntityTestCube::Initialize()
 	console_printf("1 - toggle model\n");
 	console_printf("0 - delete self\n");
 }
-
-#include <fstream>
-void TstEntityTestCube::Update()
+void TstEntityTestCube_2::Update()
 {
 #if 1
 	const float scale = engine->time_delta * 0.2f;
@@ -128,7 +165,12 @@ void TstEntityTestCube::Update()
 	}	
 	if (Input::KeyPressed(MKC_Num0))
 	{
+		console_printf("destroyed\n");
 		Destroy();
+	}	
+	if (Input::KeyHeld(MKC_Num5))
+	{		
+		GetTransform()->m_Angles.LookAt(GetTransform()->m_Position);
 	}
 #endif
 }
