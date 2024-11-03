@@ -9,7 +9,7 @@ public:
 	//This is in radians to speed up matrix calculations.
 	float m_fov = 1.221731f; //approx 70 fov
 	float m_nearplane = 0.01f;
-	float m_farplane = 100.0f;
+	float m_farplane = 10000.0f;
 
 	float getfov_deg();
 	void setfov_deg(float degrees);

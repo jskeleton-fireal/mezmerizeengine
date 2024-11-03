@@ -4,9 +4,13 @@
 #include <mez/merize/console/console.h>
 
 const float pi = 3.1415926535897932384626433832795f;
-const float halfpi = pi / 2.0f;
-const float qpi = pi / 4.0f;
-const float dpi = pi * 2.0f;
+const float hpi = pi / 2.0f; //1.5707963267948966192313216916398
+const float qpi = pi / 4.0f; //0.78539816339744830961566084581988
+const float dpi = pi * 2.0f; //6.283185307179586476925286766559
+
+// 1 / sqrt(2)
+const float norma = 0.70710678118654752440084436210485f;
+
 float degtorad(float deg) { return deg * 0.0174533f; }
 float radtodeg(float rad) { return rad * 57.2958f; }
 
@@ -29,8 +33,10 @@ void MezAngles::LookAt(Vector f_position_localspace)
 {
 
     f_position_localspace.normalize_inplace();
-    m_angles[ANGLE_PITCH] = -sinf(f_position_localspace.y);
+    //TODO FIXME: this is off..
+    m_angles[ANGLE_PITCH] = -tanf(f_position_localspace.y);
     m_angles[ANGLE_YAW] = atan2f(-f_position_localspace.x, f_position_localspace.z);
+    //does this need to be set?
     m_angles[ANGLE_ROLL] = 0.0f;
 }
 
