@@ -16,6 +16,13 @@ struct Vector
 	Vector operator/(Vector i) { return Vector(x/i.x,y/i.y,z/i.z); }
 	Vector operator*(float i) { return Vector(x*i,y*i,z*i); }
 	Vector operator/(float i) { return Vector(x/i,y/i,z/i); }
+	Vector operator-() { return *this*-1; }
+	Vector operator-=(Vector i) { return *this = *this - i; }
+	Vector operator+=(Vector i) { return *this = *this + i; }
+	Vector operator*=(Vector i) { return *this = *this * i; }
+	Vector operator/=(Vector i) { return *this = *this / i; }	
+	Vector operator*=(float i) { return *this = *this * i; }
+	Vector operator/=(float i) { return *this = *this / i; }
 	Vector normalize();
 	void normalize_inplace();
 	float magnitude();
