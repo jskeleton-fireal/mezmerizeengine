@@ -52,7 +52,7 @@ matrix4_t GLMathStuff::GetTransformationMatrix_Inverted(Transform* f_transform)
     matrix4_t matrix = matrix4_t(1.0f);
 
     matrix = RotateMatrix(matrix, f_transform->m_Angles);
-    return TransformMatrix(matrix, f_transform->m_Position);
+    return TransformMatrix(matrix, -f_transform->m_Position);
 
 }
 
