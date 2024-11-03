@@ -6,7 +6,7 @@
 //this is for old code. do not use this
 #define s_helper ConsoleHelper::FindCurrent()
 
-CREATE_CONSOLEVARIABLE_BOOL(developer, 0, false);
+ConsoleVariableBool cv_developer("developer", 0, false);
 
 
 static void df_single(ConsoleHelper* c_curcon)

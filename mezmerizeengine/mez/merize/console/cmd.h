@@ -66,6 +66,11 @@ public:
 
 	virtual bool console_execute(class ConCommandArgs args, const char* input);
 	virtual CVHandler* GetHandler() = 0;
+
+	explicit operator int() { return GetInt(); }
+	explicit operator float() { return GetFloat(); }
+	explicit operator const char* () { return GetString(); }
+	explicit operator bool() { return GetBool(); }
 };
 
 
@@ -101,21 +106,26 @@ public:
 	virtual CVHandler* GetHandler() { return m_handler; }
 };
 
+#define QUIKMAC_MAKETYPEDCONVAR(vName,vHandler,vType,VType2) class vName : public ConsoleVariable_Typed<vHandler, vType> {  public: using ConsoleVariable_Typed::ConsoleVariable_Typed; operator vType() { return Get##VType2##(); }};
 
-typedef ConsoleVariable_Typed<CVHandler_bool, bool> ConsoleVariableBool;
-typedef ConsoleVariable_Typed<CVHandler_int, int> ConsoleVariableInt;
-typedef ConsoleVariable_Typed<CVHandler_float, float> ConsoleVariableFloat;
-typedef ConsoleVariable_Typed<CVHandler_string_c, const char*> ConsoleVariableStringC;
+//these used to be just typedefs but i want implicit operators so you can quickly swap from a local variable to a convar in the same file
+
+QUIKMAC_MAKETYPEDCONVAR(ConsoleVariableBool, CVHandler_bool, bool, Bool);
+QUIKMAC_MAKETYPEDCONVAR(ConsoleVariableInt, CVHandler_int, int, Int);
+QUIKMAC_MAKETYPEDCONVAR(ConsoleVariableFloat, CVHandler_float, float, Float);
+QUIKMAC_MAKETYPEDCONVAR(ConsoleVariableStringC, CVHandler_string_c, const char*, String);
+
 
 
 
 extern ConsoleVariableBool cv_developer;
 
-
+//not supported anymore
+#if 0
 #define CREATE_CONSOLEVARIABLE(vName,vType,vFlags,vDefaultValue) ConsoleVariable_Typed<CVHandler_##vType,vType> cv_##vName = ConsoleVariable_Typed<CVHandler_##vType,vType>(#vName, vFlags, vDefaultValue, {0,0,0}) 
 #define CREATE_CONSOLEVARIABLE_CONSTRAINED(vName,vType,vFlags,vDefaultValue,vMin,vMax) ConsoleVariable_Typed<CVHandler_##vType,vType> cv_##vName = ConsoleVariable_Typed<CVHandler_##vType,vType>(#vName, vFlags, vDefaultValue, {1,vMin,vMax}) 
 #define CREATE_CONSOLEVARIABLE_BOOL(vName,vFlags,vDefaultValue) CREATE_CONSOLEVARIABLE_CONSTRAINED(vName,bool,vFlags,vDefaultValue,0,1)
-
+#endif
 //i KNOW youre gonna see this and forget everything abt this so HERES SOME BASIC DOCS.
 // args are (cmdname,flags) cmdname IS NOT A STRING. return 0 if everything went well
 #define CREATE_CONSOLECOMMAND_WFUNC(vName,vFlags) static int __cmdfunc__##vName(ConCommandArgs* f_args);  static ConsoleCommand __cmd__##vName = ConsoleCommand(#vName,vFlags,__cmdfunc__##vName); int __cmdfunc__##vName(ConCommandArgs* f_args)

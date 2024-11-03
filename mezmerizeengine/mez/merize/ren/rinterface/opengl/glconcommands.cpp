@@ -1,6 +1,8 @@
 #include "../mez/merize/console/cmd.h"
 #include "gl_def.h"
 
+//old glconcommands
+#if 0
 extern "C"
 {
 	void glcc_Lol();
@@ -21,7 +23,6 @@ CREATE_CONSOLECOMMAND_WFUNC(gl_verify, 0)
 	engine->push_immediate_operation(gl_verify_internal_immediate_operation);
 	return 0;
 };
-
 CREATE_CONSOLEVARIABLE_BOOL(gl_break, 0, false);
 
 void glcc_Lol()
@@ -32,3 +33,4 @@ void glcc_Lol()
 	}
 }
 
+#endif
