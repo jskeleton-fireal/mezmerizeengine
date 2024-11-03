@@ -25,4 +25,9 @@ struct MezAngles
 	MezAngles(float p,float y) { m_angles[0] = p; m_angles[1] = y; m_angles[2] = 0; }
 
 	void LookAt(Vector f_position_localspace);
+	Vector ForwardVector();
+	//2d ignores roll
+	Vector RightVector_2D();
+	Vector RightVector_3D();
+	Vector UpVector();
 };

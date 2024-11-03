@@ -40,3 +40,38 @@ void MezAngles::LookAt(Vector f_position_localspace)
     m_angles[ANGLE_ROLL] = 0.0f;
 }
 
+Vector MezAngles::ForwardVector()
+{
+    Vector v = Vector();
+    //get the pitch first
+    v.y = -sin(m_angles[ANGLE_PITCH]);
+    float scale = cos(m_angles[ANGLE_PITCH]);
+    v.x = sin(m_angles[ANGLE_YAW]) * scale;
+    v.z = -cos(m_angles[ANGLE_YAW]) * scale;
+    return v;
+}
+
+Vector MezAngles::RightVector_2D()
+{
+    Vector v = Vector();
+    v.y = 0;
+    v.x = -cos(m_angles[ANGLE_YAW]);
+    v.z = sin(m_angles[ANGLE_YAW]);
+    return v.normalize();
+}
+
+Vector MezAngles::RightVector_3D()
+{
+    Vector v = Vector();
+    v.y = -sin(m_angles[ANGLE_YAW]);
+    float scale = cos(m_angles[ANGLE_ROLL]);
+    v.x = -cos(m_angles[ANGLE_YAW]) * scale;
+    v.z = sin(m_angles[ANGLE_YAW]) * scale;
+    return v.normalize();
+}
+
+Vector MezAngles::UpVector()
+{
+    abort(); //not implemented yet LOL im going to sleep after i push this
+}
+
