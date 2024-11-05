@@ -9,21 +9,21 @@ MezBaseEntity* EHandle::get()
 	return ref;
 }
 
-inline EHandle::EHandle(MezBaseEntity* ref) { m_DefId = ref->m_DefId; m_InternalId = ref->m_InternalId; }
+EHandle::EHandle(MezBaseEntity* ref) { m_DefId = ref->m_DefId; m_InternalId = ref->m_InternalId; }
 
-inline bool EHandle::good() { return ((m_DefId)+1) && get() && ptr_matches(); }
+bool EHandle::good() { return ((m_DefId)+1) && get() && ptr_matches(); }
 
 //hopefully this is faster than inversion
 
-inline bool EHandle::bad() { return (!good()); }
+bool EHandle::bad() { return (!good()); }
 
 //need its own body for perf.. but this will do for now
 
-inline EHandle::operator bool() { return good(); }
+EHandle::operator bool() { return good(); }
 
 //private cause it expects get() to be valid
 
-inline bool EHandle::ptr_matches()
+bool EHandle::ptr_matches()
 {
 	return get()->m_InternalId == m_InternalId && get()->m_DefId == m_DefId;
 }
