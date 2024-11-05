@@ -1,6 +1,6 @@
 #include "EList.h"
 #include "mez/merize/entity/BaseEntity.h"
-
+#include <mez/merize/helpers/quikrng.h>
 //#define MAX_ENTS_CHECK defs.size()
 #define MAX_ENTS_CHECK def_highest + 1
 
@@ -57,7 +57,7 @@ bool EList::add(MezBaseEntity* e)
 		defs[i] = EDef();
 		defs[i].m_Entity = e;
 		e->m_DefId = i;
-		e->m_InternalId = m_internalidcounter;
+		e->m_InternalId = quikrng16(m_internalidcounter);
 		m_internalidcounter++;
 		if (i >= def_highest)
 		{
