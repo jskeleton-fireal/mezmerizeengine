@@ -49,9 +49,3 @@ MezBaseEntity* MezBaseEntity::Find_Typeless(const char* f_classname)
 	return nullptr;
 }
 
-MezBaseEntity* EHandle::get()
-{
-	MezBaseEntity* ref = engine->elist.defs[m_DefId].m_Entity;
-	if (!ref || ref->m_InternalId != m_InternalId) return 0;
-	return ref;
-}
