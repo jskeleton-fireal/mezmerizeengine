@@ -29,41 +29,19 @@ inline void TstEntityTestCube_1::Initialize()
 	PrecacheModel("freakbot.obj");
 	PrecacheModel("testmodel.obj");
 	PrecacheModel("ball.obj");
-	SetModel("testmodel.obj");
+	PrecacheModel("axis.obj");
+	PrecacheModel("testbigbox.obj");
+	SetModel("testbigbox.obj");
 	SetShader("modifiedphong", "default3d");
 	SetLighting(true);
 #endif
 
 }
 
-ConsoleVariableFloat cv_tc_scale = ConsoleVariableFloat("tc_scale", 0, 10.0f);
-ConsoleVariableFloat cv_tc_x = ConsoleVariableFloat("tc_x", 0, 10.0f);
-ConsoleVariableFloat cv_tc_z = ConsoleVariableFloat("tc_z", 0, 10.0f);
-ConsoleVariableBool cv_tc_freeze = ConsoleVariableBool("tc_freeze", 0, false);
-ConsoleVariableBool cv_tc_freeze2 = ConsoleVariableBool("tc_t", 0, 0);
 
 void TstEntityTestCube_1::Update()
 {
-	if (Input::KeyPressed(MKC_B))
-	{
-		console_printf("cube %.2f,%.2f,%.2f\n", GetTransform()->m_Position.x, GetTransform()->m_Position.y, GetTransform()->m_Position.z);
-	}	
-	if (Input::KeyPressed(MKC_C))
-	{
-		console_printf("freeze\n");
-		static bool x = 0;
-		x = !x;
-		cv_tc_freeze2.GetHandler()->Set_Internal(&x);
-	}
-	if (cv_tc_freeze2.GetBool())
-	{
-		GetTransform()->m_Position.x = cv_tc_x.GetFloat();
-		GetTransform()->m_Position.z = cv_tc_z.GetFloat();
-		return;
-	}
-	if (cv_tc_freeze.GetBool()) return;
-	GetTransform()->m_Position.x = cosf(engine->time) * cv_tc_scale.GetFloat();
-	GetTransform()->m_Position.z = sinf(engine->time) * cv_tc_scale.GetFloat();
+	GetTransform()->m_Position.z = 1.09378052f;
 }
 
 #include <fstream>
@@ -133,12 +111,13 @@ void TstEntityTestCube_2::Update()
 		RStatic_OpenGL::Get()->m_cache_shader.wipe();
 		console_printf("wipe\n");
 	}	
+#if 0
 	if (Input::KeyPressed(MKC_M))
 	{
 		const char* fn = "test.mzsr.txt";
 		SerializeToFile(fn);
 		console_printf("wrote to %s\n", fn);
-	}	
+	}
 	if (Input::KeyPressed(MKC_Comma))
 	{
 		const char* fn = "test.mzsr.txt";
@@ -147,13 +126,14 @@ void TstEntityTestCube_2::Update()
 		char buffer[4000];
 
 		std::fstream i;
-		i.open(fn,std::ios::in);
+		i.open(fn, std::ios::in);
 		i.seekg(0, std::ios::beg);
 		i.read(buffer, 4000);
 		i.close();
 		bool w = DeSerialize(buffer);
-		console_printf("(should be 1) =====> %i\n",w);
-	}	
+		console_printf("(should be 1) =====> %i\n", w);
+}
+#endif
 	if (Input::KeyPressed(MKC_Num1))
 	{
 		console_printf("switched model\n");

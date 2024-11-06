@@ -18,5 +18,5 @@ public:
 	MezEntityEnvironment();
 	~MezEntityEnvironment();
 
-	virtual void DeclareProperties(PropertiesVector* vector);
+	virtual void DeclareProperties(PropertyContainer* vector);
 };

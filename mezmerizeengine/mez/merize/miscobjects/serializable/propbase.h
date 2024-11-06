@@ -1,5 +1,6 @@
 #pragma once
 #include <mez/merize/merize.h>
+#include <mez/merize/helpers/mezstring.h>
 
 
 //base class for properties and whatnot.

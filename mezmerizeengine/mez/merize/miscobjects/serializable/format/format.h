@@ -2,7 +2,7 @@
 #include "../../../helpers/mezstring.h"
 #include "../property_raw.h"
 #include "../property_section.h"
-#include "../serializable.h"
+#include "../serialize.h"
 
 
 class MezSFormat_Base

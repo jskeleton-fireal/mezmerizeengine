@@ -633,7 +633,10 @@
     <ClInclude Include="mez\merize\data\color.h" />
     <ClInclude Include="mez\merize\data\environment.h" />
     <ClInclude Include="mez\merize\data\instance_ptr.h" />
+    <ClInclude Include="mez\merize\entity\EHandle.h" />
     <ClInclude Include="mez\merize\entity\EntityEnvironment.h" />
+    <ClInclude Include="mez\merize\helpers\quikrng.h" />
+    <ClInclude Include="mez\merize\miscobjects\propobject\propobject.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\propbase.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_color.h" />
@@ -675,7 +678,7 @@
     <ClInclude Include="mez\merize\miscobjects\serializable\format\format.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\format\format_mez.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\property_raw.h" />
-    <ClInclude Include="mez\merize\miscobjects\serializable\serializable.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\serialize.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\serialize_list.h" />
     <ClInclude Include="mez\merize\ren\camera.h" />
     <ClInclude Include="mez\merize\ren\mdlcache.h" />
@@ -717,7 +720,9 @@
     <ClCompile Include="deps\glm\glm.cppm" />
     <ClCompile Include="mez\merize\data\environment.cpp" />
     <ClCompile Include="mez\merize\data\mezvector.cpp" />
+    <ClCompile Include="mez\merize\entity\EHandle.cpp" />
     <ClCompile Include="mez\merize\entity\EntityEnvironment.cpp" />
+    <ClCompile Include="mez\merize\miscobjects\propobject\propobject.cpp" />
     <ClCompile Include="mez\merize\ren\camera.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
@@ -740,7 +745,7 @@
     <ClCompile Include="mez\merize\miscobjects\serializable\datatype.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\format\format_mez.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\property_raw.cpp" />
-    <ClCompile Include="mez\merize\miscobjects\serializable\serializable.cpp" />
+    <ClCompile Include="mez\merize\miscobjects\serializable\serialize.cpp" />
     <ClCompile Include="mez\merize\ren\model.cpp" />
     <ClCompile Include="mez\merize\ren\model_base.cpp" />
     <ClCompile Include="mez\merize\ren\model_selfdef.cpp" />

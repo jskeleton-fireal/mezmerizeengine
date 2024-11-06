@@ -22,7 +22,7 @@ public:
 
 	Vector GetPosition() { return GetTransform()->m_Position; }
 
-	virtual void DeclareProperties(PropertiesVector* vector)
+	virtual void DeclareProperties(class PropertyContainer* vector)
 	{
 		PropDef_Transform::create(vector, &m_ComponentContainer.FindTransform()->m_Transform);
 	}

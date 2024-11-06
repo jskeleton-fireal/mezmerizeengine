@@ -537,7 +537,7 @@
     <ClInclude Include="mez\merize\io\mezkeycode.h" />
     <ClInclude Include="mez\merize\console\console.h" />
     <ClInclude Include="mez\merize\data\mezvector.h" />
-    <ClInclude Include="mez\merize\miscobjects\serializable\serializable.h" />
+    <ClInclude Include="mez\merize\miscobjects\serializable\serialize.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\serialize_list.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\property_raw.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\datatype.h" />
@@ -563,6 +563,9 @@
     <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_environment.h" />
     <ClInclude Include="mez\merize\miscobjects\serializable\propdef\propdef_color.h" />
     <ClInclude Include="mez\testing\EntityCameraController.h" />
+    <ClInclude Include="mez\merize\entity\EHandle.h" />
+    <ClInclude Include="mez\merize\helpers\quikrng.h" />
+    <ClInclude Include="mez\merize\miscobjects\propobject\propobject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -605,7 +608,7 @@
     <ClCompile Include="mez\merize\ren\model_selfdef.cpp" />
     <ClCompile Include="mez\merize\io\input.cpp" />
     <ClCompile Include="mez\merize\cmp\component.cpp" />
-    <ClCompile Include="mez\merize\miscobjects\serializable\serializable.cpp" />
+    <ClCompile Include="mez\merize\miscobjects\serializable\serialize.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\datatype.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\property_raw.cpp" />
     <ClCompile Include="mez\merize\miscobjects\serializable\format\format_mez.cpp" />
@@ -616,6 +619,8 @@
     <ClCompile Include="mez\merize\ren\camera.cpp" />
     <ClCompile Include="mez\merize\data\mezvector.cpp" />
     <ClCompile Include="mez\testing\EntityCameraController.cpp" />
+    <ClCompile Include="mez\merize\entity\EHandle.cpp" />
+    <ClCompile Include="mez\merize\miscobjects\propobject\propobject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

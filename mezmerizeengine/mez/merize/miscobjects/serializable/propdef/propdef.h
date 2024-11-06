@@ -1,10 +1,11 @@
 #pragma once
 #include <mez/merize/miscobjects/serializable/property_raw.h>
 #include "../property_section.h"
+#include "../prop_container.h"
 class PropDef
 {
 public:
-	typedef PropertiesVector propVec;
+	typedef PropertyContainer propVec;
 };
 
 

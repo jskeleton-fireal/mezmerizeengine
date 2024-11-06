@@ -16,7 +16,7 @@ inline MezEntityEnvironment::~MezEntityEnvironment()
 	}
 }
 
-inline void MezEntityEnvironment::DeclareProperties(PropertiesVector* vector)
+inline void MezEntityEnvironment::DeclareProperties(PropertyContainer* vector)
 {
 	MezBaseEntity::DeclareProperties(vector);
 	//todo: need to serialize environment stuff as well

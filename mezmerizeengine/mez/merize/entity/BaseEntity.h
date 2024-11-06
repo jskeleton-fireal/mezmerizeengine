@@ -5,7 +5,7 @@
 #include "mez/merize/cmp/component.h"
 #include "mez/merize/cmp/componentcontainer.h"
 #include "mez/merize/entityprivate/efactory.h"
-#include "mez/merize/miscobjects/serializable/serializable.h"
+#include "mez/merize/miscobjects/propobject/propobject.h"
 #define ENTITY_INVALID_DEFID -1
 class EDef;
 class MezBaseEntity;
@@ -18,7 +18,7 @@ enum
 	LIFESTATE_ALIVE,
 };
 
-class MezBaseEntity : public MezSerializable
+class MezBaseEntity : public MezPropertyObject
 {
 public:
 	enum MEZENTITYSTATE

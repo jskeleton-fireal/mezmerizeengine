@@ -4,13 +4,14 @@
 #include "../../helpers/mezstring.h"
 #include <vector>
 #include "prop_container.h"
+#include "../propobject/propobject.h"
 
 
 //typedef stdvector<PropBase> PropertiesVector;
 #define PropertiesVector PropertyContainer
 //generic class for serialziing.
 //Uses properties.
-class MezSerializable
+static class MezSerialize
 {
 public:
 	//supported formats:
@@ -27,12 +28,8 @@ public:
 	};
 
 public:
-	PropertiesVector GetProperties();
-	virtual mezstring_t Serialize(SerializeFormat f_format = SFMT_Default);
-	virtual bool DeSerialize(const char* f_string,SerializeFormat f_format = SFMT_Default);
-	bool SerializeToFile(const char* f_file,SerializeFormat f_format = SFMT_Default);
-protected:
-	virtual void DeclareProperties(PropertiesVector* vector) { }
-public:
-	virtual const char* GetClassname() { return 0; }
+	static mezstring_t Serialize(MezPropertyObject* f_object,SerializeFormat f_format = SFMT_Default);
+	static bool DeSerialize(MezPropertyObject* f_object,const char* f_string,SerializeFormat f_format = SFMT_Default);
+	static 
+	bool SerializeToFile(MezPropertyObject* f_object,const char* f_file,SerializeFormat f_format = SFMT_Default);
 };
