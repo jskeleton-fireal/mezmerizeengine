@@ -4,7 +4,7 @@
 #include "cmp_renderable.h"
 
 
-class ComponentContainer
+class ComponentContainer : public MezPropertyObject
 {
 public:
 	//some components used internally by the engine are reserved for quick access

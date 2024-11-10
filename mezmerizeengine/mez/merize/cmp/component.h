@@ -17,7 +17,7 @@ class ComponentContainer;
 class MezComponent_Transform;
 class MezComponent_Renderable;
 
-class MezComponent
+class MezComponent : public MezPropertyObject
 {
 public:
 	ComponentContainer* m_parent;
@@ -39,6 +39,9 @@ protected:
 	MezComponent* FindComponent(const char* f_internal_name);
 	MezComponent_Transform* FindTransform();
 	MezComponent_Renderable* FindRenderable();
+
+protected:
+	virtual void DeclareProperties(PropertyContainer* vector);
 };
 
 #define COMPONENT_INTERNAL_NAME_TRANSFORM "t"
