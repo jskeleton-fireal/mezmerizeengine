@@ -113,19 +113,8 @@ using std::make_unique;
 #define inherits : public
 #endif
 
-//tricked ya! this doesnt do anything. its there for copy pasting and whatnot 
+//This is so assert_msg can be tricked into displaying a message
 #define illusionary(v)
-
-//disabled because this sucks and i dont know what i was thinking
-#if 0
-//for when pragma once decides to be a little lame. THIS IS TERRIBLE!!!!
-#define trustmeptr(vTypeName) void*
-//use with trustmeptr
-#define itrustyou(vVariable,vTypename) vTypename* tru##vVariable = reintrp(vVariable,vTypename*)
-#else
-#define trustmeptr(vTypeName) vTypeName*
-#define itrustyou(vVariable,vTypename) vTypename* tru##vVariable = reintrp(vVariable,vTypename*)
-#endif
 
 //this is terrible LOL
 #define assert_msg(vCheckval,vMessage) assert(vCheckval illusionary(vMessage));

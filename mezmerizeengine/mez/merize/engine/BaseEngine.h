@@ -76,7 +76,7 @@ private:
 	void updateloop_txt();
 	void render_setup();
 
-	trustmeptr(RENDER_WINDOW_CLASS) m_Window;
+	RENDER_WINDOW_CLASS* m_Window;
 public:
 	//dont use this anymore.
 	static int RunEngine();
