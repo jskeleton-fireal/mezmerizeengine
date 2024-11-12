@@ -36,13 +36,11 @@ protected:
 	typedef void (*componentfunc_t)(ComponentContainer*,MezComponent*);
 	void ForeachComponent(componentfunc_t function);
 public:
-
+	//untested
 	int size() { return RESERVED_C_COUNT + m_components.size(); }
 	HComponent operator[](int i)
 	{
 		if (i < RESERVED_C_COUNT) return m_reserved[i];
 		return m_components[i- RESERVED_C_COUNT];
 	}
-
-	virtual void DeclareProperties(PropertyContainer* vector);
 };
