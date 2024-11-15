@@ -1,7 +1,7 @@
 #pragma once
 
-//this is final since the name is confusing with basemesh
-class RModel_Mesh final
+
+class RModelMeshSingle
 {
 public:
 	//this needs to be moved..
@@ -23,7 +23,7 @@ class RModel_BaseMesh : public RModel_Base
 {
 public:
 	//need to set a value here in case this gets destructed without loading a model
-	RModel_Mesh* m_meshes = 0;
+	RModelMeshSingle* m_meshes = 0;
 	int m_mesh_count;
 
 	~RModel_BaseMesh()

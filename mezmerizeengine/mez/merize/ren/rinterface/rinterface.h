@@ -33,7 +33,7 @@ public:
 	virtual void PostDraw() = 0; //reset stuff set by prepare
 
 
-	virtual void SetDrawMode(RModel_Mesh::MESH_DRAWMODE mode) = 0;
+	virtual void SetDrawMode(RModelMeshSingle::MESH_DRAWMODE mode) = 0;
 	//.. include a destructor as well
 
 	//non virtual functions :)

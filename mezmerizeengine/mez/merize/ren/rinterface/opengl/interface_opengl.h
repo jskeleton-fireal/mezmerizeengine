@@ -43,7 +43,7 @@ public:
 	virtual void Draw();
 	virtual void PostDraw();//reset stuff set by prepare
 
-	virtual void SetDrawMode(RModel_Mesh::MESH_DRAWMODE mode) { m_drawmode = mode; }
+	virtual void SetDrawMode(RModelMeshSingle::MESH_DRAWMODE mode) { m_drawmode = mode; }
 
 	virtual void RequestFeature(rinterface_feature_t feature);
 

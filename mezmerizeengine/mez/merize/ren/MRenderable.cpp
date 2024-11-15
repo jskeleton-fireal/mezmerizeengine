@@ -36,7 +36,7 @@ void MRenderable::SetModel(RModel_Base* model)
 	{
 	m_rInterface->UploadNormals(m_model->GetNormals(), m_model->GetVertCount());
 	}
-	m_rInterface->SetDrawMode((RModel_Mesh::MESH_DRAWMODE)m_model->GetDrawMode());
+	m_rInterface->SetDrawMode((RModelMeshSingle::MESH_DRAWMODE)m_model->GetDrawMode());
 
 	//add to renderables list if not there yet.
 	//NOTE: need to do this AFTER. AFTER!!

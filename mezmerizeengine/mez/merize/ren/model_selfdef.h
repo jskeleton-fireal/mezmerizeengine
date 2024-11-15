@@ -13,8 +13,8 @@ public:
 
 	//VERTS MUST BE ON HEAP!!
 	void SelfDef_Create(Vector* f_verts_must_be_on_heap, int count);
-	void SelfDef_SetDrawmode(RModel_Mesh::MESH_DRAWMODE f_draw_mode);
-	void SelfDef_SetDrawmode(int f_draw_mode) { SelfDef_SetDrawmode((RModel_Mesh::MESH_DRAWMODE)f_draw_mode); }
+	void SelfDef_SetDrawmode(RModelMeshSingle::MESH_DRAWMODE f_draw_mode);
+	void SelfDef_SetDrawmode(int f_draw_mode) { SelfDef_SetDrawmode((RModelMeshSingle::MESH_DRAWMODE)f_draw_mode); }
 
 	~RModel_SelfDef()
 	{
