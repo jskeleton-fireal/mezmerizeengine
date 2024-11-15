@@ -31,15 +31,10 @@ public:
 		delete m_meshes;
 		m_meshes = 0;
 	}
-	virtual Vector* GetVerts() { return m_meshes->m_Verts; }
-	virtual int GetVertCount() { return m_meshes->m_NumOfVerts; }
-	virtual int GetMeshCount() { return m_mesh_count; }
-	virtual Vector* GetVerts(int f_mesh_index) { return m_meshes[f_mesh_index].m_Verts; }
-	virtual int GetVertCount(int f_mesh_index) { return m_meshes[f_mesh_index].m_NumOfVerts; }
-	virtual int GetDrawMode(int f_mesh_index) { return m_meshes[f_mesh_index].m_DrawMode; }
-
-	virtual bool HasNormals() { return m_meshes->m_Normals; }
-	virtual Vector* GetNormals() { return m_meshes->m_Normals; }
+	virtual Vector* GetVerts(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_Verts; }
+	virtual int GetVertCount(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_NumOfVerts; }
+	virtual int GetDrawMode(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_DrawMode; }
+	virtual Vector* GetNormals(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_Normals; }
 
 protected:
 	RModel_BaseMesh() {}
