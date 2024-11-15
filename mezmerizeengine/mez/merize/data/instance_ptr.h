@@ -24,18 +24,21 @@ public:
 		deallocate_if_needed();
 	}
 	Type* get() { return m_it; }
-	void change(Type* f_nu,bool f_allocated = false)
+	void change(Type* f_nu, bool f_allocated = false)
 	{
 		deallocate_if_needed();
 		m_it = f_nu;
 		m_allocated = f_allocated;
 	}
-	operator Type* () { return get(); }
+
 	void reset()
 	{
 		deallocate_if_needed();
 		create();
 	}
+	operator Type* () { return get(); }
+	operator Type& () { return get(); }
+	
 private:
 	void create()
 	{

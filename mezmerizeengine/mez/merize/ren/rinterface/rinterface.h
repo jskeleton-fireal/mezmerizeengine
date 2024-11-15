@@ -18,7 +18,7 @@ class RInterface
 {
 public:
 	RTemplate* m_template = 0;
-	Transform* m_transform;
+	instance_ptr<Transform> m_transform;
 	//member
 	virtual void Initialize() = 0;
 	virtual void UploadVerts(Vector verts[],int count = -1) = 0;
@@ -39,20 +39,12 @@ public:
 	//non virtual functions :)
 	inline Vector GetPosition()
 	{
-		if (m_transform)
-		{
-			return m_transform->m_Position;
-		}
-		return Vector(0, 0, 0);
+		return m_transform.get()->m_Position;
 	}
 
 	inline MezAngles GetAngles()
 	{
-		if (m_transform)
-		{
-			return m_transform->m_Angles;
-		}
-		return MezAngles(0, 0, 0);
+		return m_transform.get()->m_Angles;
 	}
 
 	~RInterface()
