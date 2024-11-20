@@ -26,7 +26,7 @@ public:
 		}
 		//rotation matrix of the model
 		matrix4_t rotation_matrix = matrix4_t(1.0f);
-		rotation_matrix = GLMathStuff::RotateMatrix(rotation_matrix, f_rinterface->m_transform->m_Angles);
+		rotation_matrix = GLMathStuff::RotateMatrix(rotation_matrix, f_rinterface->m_transform.get()->m_Angles);
 
 		environment_sky_t* sky = engine->rendersys.enviro_sky;
 

@@ -11,8 +11,11 @@
 #include "../../../console/cmd.h"
 #include "glmathstuff.h"
 #include "rtemplate/template_def.h"
+#include <mez/merize/ren/tex/texture.h>
 
 #define AND_GL_DEBUGGING_STUFF 1
+
+bool glavailable(glint_t v) { return v != -1; }
 
 
 void RInterface_OpenGL::Initialize()
@@ -142,6 +145,60 @@ void RInterface_OpenGL::RegenerateProgram()
 	InvalidateTemplate();
 }
 
+void RInterface_OpenGL::UploadTexture(RTexture* f_texture, int f_index = 0)
+{
+	if (!glavailable(m_Texture1)) { glGenTextures(1, &m_Texture1); }
+	glBindTexture(GL_TEXTURE_2D, m_Texture1);
+	if (f_texture->is_point()) {
+		//Point filtered
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	}
+	else
+	{
+		//Linear filtered
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB + f_texture->m_Format, f_texture->m_Width, f_texture->m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, f_texture->m_rawtexture.raw);
+	
+	//this is an idea since i've had issues with inversion
+	if (f_texture->dont_create_mips()) {}
+	else
+	{
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	
+}
+
+void RInterface_OpenGL::UploadUVs(Vector f_uvs[], int f_count)
+{
+	assert_msg(f_count > 0, "Cannot count uvs in opengl"); //cannot count uvs in opengl bc im lazy
+	assert(RIF_ISENABLED(m_VertexBuffer));
+	glBindVertexArray(m_VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+
+	if (m_VAO_uv == -1)
+	{
+		glGenBuffers(1, &m_VAO_uv);
+	}
+	glBindBuffer(GL_ARRAY_BUFFER, m_VAO_uv);
+	//normal Attribute
+	glEnableVertexAttribArray(RIF_VAO_GL_UV);
+	glVertexAttribPointer(
+		RIF_VAO_GL_UV,
+		3,                  // size
+		GL_FLOAT,
+		GL_FALSE, //GL_FALSE,
+		0,                  // stride
+		(void*)0
+	);
+
+	//upload normals
+	glBufferData(GL_ARRAY_BUFFER, 3i64 * f_count * sizeof(float), f_uvs, GL_DYNAMIC_DRAW);
+
+}
+
 
 void RInterface_OpenGL::Prepare()
 {
@@ -159,8 +216,17 @@ void RInterface_OpenGL::Prepare()
 	glEnableVertexAttribArray(RIF_VAO_GL_POSITION);
 	glBindVertexArray(m_VAO);
 
-	glEnableVertexAttribArray(RIF_VAO_GL_NORMAL);
-	glBindBuffer(GL_ARRAY_BUFFER,m_VAO_normal);
+	if (glavailable(m_VAO_normal))
+	{
+		glEnableVertexAttribArray(RIF_VAO_GL_NORMAL);
+		glBindBuffer(GL_ARRAY_BUFFER, m_VAO_normal);
+	}
+	if (glavailable(m_VAO_uv))
+	{
+		glEnableVertexAttribArray(RIF_VAO_GL_UV);
+		glBindBuffer(GL_ARRAY_BUFFER, m_VAO_uv);
+	}
+
 
 	//Need to transform matricies
 
@@ -200,6 +266,7 @@ void RInterface_OpenGL::PostDraw()
 {
 	glDisableVertexAttribArray(RIF_VAO_GL_POSITION);
 	glDisableVertexAttribArray(RIF_VAO_GL_NORMAL);
+	glDisableVertexAttribArray(RIF_VAO_GL_UV);
 	
 }
 

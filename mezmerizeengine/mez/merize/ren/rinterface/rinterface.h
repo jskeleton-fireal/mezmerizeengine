@@ -18,7 +18,7 @@ class RInterface
 {
 public:
 	RTemplate* m_template = 0;
-	Transform* m_transform;
+	instance_ptr<Transform> m_transform;
 	//member
 	virtual void Initialize() = 0;
 	virtual void UploadVerts(Vector verts[],int count = -1) = 0;
@@ -32,27 +32,23 @@ public:
 	virtual void Draw() = 0;
 	virtual void PostDraw() = 0; //reset stuff set by prepare
 
+	//new
+	virtual void UploadTexture(class RTexture* f_texture,int f_index = 0) = 0;
+	virtual void UploadUVs(struct Vector f_uvs[], int f_count) = 0;
 
-	virtual void SetDrawMode(RModel_Mesh::MESH_DRAWMODE mode) = 0;
+
+	virtual void SetDrawMode(RModelMeshSingle::MESH_DRAWMODE mode) = 0;
 	//.. include a destructor as well
 
 	//non virtual functions :)
 	inline Vector GetPosition()
 	{
-		if (m_transform)
-		{
-			return m_transform->m_Position;
-		}
-		return Vector(0, 0, 0);
+		return m_transform.get()->m_Position;
 	}
 
 	inline MezAngles GetAngles()
 	{
-		if (m_transform)
-		{
-			return m_transform->m_Angles;
-		}
-		return MezAngles(0, 0, 0);
+		return m_transform.get()->m_Angles;
 	}
 
 	~RInterface()
