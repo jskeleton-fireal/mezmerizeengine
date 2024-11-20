@@ -149,7 +149,13 @@ void RInterface_OpenGL::UploadTexture(RTexture* f_texture, int f_index = 0)
 {
 	if (!glavailable(m_Texture1)) { glGenTextures(1, &m_Texture1); }
 	glBindTexture(GL_TEXTURE_2D, m_Texture1);
+#if 1
+	//Point filtered
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+#endif
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB + f_texture->m_Format, f_texture->m_Width, f_texture->m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, f_texture->m_rawtexture.raw);
+	//I may need to make this a flag
 	glGenerateMipmap(GL_TEXTURE_2D);
 }
 
@@ -160,7 +166,7 @@ void RInterface_OpenGL::UploadUVs(Vector f_uvs[], int f_count)
 	glBindVertexArray(m_VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 
-	if (m_VAO_normal == -1)
+	if (m_VAO_uv == -1)
 	{
 		glGenBuffers(1, &m_VAO_uv);
 	}
