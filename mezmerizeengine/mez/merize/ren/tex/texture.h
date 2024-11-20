@@ -13,6 +13,7 @@ public:
 	enum RTextureFlags //Valid Range is 0 -> 15
 	{
 		point_filter = (1<<0),
+		no_mips = (1<<1),
 	};
 	typedef union { byte* raw; tex::RGB8RawTexture rgb; tex::RGBA8RawTexture rgba; } RawTexture;
 public:
@@ -33,6 +34,8 @@ public:
 	
 	void free();
 
+	bool is_point() { return m_flags & point_filter; }
+	bool dont_create_mips() { return (m_flags & no_mips); }
 	RTexture() {};
 protected:
 	//create an empty texture
