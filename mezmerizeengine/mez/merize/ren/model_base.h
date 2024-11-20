@@ -21,6 +21,7 @@ public:
 	virtual int GetMeshCount() { return is_valid(); }
 	virtual int GetDrawMode(int f_mesh_index = 0) { return 4; }
 	virtual Vector* GetNormals(int f_mesh_index = 0) = 0;
+	virtual Vector* GetUVs(int f_mesh_index = 0) = 0;
 
 	bool HasNormals(int f_mesh_index = 0) { return GetNormals(f_mesh_index); }
 protected:

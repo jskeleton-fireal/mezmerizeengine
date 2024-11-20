@@ -30,9 +30,11 @@ public:
 
 	static RTexture CreateRGBA8Texture(int f_width, int f_height);
 	static RTexture CreateRGBA8Texture(int f_width, int f_height,MezColor f_fillcolor);
-protected:
+	
+	void free();
+
 	RTexture() {};
-	~RTexture();
+protected:
 	//create an empty texture
 	static RTexture CreateTexture(int f_width, int f_height, TextureFormat f_format = RGBA8);
 

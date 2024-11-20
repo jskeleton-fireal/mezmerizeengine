@@ -13,6 +13,7 @@ enum
 {
 	RIF_VAO_GL_POSITION = 0,
 	RIF_VAO_GL_NORMAL = 1,
+	RIF_VAO_GL_UV = 2,
 };
 
 typedef u32 glint_t;
@@ -39,6 +40,9 @@ public:
 
 	virtual void RegenerateProgram();
 
+	virtual void UploadTexture(class RTexture* f_texture, int f_index);
+	virtual void UploadUVs(struct Vector f_uvs[], int f_count);
+
 	virtual void Prepare();//set schtuff
 	virtual void Draw();
 	virtual void PostDraw();//reset stuff set by prepare
@@ -53,6 +57,9 @@ public:
 
 	glint_t m_VAO; //position
 	glint_t m_VAO_normal = -1; //normals
+	glint_t m_VAO_uv = -1; //uvs
+
+	glint_t m_Texture1 = -1;
 
 	int m_drawmode;
 };

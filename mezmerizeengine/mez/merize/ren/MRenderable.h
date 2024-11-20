@@ -9,6 +9,7 @@ class RModel_Base;
 //variant of MRenderableBase that uses the RModel system.
 //This is the best general purpose renderable.
 
+//todo: need to add multiple model support per mrenderable thing gigiosdghsdioh
 class MRenderable : public MRenderableBase
 {
 	friend class RenderSystem;

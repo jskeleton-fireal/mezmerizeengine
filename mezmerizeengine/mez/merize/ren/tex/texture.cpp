@@ -21,15 +21,20 @@ RTexture RTexture::CreateRGBA8Texture(int f_width, int f_height, MezColor f_fill
 {
 	RTexture tex = CreateTexture(f_width, f_height);
 	int colors = f_width * f_height;
-	const int bytesize = tex.get_bpp() / 8;
-
+	const int bytesize = 4;
+	memset(tex.m_rawtexture.raw, 0x55, colors * bytesize);
 	//This is untested. Hopefully this doesnt corrupt the heap :)
-	for (int i = 0; i < colors / 4; i++)
+	for (int i = 0; i < colors; i+=4)
 	{
-		memcpy(&tex.m_rawtexture.raw + (i * bytesize), &f_fillcolor, sizeof(MezColor));
+		memcpy(tex.m_rawtexture.raw + (i), &f_fillcolor, sizeof(MezColor));
 	}
 
 	return tex;
+}
+
+void RTexture::free()
+{
+	delete[] m_rawtexture.raw;
 }
 
 RTexture RTexture::CreateTexture(int f_width, int f_height, TextureFormat f_format)
@@ -42,9 +47,4 @@ RTexture RTexture::CreateTexture(int f_width, int f_height, TextureFormat f_form
 	texture.m_Height = f_height;
 	texture.m_Width = f_width;
 	return texture;
-}
-
-RTexture::~RTexture()
-{
-	delete[] m_rawtexture.raw;
 }

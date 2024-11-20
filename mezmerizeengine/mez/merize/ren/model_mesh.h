@@ -15,6 +15,7 @@ public:
 public:
 	Vector* m_Verts;
 	Vector* m_Normals = 0;
+	Vector* m_UVs = 0;
 	int m_NumOfVerts;	
 	u8 m_DrawMode;
 };
@@ -35,6 +36,7 @@ public:
 	virtual int GetVertCount(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_NumOfVerts; }
 	virtual int GetDrawMode(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_DrawMode; }
 	virtual Vector* GetNormals(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_Normals; }
+	virtual Vector* GetUVs(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_UVs; }
 
 protected:
 	RModel_BaseMesh() {}
