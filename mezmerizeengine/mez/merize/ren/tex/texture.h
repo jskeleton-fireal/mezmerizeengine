@@ -29,8 +29,8 @@ public:
 	T texture_as_typedr() { return static_cast<T>(m_rawtexture); }
 	int get_bpp();
 
-	static RTexture CreateRGBA8Texture(int f_width, int f_height);
-	static RTexture CreateRGBA8Texture(int f_width, int f_height,MezColor f_fillcolor);
+	static RTexture* CreateRGBA8Texture(int f_width, int f_height);
+	static RTexture* CreateRGBA8Texture(int f_width, int f_height,MezColor f_fillcolor);
 	
 	void free();
 
@@ -39,7 +39,7 @@ public:
 	RTexture() {};
 protected:
 	//create an empty texture
-	static RTexture CreateTexture(int f_width, int f_height, TextureFormat f_format = RGBA8);
+	static RTexture* CreateTexture(int f_width, int f_height, TextureFormat f_format = RGBA8);
 
 	tex::RGB8RawTexture getRGB8() const { return m_rawtexture.rgb; }
 	tex::RGBA8RawTexture getRGBA8() const { return m_rawtexture.rgba; }
