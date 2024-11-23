@@ -1,7 +1,7 @@
 #pragma once
 
-//this is final since the name is confusing with basemesh
-class RModel_Mesh final
+
+class RModelMeshSingle
 {
 public:
 	//this needs to be moved..
@@ -15,6 +15,7 @@ public:
 public:
 	Vector* m_Verts;
 	Vector* m_Normals = 0;
+	Vector* m_UVs = 0;
 	int m_NumOfVerts;	
 	u8 m_DrawMode;
 };
@@ -23,7 +24,7 @@ class RModel_BaseMesh : public RModel_Base
 {
 public:
 	//need to set a value here in case this gets destructed without loading a model
-	RModel_Mesh* m_meshes = 0;
+	RModelMeshSingle* m_meshes = 0;
 	int m_mesh_count;
 
 	~RModel_BaseMesh()
@@ -31,15 +32,11 @@ public:
 		delete m_meshes;
 		m_meshes = 0;
 	}
-	virtual Vector* GetVerts() { return m_meshes->m_Verts; }
-	virtual int GetVertCount() { return m_meshes->m_NumOfVerts; }
-	virtual int GetMeshCount() { return m_mesh_count; }
-	virtual Vector* GetVerts(int f_mesh_index) { return m_meshes[f_mesh_index].m_Verts; }
-	virtual int GetVertCount(int f_mesh_index) { return m_meshes[f_mesh_index].m_NumOfVerts; }
-	virtual int GetDrawMode(int f_mesh_index) { return m_meshes[f_mesh_index].m_DrawMode; }
-
-	virtual bool HasNormals() { return m_meshes->m_Normals; }
-	virtual Vector* GetNormals() { return m_meshes->m_Normals; }
+	virtual Vector* GetVerts(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_Verts; }
+	virtual int GetVertCount(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_NumOfVerts; }
+	virtual int GetDrawMode(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_DrawMode; }
+	virtual Vector* GetNormals(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_Normals; }
+	virtual Vector* GetUVs(int f_mesh_index = 0) { return m_meshes[f_mesh_index].m_UVs; }
 
 protected:
 	RModel_BaseMesh() {}

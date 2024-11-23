@@ -651,6 +651,8 @@
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template_def.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rinterface_feature.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rtemplate\template.h" />
+    <ClInclude Include="mez\merize\ren\tex\texrawformats.h" />
+    <ClInclude Include="mez\merize\ren\tex\texture.h" />
     <ClInclude Include="mez\testing\Engine_Testing.h" />
     <ClInclude Include="mez\merize\cmp\componentcontainer.h" />
     <ClInclude Include="mez\merize\console\cmdargs.h" />
@@ -725,6 +727,7 @@
     <ClCompile Include="mez\merize\miscobjects\propobject\propobject.cpp" />
     <ClCompile Include="mez\merize\ren\camera.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
+    <ClCompile Include="mez\merize\ren\tex\texture.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
     <ClCompile Include="mez\merize\cmp\component.cpp" />
     <ClCompile Include="mez\merize\console\cmdargs.cpp" />
