@@ -20,8 +20,8 @@ public:
 	TextureFormat m_Format = RGBA8;
 	int m_Width = -1;
 	int m_Height = -1;
-	//not used.. planning on adding point filtering to this 
 	unsigned short m_flags = 0;
+	int m_id = -1; //holdover. may be removed
 	RawTexture m_rawtexture = {0};
 	template <class T>
 	T* texture_as_type() { return static_cast<T*>(m_rawtexture); }	
