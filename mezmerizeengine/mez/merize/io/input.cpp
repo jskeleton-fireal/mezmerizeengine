@@ -1,5 +1,6 @@
 #include "input.h"
 #include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include "mez/merize/merize.h"
 #include "mez/merize/engine/baseengine.h"
 #include <mez/merize/console/cmd.h>
@@ -43,6 +44,12 @@ float Input::KeyFWAxis(MezKeyCode forward_key, MezKeyCode backward_key)
     bool bw = KeyHeld(backward_key);
     if (fw == bw) return 0.0f;
     return fw ? 1.0f : -1.0f;
+}
+
+Vector2 Input::GetMousePos()
+{
+    sf::Vector2i i = sf::Mouse::getPosition();
+    return { (float)i.x,(float)i.y };
 }
 
 
