@@ -30,6 +30,7 @@ void MRenderable::SetModel(RModel_Base* model)
 	m_rInterface->RegenerateProgram();
 	m_rInterface->UploadShader_Vertex("fallback");
 	m_rInterface->UploadShader("fallback");
+	m_rInterface->UploadTexture_Name("fallback");
 	m_rInterface->LinkShaderProgram();
 	m_rInterface->UploadVerts(m_model->GetVerts(), m_model->GetVertCount());
 	if (m_model->HasNormals())

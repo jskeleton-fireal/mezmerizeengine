@@ -199,6 +199,11 @@ void RInterface_OpenGL::UploadUVs(Vector f_uvs[], int f_count)
 
 }
 
+void RInterface_OpenGL::UploadTexture_Name(const char* f_name, int f_index)
+{
+	UploadTexture(engine->cache.m_textures.Lookup(f_name),f_index);
+}
+
 
 void RInterface_OpenGL::Prepare()
 {

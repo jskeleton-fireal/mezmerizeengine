@@ -35,6 +35,7 @@ public:
 	//new
 	virtual void UploadTexture(class RTexture* f_texture,int f_index = 0) = 0;
 	virtual void UploadUVs(struct Vector f_uvs[], int f_count) = 0;
+	virtual void UploadTexture_Name(const char* f_name,int f_index = 0) = 0;
 
 
 	virtual void SetDrawMode(RModelMeshSingle::MESH_DRAWMODE mode) = 0;

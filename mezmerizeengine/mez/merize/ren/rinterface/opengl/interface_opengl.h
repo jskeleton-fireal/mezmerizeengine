@@ -42,6 +42,7 @@ public:
 
 	virtual void UploadTexture(class RTexture* f_texture, int f_index);
 	virtual void UploadUVs(struct Vector f_uvs[], int f_count);
+	virtual void UploadTexture_Name(const char* f_name, int f_index = 0);
 
 	virtual void Prepare();//set schtuff
 	virtual void Draw();

@@ -120,6 +120,8 @@ int BaseEngine::run()
 
     //yes. this needs to be called regardless of rendering setting.
     cache.m_models.setup();
+    //not sure abt this onr though
+    cache.m_textures.setup();
     sf::Clock clock; // starts the clock
     m_supersecret->clockp = &clock;
     OnInitialized();
