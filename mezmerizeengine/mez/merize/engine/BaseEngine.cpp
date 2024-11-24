@@ -11,12 +11,13 @@
 #include "mez/merize/entityprivate/efactory.h"
 #include "mez/merize/ren/rinterface/rstatic.h"
 #include "mez/merize/io/input.h"
+#include <mez/merize/ren/rinterface/rinterface_def.h>
 
 
 //holy what a mess
 
 //this system sucks
-#define ALLOW_RENDERING RENDERABLE_MODE || m_launchparameters.m_textmode
+#define ALLOW_RENDERING RENDERABLE_MODE && !m_launchparameters.m_textmode
 #define FORBID_RENDERING !(ALLOW_RENDERING)
 
 BaseEngine* engine;
@@ -65,6 +66,7 @@ public:
 
 int BaseEngine::run()
 {
+    OnPreInitialized();
     //
     typedef void (BaseEngine::* updateloop)();
 
@@ -267,6 +269,16 @@ bool BaseEngine::RunCommand(const char* cmd)
 EngineConsole* BaseEngine::GetEngineConsole()
 {
     return &this->m_supersecret->console;
+}
+
+RInterface* BaseEngine::create_rinterface_instance()
+{
+    return (ALLOW_RENDERING) ? new RInterface_Default() : new RInterface_Null();
+}
+
+RStatic* BaseEngine::create_rstatic()
+{
+    return (ALLOW_RENDERING) ? new RStatic_Default() : new RStatic_Null();
 }
 
 #pragma warning (disable: 4172)

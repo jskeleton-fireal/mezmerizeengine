@@ -52,8 +52,9 @@ public:
 	float time = 0.0f;
 	u64 time_alt;
 	float time_delta;
-private:
+protected:
 	EngineLaunchParameters m_launchparameters = EngineLaunchParameters();
+private:
 	class EngineSuperSecret* m_supersecret;
 public:
 #pragma warning (push)
@@ -101,6 +102,10 @@ protected:
 	class EngineConsole* GetEngineConsole();
 	//more virtuals. to be overridden by whoever inherits this
 	virtual void OnInitialized() {}
+	virtual void OnPreInitialized() {}
+public:
+	RInterface* create_rinterface_instance();
+	RStatic* create_rstatic();
 };
 
 

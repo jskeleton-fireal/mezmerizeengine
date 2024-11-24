@@ -8,10 +8,12 @@
 class RStatic
 {
 public:
-	virtual void InitializeWindow(RINTERFACE_WINDOW_CLASS window) = 0;
-	virtual void BeforeRender(RINTERFACE_WINDOW_CLASS window) = 0;
-	virtual void AfterRender(RINTERFACE_WINDOW_CLASS window) = 0;
+	virtual void InitializeWindow(RINTERFACE_WINDOW_CLASS window) {}
+	virtual void BeforeRender(RINTERFACE_WINDOW_CLASS window) {}
+	virtual void AfterRender(RINTERFACE_WINDOW_CLASS window) {}
 
-	virtual void Window_Resized(int new_width, int new_height) = 0;
+	virtual void Window_Resized(int new_width, int new_height) {}
 
 };
+
+typedef RStatic RStatic_Null;

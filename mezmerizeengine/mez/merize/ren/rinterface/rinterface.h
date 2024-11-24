@@ -20,25 +20,25 @@ public:
 	RTemplate* m_template = 0;
 	instance_ptr<Transform> m_transform;
 	//member
-	virtual void Initialize() = 0;
-	virtual void UploadVerts(Vector verts[],int count = -1) = 0;
-	virtual void UploadNormals(Vector normals[],int count = -1) = 0;
-	virtual void UploadShader_Id(int shader_id) = 0;
-	virtual void UploadShader(const char* shader_id) = 0;
-	virtual void UploadShader_Vertex(const char* shader_id) = 0;
-	virtual void LinkShaderProgram() = 0;
-	virtual void RegenerateProgram() = 0;
-	virtual void Prepare() = 0; //set schtuff
-	virtual void Draw() = 0;
-	virtual void PostDraw() = 0; //reset stuff set by prepare
+	virtual void Initialize() {}
+	virtual void UploadVerts(Vector verts[],int count = -1) {}
+	virtual void UploadNormals(Vector normals[],int count = -1) {}
+	virtual void UploadShader_Id(int shader_id) {}
+	virtual void UploadShader(const char* shader_id) {}
+	virtual void UploadShader_Vertex(const char* shader_id) {}
+	virtual void LinkShaderProgram() {}
+	virtual void RegenerateProgram() {}
+	virtual void Prepare() {} //set schtuff
+	virtual void Draw() {}
+	virtual void PostDraw() {} //reset stuff set by prepare
 
 	//new
-	virtual void UploadTexture(class RTexture* f_texture,int f_index = 0) = 0;
-	virtual void UploadUVs(struct Vector f_uvs[], int f_count) = 0;
-	virtual void UploadTexture_Name(const char* f_name,int f_index = 0) = 0;
+	virtual void UploadTexture(class RTexture* f_texture,int f_index = 0) {}
+	virtual void UploadUVs(struct Vector f_uvs[], int f_count) {}
+	virtual void UploadTexture_Name(const char* f_name,int f_index = 0) {}
 
 
-	virtual void SetDrawMode(RModelMeshSingle::MESH_DRAWMODE mode) = 0;
+	virtual void SetDrawMode(RModelMeshSingle::MESH_DRAWMODE mode) {}
 	//.. include a destructor as well
 
 	//non virtual functions :)
@@ -58,17 +58,11 @@ public:
 	}
 
 public:
-	virtual void RequestFeature(rinterface_feature_t f_feature) = 0;
+	virtual void RequestFeature(rinterface_feature_t f_feature) {}
 	virtual void KillTemplate();
 	virtual void InvalidateTemplate();
 };
 
-
-//this will never actually be used because if theres no render mode then render functions wont even be called.. but there still needs a class and function bodies since c++
-//wont let you create instances of abstract classes which is fair
-class RInterface_Null : public RInterface
-{
-	
-};
+typedef RInterface RInterface_Null;
 
 #endif

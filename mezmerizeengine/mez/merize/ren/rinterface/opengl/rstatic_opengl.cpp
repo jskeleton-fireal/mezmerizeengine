@@ -24,14 +24,6 @@ void RStatic_OpenGL::InitializeWindow(RINTERFACE_WINDOW_CLASS window)
 	glDepthFunc(GL_LESS); //Dont change this
 	glPointSize(8);
 	//glLineWidth(3.0f); (Deprecated)
-
-	//do a bunch of stuff i copy pasted this from phototropic idk what thsi doe
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
 	
 
 	glClearColor(0, half, half, 1.0f);

@@ -5,9 +5,8 @@
 
 void MRenderableBase::Create()
 {
-	m_rInterface = new RInterface_Default();
+	m_rInterface = engine->create_rinterface_instance();
 	m_rInterface->Initialize();
-	printf("Created an r_interface\n");
 }
 
 inline void MRenderableBase::Prepare()
