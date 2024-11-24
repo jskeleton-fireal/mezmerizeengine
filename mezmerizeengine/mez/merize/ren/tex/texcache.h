@@ -10,10 +10,7 @@ public:
 	{
 
 	}
-	virtual void CreateDefaults()
-	{
-		Upload(Fallback(), RTexture::CreateRGBA8Texture(1,1,MezColor(0xffffff)));
-	}
+	virtual void CreateDefaults();
 	virtual const char* Fallback() { return "blank"; }
 	virtual const char* prettyname() { return "texture"; }
 };
