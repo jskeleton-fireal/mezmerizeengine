@@ -141,7 +141,9 @@ int BaseEngine::run()
             }
             if (event.type == sf::Event::Resized)
             {
-                rendersys.m_rstatic->Window_Resized(event.size.width,event.size.height);
+                rendersys.m_viewport_size.x = event.size.width;
+                rendersys.m_viewport_size.y = event.size.height;
+                rendersys.notify_vpupdate();
                 break;
             }
             if (event.type == sf::Event::KeyPressed)
@@ -237,7 +239,8 @@ void BaseEngine::updateloop_txt()
 void BaseEngine::render_setup()
 {
     rendersys.Engine_Setup(m_Window);
-    rendersys.m_rstatic->Window_Resized(800, 600);
+    rendersys.m_viewport_size = Vector2(800,600);
+    rendersys.notify_vpupdate();
 }
 
 int BaseEngine::RunEngine()

@@ -4,6 +4,7 @@
 #include "camera.h"
 #include "mez/merize/data/instance_ptr.h"
 #include "mez/merize/data/environment.h"
+#include <mez/merize/data/mezvector2.h>
 
 
 #define NUMBER_OF_RENDERABLE_SYSTEMS 1
@@ -47,4 +48,9 @@ private:
 	void Render_CallThisInEnginePlease();
 	void Render();
 	void Engine_Setup(void* window);
+	Vector2 m_viewport_size;
+public:
+	Vector2 ViewportSize() const { return m_viewport_size; }
+	float AspectRatio() const { return m_viewport_size.x / m_viewport_size.y; }
+	void notify_vpupdate();
 };

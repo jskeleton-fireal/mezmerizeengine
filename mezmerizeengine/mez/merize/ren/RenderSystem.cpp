@@ -45,6 +45,12 @@ void RenderSystem::Engine_Setup(void* window)
 	m_rstatic->InitializeWindow(win);
 }
 
+void RenderSystem::notify_vpupdate()
+{
+	//should really be storing these as ints
+	m_rstatic->Window_Resized(m_viewport_size.x,m_viewport_size.y);
+}
+
 void RenderSystem::RSRenderableSystem::render_single()
 {
 	if (renderables.capacity() < m_defsize)

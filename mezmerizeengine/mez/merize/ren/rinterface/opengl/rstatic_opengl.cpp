@@ -36,7 +36,6 @@ void RStatic_OpenGL::InitializeWindow(RINTERFACE_WINDOW_CLASS window)
 
 	glClearColor(0, half, half, 1.0f);
 
-	glViewport(0, 0, 400, 600);
 
 	BeforeRender(window);
 	AfterRender(window);

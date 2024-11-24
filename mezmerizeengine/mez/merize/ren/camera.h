@@ -10,7 +10,11 @@ public:
 	float m_fov = 1.221731f; //approx 70 fov
 	float m_nearplane = 0.01f;
 	float m_farplane = 10000.0f;
+	//set this if you want to override the aspect ratio
+	float m_aspect_override = -0.0f;
 
 	float getfov_deg();
 	void setfov_deg(float degrees);
+
+	float get_aspect();
 };

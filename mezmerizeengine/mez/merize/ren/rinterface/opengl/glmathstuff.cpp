@@ -22,7 +22,7 @@ matrix4_t GLMathStuff::GetProjection_Perspective_Radians(float f_fov, float f_as
 
 matrix4_t GLMathStuff::GetProjection(MezCamera* f_camera)
 {
-    return GetProjection_Perspective_Radians(f_camera->m_fov, 4.0f / 3.0f, f_camera->m_nearplane, f_camera->m_farplane);
+    return GetProjection_Perspective_Radians(f_camera->m_fov, f_camera->get_aspect(), f_camera->m_nearplane, f_camera->m_farplane);
 }
 
 matrix4_t GLMathStuff::TransformMatrix(matrix4_t f_mat, Vector f_pos)
