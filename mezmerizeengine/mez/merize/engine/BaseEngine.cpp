@@ -289,6 +289,20 @@ RStatic* BaseEngine::create_rstatic()
     return (ALLOW_RENDERING) ? new RStatic_Default() : new RStatic_Null();
 }
 
+void BaseEngine::set_mousepos(Vector2 f_pos)
+{
+    sf::Mouse::setPosition(sf::Vector2i(f_pos.x, f_pos.y),*m_Window);
+}
+
+void BaseEngine::cursorlock_status(bool* setval)
+{
+    if (setval)
+    {
+        m_Window->setMouseCursorGrabbed(*setval);
+        return;
+    }
+}
+
 #pragma warning (disable: 4172)
 const char* EngineVersion::tostring()
 {

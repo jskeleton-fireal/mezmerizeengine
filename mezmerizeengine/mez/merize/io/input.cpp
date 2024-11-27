@@ -6,7 +6,8 @@
 #include <mez/merize/console/cmd.h>
 
 #define mezkeycode_search 0 
-
+static Vector2 mpos_last = Vector2(0,0);
+static bool cursor_locked = false;
 //yeah. this sucks. BUT! BUT! a bitmask would use more CPU..
 struct input_helper
 {
@@ -52,6 +53,29 @@ Vector2 Input::GetMousePos()
     return { (float)i.x,(float)i.y };
 }
 
+Vector2 Input::GetMousePos_Normalized()
+{
+    Vector2 p = GetMousePos();
+    return p / engine->rendersys.ViewportSize();
+}
+
+Vector2 Input::GetMousePos_Normalized_Delta()
+{
+    return mpos_last - GetMousePos_Normalized();
+}
+
+void Input::CursorLock(bool val)
+{
+    bool vval = val;
+    engine->cursorlock_status(&vval);
+    cursor_locked = vval;
+}
+
+bool Input::CursorIsLocked()
+{
+    return cursor_locked;
+}
+
 
 void Input::notify_key_pressed(MezKeyCode key)
 {
@@ -71,6 +95,14 @@ void Input::notify_key_released(MezKeyCode key)
 void Input::tic()
 {
     helper.tic_ifneeded();
+    if (!cursor_locked)
+    {
+        mpos_last = GetMousePos_Normalized();
+    }
+    else {
+        mpos_last = GetMousePos_Normalized();
+        engine->set_mousepos(engine->rendersys.ViewportSize() / 2.0f);
+    }
 }
 
 

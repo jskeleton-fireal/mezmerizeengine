@@ -76,7 +76,6 @@ private:
 	void updateloop_win();
 	void updateloop_txt();
 	void render_setup();
-
 	RENDER_WINDOW_CLASS* m_Window;
 public:
 	//dont use this anymore.
@@ -107,6 +106,9 @@ protected:
 public:
 	RInterface* create_rinterface_instance();
 	RStatic* create_rstatic();
+
+	void cursorlock_status(bool* setval);
+	void set_mousepos(Vector2 f_pos);
 };
 
 

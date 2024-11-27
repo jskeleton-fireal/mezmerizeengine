@@ -15,7 +15,14 @@ public:
 	//intended to be a temporary solution! thsi will be replaced with a key bindings system at some point (I will keep this for debugging purposes btw)
 	static float KeyFWAxis(MezKeyCode forward_key, MezKeyCode backward_key);
 
+	//relative to window
 	static Vector2 GetMousePos();
+	//range 0 - 1 on each axis
+	static Vector2 GetMousePos_Normalized();
+	static Vector2 GetMousePos_Normalized_Delta();
+
+	static void CursorLock(bool val);
+	static bool CursorIsLocked();
 private:
 	static void notify_key_pressed(MezKeyCode key);
 	static void notify_key_released(MezKeyCode key);
