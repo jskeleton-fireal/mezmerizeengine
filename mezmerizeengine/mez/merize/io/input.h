@@ -27,4 +27,5 @@ private:
 	static void notify_key_pressed(MezKeyCode key);
 	static void notify_key_released(MezKeyCode key);
 	static void tic();
+	static void post_tic();
 };

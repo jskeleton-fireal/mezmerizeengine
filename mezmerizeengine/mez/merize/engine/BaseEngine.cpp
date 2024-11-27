@@ -168,7 +168,7 @@ int BaseEngine::run()
             }
 
         }
-
+        Input::post_tic();
 
         engine = this;
         if (m_immediate_operation)

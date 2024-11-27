@@ -5,7 +5,14 @@
 #include "mez/merize/engine/baseengine.h"
 #include <mez/merize/console/cmd.h>
 
-#define mezkeycode_search 0 
+#define mezkeycode_search 0
+
+#if mezkeycode_search
+ConsoleVariableBool keycode_search("i_ksrc",0,0);
+#else
+static bool keycode_search = 0;
+#endif
+
 static Vector2 mpos_last = Vector2(0,0);
 static bool cursor_locked = false;
 //yeah. this sucks. BUT! BUT! a bitmask would use more CPU..
@@ -66,9 +73,8 @@ Vector2 Input::GetMousePos_Normalized_Delta()
 
 void Input::CursorLock(bool val)
 {
-    bool vval = val;
-    engine->cursorlock_status(&vval);
-    cursor_locked = vval;
+    engine->cursorlock_status(&val);
+    cursor_locked = val;
 }
 
 bool Input::CursorIsLocked()
@@ -79,9 +85,11 @@ bool Input::CursorIsLocked()
 
 void Input::notify_key_pressed(MezKeyCode key)
 {
-#if mezkeycode_search
-    console_printf("%x (%i) was pressed\n", key,key);
-#endif
+    if (keycode_search)
+    {
+        console_printf("%x (%i) was pressed\n", key, key);
+    }
+
     assert(key <= input_helper::tracking && key >= 0);
     helper.set_pressed(key);
 }
@@ -95,6 +103,11 @@ void Input::notify_key_released(MezKeyCode key)
 void Input::tic()
 {
     helper.tic_ifneeded();
+
+}
+
+void Input::post_tic()
+{
     if (!cursor_locked)
     {
         mpos_last = GetMousePos_Normalized();
@@ -102,6 +115,13 @@ void Input::tic()
     else {
         mpos_last = GetMousePos_Normalized();
         engine->set_mousepos(engine->rendersys.ViewportSize() / 2.0f);
+        bool escape_pressed = KeyPressed(MKC_Escape);
+        if (escape_pressed)
+        {
+            //disable cursor lock
+            console_printf("cursor has been unlocked\n");
+            CursorLock(0);
+        }
     }
 }
 
