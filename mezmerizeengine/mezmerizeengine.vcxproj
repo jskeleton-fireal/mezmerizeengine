@@ -633,6 +633,7 @@
     <ClInclude Include="mez\merize\data\color.h" />
     <ClInclude Include="mez\merize\data\environment.h" />
     <ClInclude Include="mez\merize\data\instance_ptr.h" />
+    <ClInclude Include="mez\merize\data\mezvector2.h" />
     <ClInclude Include="mez\merize\entity\EHandle.h" />
     <ClInclude Include="mez\merize\entity\EntityEnvironment.h" />
     <ClInclude Include="mez\merize\helpers\quikrng.h" />
@@ -651,6 +652,7 @@
     <ClInclude Include="mez\merize\ren\rinterface\opengl\rtemplate\template_def.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rinterface_feature.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rtemplate\template.h" />
+    <ClInclude Include="mez\merize\ren\tex\texcache.h" />
     <ClInclude Include="mez\merize\ren\tex\texrawformats.h" />
     <ClInclude Include="mez\merize\ren\tex\texture.h" />
     <ClInclude Include="mez\testing\Engine_Testing.h" />
@@ -727,6 +729,7 @@
     <ClCompile Include="mez\merize\miscobjects\propobject\propobject.cpp" />
     <ClCompile Include="mez\merize\ren\camera.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\rinterface.cpp" />
+    <ClCompile Include="mez\merize\ren\tex\texcache.cpp" />
     <ClCompile Include="mez\merize\ren\tex\texture.cpp" />
     <ClCompile Include="mez\testing\Engine_Testing.cpp" />
     <ClCompile Include="mez\merize\cmp\component.cpp" />
@@ -772,6 +775,7 @@
     <ClCompile Include="mez\merize\ren\RenderSystem.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.cpp" />
     <ClCompile Include="mez\merize\data\transform.cpp" />
+    <ClCompile Include="mez\testing\EntityTestImplementation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />

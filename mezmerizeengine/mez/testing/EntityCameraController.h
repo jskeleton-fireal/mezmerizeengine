@@ -11,6 +11,8 @@ public:
 	DECLARE_ENTITY(TstEntityCameraController);
 	virtual void Initialize();
 	virtual void Update();
+	virtual void Freecam();
+	virtual void OldUpdate();
 	~TstEntityCameraController();
 	MezCamera m_Camera;
 

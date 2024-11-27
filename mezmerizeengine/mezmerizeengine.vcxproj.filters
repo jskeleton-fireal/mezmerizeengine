@@ -566,6 +566,10 @@
     <ClInclude Include="mez\merize\entity\EHandle.h" />
     <ClInclude Include="mez\merize\helpers\quikrng.h" />
     <ClInclude Include="mez\merize\miscobjects\propobject\propobject.h" />
+    <ClInclude Include="mez\merize\ren\tex\texcache.h" />
+    <ClInclude Include="mez\merize\ren\tex\texrawformats.h" />
+    <ClInclude Include="mez\merize\ren\tex\texture.h" />
+    <ClInclude Include="mez\merize\data\mezvector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -621,6 +625,9 @@
     <ClCompile Include="mez\testing\EntityCameraController.cpp" />
     <ClCompile Include="mez\merize\entity\EHandle.cpp" />
     <ClCompile Include="mez\merize\miscobjects\propobject\propobject.cpp" />
+    <ClCompile Include="mez\merize\ren\tex\texture.cpp" />
+    <ClCompile Include="mez\testing\EntityTestImplementation.cpp" />
+    <ClCompile Include="mez\merize\ren\tex\texcache.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\assimp\include\assimp\color4.inl" />
