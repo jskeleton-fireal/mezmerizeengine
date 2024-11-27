@@ -70,16 +70,18 @@ int BaseEngine::run()
     //
     typedef void (BaseEngine::* updateloop)();
 
-	// Create the main window
+
     sf::ContextSettings settings = sf::ContextSettings();
     settings.depthBits = 24;
     settings.stencilBits = 8;
     settings.antialiasingLevel = 4;
     settings.majorVersion = 4;
     settings.minorVersion = 0;
+	// Create the main window
 	sf::Window window(sf::VideoMode(800, 600), "mezmerize", sf::Style::Default,settings);
     m_Window = &window;
-
+    window.setVerticalSyncEnabled(true);
+    //window.setFramerateLimit(15);
     if (FORBID_RENDERING)
     {
         //bug: window flashes for a very small amount of time using this
