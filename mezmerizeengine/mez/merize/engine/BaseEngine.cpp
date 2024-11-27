@@ -71,7 +71,13 @@ int BaseEngine::run()
     typedef void (BaseEngine::* updateloop)();
 
 	// Create the main window
-	sf::RenderWindow window(sf::VideoMode(800, 600), "mezmerize");
+    sf::ContextSettings settings = sf::ContextSettings();
+    settings.depthBits = 24;
+    settings.stencilBits = 8;
+    settings.antialiasingLevel = 4;
+    settings.majorVersion = 4;
+    settings.minorVersion = 0;
+	sf::Window window(sf::VideoMode(800, 600), "mezmerize", sf::Style::Default,settings);
     m_Window = &window;
 
     if (FORBID_RENDERING)

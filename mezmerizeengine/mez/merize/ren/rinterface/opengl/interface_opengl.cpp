@@ -207,13 +207,6 @@ void RInterface_OpenGL::UploadTexture_Name(const char* f_name, int f_index)
 
 void RInterface_OpenGL::Prepare()
 {
-#if 1
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-#else
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_CULL_FACE);
-#endif
 	assert(RIF_ISENABLED(m_VertexBuffer));
 	assert(RIF_ISENABLED(m_VAO));
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
