@@ -15,6 +15,7 @@ static bool keycode_search = 0;
 
 static Vector2 mpos_last = Vector2(0,0);
 static bool cursor_locked = false;
+static bool focus = true;
 //yeah. this sucks. BUT! BUT! a bitmask would use more CPU..
 struct input_helper
 {
@@ -35,6 +36,11 @@ struct input_helper
 
 static input_helper helper;
 
+static bool should_be_accepting_input()
+{
+    return focus;
+}
+
 bool Input::KeyPressed(MezKeyCode key)
 {
     return helper.pressed(key);
@@ -42,7 +48,6 @@ bool Input::KeyPressed(MezKeyCode key)
 
 bool Input::KeyHeld(MezKeyCode key)
 {
-    //not yet
     return helper.held(key);
 }
 
@@ -62,6 +67,7 @@ Vector2 Input::GetMousePos()
 
 Vector2 Input::GetMousePos_Normalized()
 {
+    if (!should_be_accepting_input()) return mpos_last;
     Vector2 p = GetMousePos();
     return p / engine->rendersys.ViewportSize();
 }
@@ -85,6 +91,7 @@ bool Input::CursorIsLocked()
 
 void Input::notify_key_pressed(MezKeyCode key)
 {
+    if (!should_be_accepting_input()) return;
     if (keycode_search)
     {
         console_printf("%x (%i) was pressed\n", key, key);
@@ -96,6 +103,7 @@ void Input::notify_key_pressed(MezKeyCode key)
 
 void Input::notify_key_released(MezKeyCode key)
 {
+    if (!should_be_accepting_input()) return;
     assert(key <= input_helper::tracking && key >= 0);
     helper.set_released(key);
 }
@@ -108,6 +116,7 @@ void Input::tic()
 
 void Input::post_tic()
 {
+    if (!should_be_accepting_input()) return;
     if (!cursor_locked)
     {
         mpos_last = GetMousePos_Normalized();
@@ -125,6 +134,11 @@ void Input::post_tic()
     }
 }
 
+void Input::notify_focus(bool yn)
+{
+    focus = yn;
+}
+
 
 
 
@@ -135,6 +149,7 @@ u8 input_helper::getvalue(int id)
 
 void input_helper::tic()
 {
+    if (!should_be_accepting_input()) return;
     last_tic = engine->time;
     for (int i = 0; i < input_helper::tracking;i++)
     {

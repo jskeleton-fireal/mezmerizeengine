@@ -166,6 +166,16 @@ int BaseEngine::run()
                 Input::notify_key_released((MezKeyCode)event.key.scancode);
                 break;
             }
+            if (event.type == sf::Event::GainedFocus)
+            {
+            Input::notify_focus(1);
+                break;
+            }
+            if (event.type == sf::Event::LostFocus)
+            {
+                Input::notify_focus(0);
+                break;
+            }
 
         }
         Input::post_tic();
