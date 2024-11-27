@@ -78,7 +78,7 @@ int BaseEngine::run()
     settings.majorVersion = 4;
     settings.minorVersion = 0;
 	// Create the main window
-	sf::Window window(sf::VideoMode(800, 600), "mezmerize", sf::Style::Default,settings);
+	sf::Window window(sf::VideoMode(800, 600), GetTitle() , sf::Style::Default, settings);
     m_Window = &window;
     window.setVerticalSyncEnabled(true);
     //window.setFramerateLimit(15);
