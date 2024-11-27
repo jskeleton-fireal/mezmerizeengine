@@ -1,12 +1,14 @@
 #pragma once
 
-//note: You! define your own PROJECT_<NAME> here!
+//note: You! define your own PROJECT_<NAME>
+//format is just a u64 id. do something unique
 
+//in your engine you can set which project sets you want to be active at a time
 
 //built in stuff, disable if you really really want to
-#define PROJECT_MEZMERIZE 1
-//testing engine stuff. mostly debugging stuff. disabled by default
-#define PROJECT_TESTING 1
+#define PROJECT_MEZMERIZE 0x1
+//testing engine stuff. mostly debugging stuff
+#define PROJECT_TESTING 0x2
 
 
 enum

@@ -97,6 +97,9 @@ public:
 	virtual int GetVersion_Numeric() { return 1; }
 	virtual const char* GetName() { return "mezmerize instance"; }
 	virtual const char* GetTitle() { return GetName(); }
+
+
+	virtual bool ProjectIdIsValid(u64 f_id) { return f_id == PROJECT_MEZMERIZE; }
 protected:
 	//some hidden functions :)
 	class EngineConsole* GetEngineConsole();

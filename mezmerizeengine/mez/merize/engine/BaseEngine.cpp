@@ -273,7 +273,7 @@ int BaseEngine::RunEngine()
 
 MezBaseEntity* BaseEngine::CreateEntityByName_Typeless(const char* m_name)
 {
-    efactory_t* f = entity_factories_t::find(m_name);
+    efactory_t* f = entity_factories_t::find(m_name,this);
     if (!f) return 0;
     return f->m_func();
 }

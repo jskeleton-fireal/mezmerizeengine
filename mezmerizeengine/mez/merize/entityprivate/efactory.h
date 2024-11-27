@@ -7,15 +7,16 @@ class efactory_t
 { public:
 	const char* m_name;
 	mezcreatefunc_t* m_func;
+	u64 m_project;
 
 	efactory_t(const char* f_name, const mezcreatefunc_t* f_func);
-	efactory_t(const char* f_name, const mezcreatefunc_t* f_func,bool f_enabled);
+	efactory_t(const char* f_name, const mezcreatefunc_t* f_func, u64 f_project);
 };
 
 class entity_factories_t
 {
 public:
-	static efactory_t* find(const char* f_name);
+	static efactory_t* find(const char* f_name,class BaseEngine* f_caller);
 };
 
 //vEProject: the PROJECT_<NAME> macro in settings.h  If the project flag is 0, entity will not be baked

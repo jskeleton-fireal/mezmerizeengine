@@ -21,6 +21,12 @@ public:
 	{
 		m_launchparameters.m_textmode = 0;
 	}
+
+	virtual bool ProjectIdIsValid(u64 f_id)
+	{
+		if (BaseEngine::ProjectIdIsValid(f_id)) return 1;
+		return f_id == PROJECT_TESTING;
+	}
 };
 
 #endif
