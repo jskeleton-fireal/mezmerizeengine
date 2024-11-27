@@ -158,12 +158,12 @@ int BaseEngine::run()
             }
             if (event.type == sf::Event::KeyPressed)
             {
-                Input::notify_key_pressed(event.key.scancode);
+                Input::notify_key_pressed((MezKeyCode)event.key.scancode);
                 break;
             }
             if (event.type == sf::Event::KeyReleased)
             {
-                Input::notify_key_released(event.key.scancode);
+                Input::notify_key_released((MezKeyCode)event.key.scancode);
                 break;
             }
 

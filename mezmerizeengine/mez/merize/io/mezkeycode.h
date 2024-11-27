@@ -2,7 +2,7 @@
 
 //these are actually scancodes :P
 //feature req: have a system to convert chars to scancodes?
-enum
+enum MezKeyCode
 {
     MKC_Unknown = -1,
     MKC_A = 0,
@@ -43,8 +43,8 @@ enum
     MKC_Num0 = 0x23,
     MKC_Return = 0x24,
     MKC_Escape = 0x25,
-    MKC_Backspace,
-    MKC_Tab,
+    MKC_Backspace = 0x26,
+    MKC_Tab = 0x27,
     MKC_Space = 0x28,
     MKC_Minus = 0x29,
     MKC_Plus,
@@ -70,6 +70,4 @@ enum
     MKC_F12,
 };
 
-
-typedef int MezKeyCode;
 typedef char MezKeyCode_Packed;
