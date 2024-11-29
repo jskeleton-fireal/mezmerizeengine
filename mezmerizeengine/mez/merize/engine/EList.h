@@ -1,7 +1,7 @@
 #pragma once
 //#include "hybridarray.h"
 #include "mez/merize/merize.h"
-#define MAX_ENTITIES 0x7fff
+#define MAX_ENTITIES 0x7ff
 //This must be big enough to hold MAX_ENTITIES
 typedef short edef_tight_t;
 
