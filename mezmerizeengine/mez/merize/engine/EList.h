@@ -2,6 +2,7 @@
 //#include "hybridarray.h"
 #include "mez/merize/merize.h"
 #define MAX_ENTITIES 0x7ff
+#define ENTITY_INVALID_DEFID -1
 //This must be big enough to hold MAX_ENTITIES
 typedef short edef_tight_t;
 

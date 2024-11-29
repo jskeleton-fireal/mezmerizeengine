@@ -6,7 +6,7 @@
 #include "mez/merize/cmp/componentcontainer.h"
 #include "mez/merize/entityprivate/efactory.h"
 #include "mez/merize/miscobjects/propobject/propobject.h"
-#define ENTITY_INVALID_DEFID -1
+
 class EDef;
 class MezBaseEntity;
 class EHandle;
