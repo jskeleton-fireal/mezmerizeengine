@@ -17,7 +17,7 @@ EDef* MezBaseEntity::GetDef()
 
 void MezBaseEntity::Destroy()
 {
-	GetDef()->m_DeleteMe = 1;
+	m_DeleteMe = 1;
 }
 
 EHandle MezBaseEntity::GetEHandle()

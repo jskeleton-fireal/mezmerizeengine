@@ -16,7 +16,6 @@ class EDef
 {
 public:
 	MezBaseEntity* m_Entity=0;
-	bool m_DeleteMe=0;
 	bool IsFree() { return  !m_Entity; }
 	bool IsNotFree() { return m_Entity; }
 	bool IsGoodToUpdate()

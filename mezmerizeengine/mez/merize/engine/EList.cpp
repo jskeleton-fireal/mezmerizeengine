@@ -28,7 +28,7 @@ void EList::update()
 		if (!defs[i].IsGoodToUpdate()) continue;
 		MezBaseEntity* entity = defs[i].m_Entity;
 		assert(entity->HandleStates());
-		if (defs[i].m_DeleteMe)
+		if (entity->m_DeleteMe)
 			numtodelete++;
 		else
 			highest_recorded = i;
@@ -39,9 +39,10 @@ void EList::update()
 		for (int i = 0; i < MAX_ENTS_CHECK; i++)
 		{
 			if (defs[i].IsFree()) continue;
-			if (defs[i].m_DeleteMe)
+			MezBaseEntity* entity = defs[i].m_Entity;
+			if (entity->m_DeleteMe)
 			{
-				delete defs[i].m_Entity;
+				delete entity;
 				defs[i].m_Entity = 0;
 			}
 		}

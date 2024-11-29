@@ -39,6 +39,7 @@ public:
 
 	ComponentContainer m_ComponentContainer;
 
+	bool m_DeleteMe = 0;
 public:
 	void Spawn();
 	EDef* GetDef();
