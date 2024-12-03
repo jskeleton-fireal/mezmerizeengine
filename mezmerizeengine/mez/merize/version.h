@@ -3,8 +3,8 @@
 
 //include your own version system somewhere
 
-#define MEZ_VERSION "v1.0_0"
-#define MEZ_VERSION_NUMERIC 0
+#define MEZ_VERSION "v0.4"
+#define MEZ_VERSION_NUMERIC 4
 
 
 #if 1
