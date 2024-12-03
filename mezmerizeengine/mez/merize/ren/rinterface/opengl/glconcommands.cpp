@@ -1,4 +1,4 @@
-#include "../mez/merize/console/cmd.h"
+#include "mez/merize/console/cmd.h"
 #include "gl_def.h"
 
 //old glconcommands
