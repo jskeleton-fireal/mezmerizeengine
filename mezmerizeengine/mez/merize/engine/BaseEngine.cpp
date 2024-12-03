@@ -114,7 +114,7 @@ int BaseEngine::run()
     printf("mezmerize version %s\n", enginever);
     //print the name of the engine
     printf("%s %s\n", this->GetName(), this->GetVersion_String());
-    std::cout << "build: " << BUILD_DATE << "," << BUILD_TIME << "\n";
+    std::cout << "build time: " << BUILD_DATE << "," << BUILD_TIME << "\n";
 
 
     engine = this;
@@ -282,6 +282,11 @@ bool BaseEngine::RunCommand(const char* cmd)
 {
     m_supersecret->console.process_single(this,cmd);
     return false;
+}
+
+int BaseEngine::GetVersion_Numeric()
+{
+    return MEZ_VERSION_NUMERIC;
 }
 
 EngineConsole* BaseEngine::GetEngineConsole()

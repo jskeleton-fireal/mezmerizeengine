@@ -93,8 +93,8 @@ public:
 	bool RunCommand(const char* cmd);
 public:
 	//virtuals
-	virtual const char* GetVersion_String() { return MEZ_VERSION; } //Versions may be better as their own class instead of this
-	virtual int GetVersion_Numeric() { return MEZ_VERSION_NUMERIC; }
+	virtual const char* GetVersion_String() { return "v0.1"; } //Versions may be better as their own class instead of this
+	virtual int GetVersion_Numeric();
 	virtual const char* GetName() { return "mezmerize instance"; }
 	virtual const char* GetTitle() { return GetName(); }
 
