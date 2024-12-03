@@ -4,9 +4,9 @@
 
 
 #include "../../camera.h"
-#include "../../../deps/glm/glm.hpp"
-#include "../../../deps/glm/matrix.hpp"
-#include "../../../deps/glm/gtc/matrix_transform.hpp"
+#include "glm/glm.hpp"
+#include "glm/matrix.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 typedef glm::mat4 matrix4_t;
 
