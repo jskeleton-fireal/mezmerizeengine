@@ -43,7 +43,7 @@ public:
 	RenderSystem rendersys;
 	int m_id;
 	CachedStuffManager cache;
-	ConsoleHelper conhelper;
+	ConsoleHelper* conhelper;
 	//Sometimes, we need the main thread to execute something because another thread cant access something.
 	//An immediate operation gets called before the engine internally updates the game state
 	//not sure how good this is in a security context.. one bad buffer overflow and boom rca right there with this

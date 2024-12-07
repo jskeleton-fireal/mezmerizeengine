@@ -37,6 +37,19 @@ void BaseEngine::eng_initialize()
     m_id = s_engine_counter;
     s_engine_counter++;
 #endif
+    if (ConsoleHelper::is_initialized() && ConsoleHelper::FindGlobal() != this->conhelper)
+    {
+        //intialized oddly
+        conhelper = ConsoleHelper::FindGlobal();
+        //
+#ifdef _DEBUG
+        console_printf("DBG: ConHelper was intitialized oddly\n");
+#endif
+    }
+    else
+    {
+        conhelper = new ConsoleHelper(false);
+}
 }
 #pragma warning (pop)
 

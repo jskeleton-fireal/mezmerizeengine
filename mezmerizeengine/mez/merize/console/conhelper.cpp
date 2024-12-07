@@ -7,6 +7,7 @@ static bool s_initialized = 0;
 
 ConsoleHelper::ConsoleHelper(bool f_global)
 {
+	f_global = !s_helper;
 	if (f_global)
 	{
 		assert(!s_helper);
@@ -27,11 +28,6 @@ possibly_null(ConsoleThing*) ConsoleHelper::FindConsoleThing(const char* name)
 			return m_things[i];
 		}
 	}
-	if (!m_global)
-	{
-		//search global
-		return FindGlobal()->FindConsoleThing(name);
-	}
 	return 0;
 }
 
@@ -42,15 +38,22 @@ possibly_null(ConsoleVariable_Generic*) ConsoleHelper::FindConsoleVariable(const
 
 ConsoleHelper* ConsoleHelper::FindGlobal()
 {
-	if (!s_helper)
-	{
-		//create
-		s_helper = new ConsoleHelper(true);
-	}
 	return s_helper;
 }
 
 ConsoleHelper* ConsoleHelper::FindCurrent()
 {
-	return &engine->conhelper;
+	return engine->conhelper;
+}
+
+bool ConsoleHelper::is_initialized()
+{
+	return s_initialized;
+}
+
+void ConsoleHelper::force_init()
+{
+	if (is_initialized()) return;
+	s_helper = new ConsoleHelper(true);
+	s_initialized = 1;
 }

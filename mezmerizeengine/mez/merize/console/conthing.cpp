@@ -24,6 +24,11 @@ bool ConsoleThing::is_global_reference()
 
 void ConsoleThing::Upload()
 {
+	if (!ConsoleHelper::is_initialized())
+	{
+		//this will cause conhelper to intialize globally instead of in the engine
+		ConsoleHelper::force_init();
+	}
 	ConsoleHelper::FindGlobal()->m_things.push_back(this);
 }
 

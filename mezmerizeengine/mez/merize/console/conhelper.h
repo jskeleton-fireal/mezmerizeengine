@@ -20,5 +20,7 @@ public:
 
 	static ConsoleHelper* FindGlobal();
 	static ConsoleHelper* FindCurrent();
+	static bool is_initialized();
+	static void force_init();
 
 };
