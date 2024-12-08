@@ -149,6 +149,7 @@ int BaseEngine::run()
     m_supersecret->clockp = &clock;
     OnInitialized();
     //THIS IS THE LOOP!!!
+
     while (window.isOpen())
     {
         Input::tic();
@@ -160,6 +161,7 @@ int BaseEngine::run()
             // Close window: exit
             if (event.type == sf::Event::Closed)
             {
+                window.close();
                 break;
             }
             if (event.type == sf::Event::Resized)
