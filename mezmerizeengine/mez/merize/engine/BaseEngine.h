@@ -111,6 +111,9 @@ protected:
 	//more virtuals. to be overridden by whoever inherits this
 	virtual void OnInitialized() {}
 	virtual void OnPreInitialized() {}
+
+	class ConBall GetConBall();
+	virtual void UnpackConBall();
 public:
 	RInterface* create_rinterface_instance();
 	RStatic* create_rstatic();

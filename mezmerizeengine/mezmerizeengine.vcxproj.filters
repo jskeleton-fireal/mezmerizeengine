@@ -91,6 +91,8 @@
     <ClInclude Include="mez\merize\ren\tex\texrawformats.h" />
     <ClInclude Include="mez\merize\ren\tex\texture.h" />
     <ClInclude Include="mez\merize\data\mezvector2.h" />
+    <ClInclude Include="mez\merize\console\con_ball.h" />
+    <ClInclude Include="mez\merize\stock\stock_conball.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -142,5 +144,7 @@
     <ClCompile Include="mez\merize\miscobjects\propobject\propobject.cpp" />
     <ClCompile Include="mez\merize\ren\tex\texture.cpp" />
     <ClCompile Include="mez\merize\ren\tex\texcache.cpp" />
+    <ClCompile Include="mez\merize\console\con_ball.cpp" />
+    <ClCompile Include="mez\merize\stock\stock_conball.cpp" />
   </ItemGroup>
 </Project>

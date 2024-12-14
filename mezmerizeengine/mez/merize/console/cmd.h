@@ -128,5 +128,5 @@ extern ConsoleVariableBool cv_developer;
 #endif
 //i KNOW youre gonna see this and forget everything abt this so HERES SOME BASIC DOCS.
 // args are (cmdname,flags) cmdname IS NOT A STRING. return 0 if everything went well
-#define CREATE_CONSOLECOMMAND_WFUNC(vName,vFlags) static int __cmdfunc__##vName(ConCommandArgs* f_args);  static ConsoleCommand __cmd__##vName = ConsoleCommand(#vName,vFlags,__cmdfunc__##vName); int __cmdfunc__##vName(ConCommandArgs* f_args)
+#define CREATE_CONSOLECOMMAND_WFUNC(vName,vFlags) int __cmdfunc__##vName(ConCommandArgs* f_args);  ConsoleCommand __cmd__##vName = ConsoleCommand(#vName,vFlags,__cmdfunc__##vName); int __cmdfunc__##vName(ConCommandArgs* f_args)
 

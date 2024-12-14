@@ -12,6 +12,7 @@
 #include "mez/merize/ren/rinterface/rstatic.h"
 #include "mez/merize/io/input.h"
 #include <mez/merize/ren/rinterface/rinterface_def.h>
+#include <mez/merize/stock/stock_conball.h>
 
 
 //holy what a mess
@@ -79,6 +80,7 @@ public:
 
 int BaseEngine::run()
 {
+    UnpackConBall();
     OnPreInitialized();
     //
     typedef void (BaseEngine::* updateloop)();
@@ -319,6 +321,16 @@ int BaseEngine::GetVersion_Numeric()
 EngineConsole* BaseEngine::GetEngineConsole()
 {
     return &this->m_supersecret->console;
+}
+
+ConBall BaseEngine::GetConBall()
+{
+    return get_stock_conball();
+}
+
+void BaseEngine::UnpackConBall()
+{
+    GetConBall().unpack();
 }
 
 RInterface* BaseEngine::create_rinterface_instance()

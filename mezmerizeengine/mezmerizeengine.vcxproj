@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="mez\merize\console\con_ball.h" />
     <ClInclude Include="mez\merize\data\color.h" />
     <ClInclude Include="mez\merize\data\environment.h" />
     <ClInclude Include="mez\merize\data\instance_ptr.h" />
@@ -233,6 +234,7 @@
     <ClInclude Include="mez\merize\ren\rinterface\rinterface_def.h" />
     <ClInclude Include="mez\merize\ren\rinterface\rstatic.h" />
     <ClInclude Include="mez\merize\staticdefs.h" />
+    <ClInclude Include="mez\merize\stock\stock_conball.h" />
     <ClInclude Include="mez\settings.h" />
     <ClInclude Include="mez\merize\version.h" />
     <ClInclude Include="mez\merize\ren\MRenderable.h" />
@@ -241,6 +243,7 @@
     <ClInclude Include="mez\merize\ren\rinterface\rinterface.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="mez\merize\console\con_ball.cpp" />
     <ClCompile Include="mez\merize\data\environment.cpp" />
     <ClCompile Include="mez\merize\data\mezvector.cpp" />
     <ClCompile Include="mez\merize\entity\EHandle.cpp" />
@@ -290,6 +293,7 @@
     <ClCompile Include="mez\merize\ren\RenderSystem.cpp" />
     <ClCompile Include="mez\merize\ren\rinterface\opengl\rstatic_opengl.cpp" />
     <ClCompile Include="mez\merize\data\transform.cpp" />
+    <ClCompile Include="mez\merize\stock\stock_conball.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
