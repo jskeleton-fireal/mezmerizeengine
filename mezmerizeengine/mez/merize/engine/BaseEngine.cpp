@@ -83,7 +83,7 @@ int BaseEngine::run()
     //
     typedef void (BaseEngine::* updateloop)();
 
-
+    active = 1;
     sf::ContextSettings settings = sf::ContextSettings();
     settings.depthBits = 24;
     settings.stencilBits = 8;
@@ -218,6 +218,7 @@ int BaseEngine::run()
     }
 
     cthread.terminate();
+    active = 0;
     return EXIT_SUCCESS;
 }
 
@@ -248,6 +249,12 @@ void BaseEngine::push_immediate_operation(voidfunction_t& function)
 void BaseEngine::reset_globals()
 {
     this->m_supersecret->clockp->restart();
+}
+
+void BaseEngine::stop()
+{
+    active = 0;
+    m_Window->close();
 }
 
 void BaseEngine::update()
@@ -284,6 +291,11 @@ int BaseEngine::RunEngine()
     int c = engine->run();
     delete engine;
     return c;
+}
+
+void* BaseEngine::GetWindowHandle()
+{
+    return m_Window->getSystemHandle();
 }
 
 MezBaseEntity* BaseEngine::CreateEntityByName_Typeless(const char* m_name)

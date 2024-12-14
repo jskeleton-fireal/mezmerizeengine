@@ -52,6 +52,7 @@ public:
 	float time = 0.0f;
 	u64 time_alt;
 	float time_delta;
+	bool active = false;
 protected:
 	EngineLaunchParameters m_launchparameters = EngineLaunchParameters();
 private:
@@ -70,6 +71,8 @@ public:
 	void show_messagebox(const char* f_msg, ENGINE_MSGBOXTYPE_T f_type);
 	void push_immediate_operation(voidfunction_t& function);
 	void reset_globals();
+	//force stop
+	void stop();
 private:
 	void update();
 	void render();
@@ -81,6 +84,8 @@ public:
 	//dont use this anymore.
 	static int RunEngine();
 
+	//for whitewater/wisconsin
+	void* GetWindowHandle();
 public:
 	//public functions for everyone
 	MezBaseEntity* CreateEntityByName_Typeless(const char* m_name);
