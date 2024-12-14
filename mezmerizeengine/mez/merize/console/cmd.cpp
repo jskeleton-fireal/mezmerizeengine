@@ -13,7 +13,7 @@ static void df_single(ConsoleHelper* c_curcon)
 {
 	
 		int num = c_curcon->m_things.size();
-		console_printf("Current = %x (g=%i)\n", c_curcon,c_curcon->m_global);
+		console_printf("ConsoleHelper = %x\n", c_curcon);
 		console_printf("Count = %i\n", num);
 		foreach_vector_fw(i, c_curcon->m_things)
 		{
@@ -27,7 +27,6 @@ CREATE_CONSOLECOMMAND_WFUNC(dump_factories, 0)
 {
 	//dump factories :)
 	df_single(ConsoleHelper::FindGlobal());
-	df_single(ConsoleHelper::FindCurrent());
 
 	return 0;
 }
