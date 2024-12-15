@@ -145,7 +145,7 @@ void RInterface_OpenGL::RegenerateProgram()
 	InvalidateTemplate();
 }
 
-void RInterface_OpenGL::UploadTexture(RTexture* f_texture, int f_index = 0)
+void RInterface_OpenGL::UploadTexture(RTextureBase* f_texture, int f_index = 0)
 {
 	if (!glavailable(m_Texture1)) { glGenTextures(1, &m_Texture1); }
 	glBindTexture(GL_TEXTURE_2D, m_Texture1);
@@ -160,7 +160,8 @@ void RInterface_OpenGL::UploadTexture(RTexture* f_texture, int f_index = 0)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB + f_texture->m_Format, f_texture->m_Width, f_texture->m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, f_texture->m_rawtexture.raw);
+	int format = GL_RGB + f_texture->get_format();
+	glTexImage2D(GL_TEXTURE_2D, 0, format, f_texture->m_Width, f_texture->m_Height, 0, format, GL_UNSIGNED_BYTE, f_texture->get_texture());
 	
 	//this is an idea since i've had issues with inversion
 	if (f_texture->dont_create_mips()) {}

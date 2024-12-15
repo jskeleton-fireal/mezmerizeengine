@@ -96,6 +96,11 @@
     <ClInclude Include="mez\merize\entityprivate\ent_ball.h" />
     <ClInclude Include="mez\merize\entityprivate\efactory_private.h" />
     <ClInclude Include="mez\merize\stock\stock_entball.h" />
+    <ClInclude Include="mez\merize\deps_headers\stb_image.h" />
+    <ClInclude Include="mez\merize\ren\tex\texloader.h" />
+    <ClInclude Include="mez\merize\ren\tex\texloader_texture.h" />
+    <ClInclude Include="mez\merize\ren\tex\texturebase.h" />
+    <ClInclude Include="mez\merize\ren\tex\texenums.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mez\merize\engine\BaseEngine.cpp" />
@@ -151,5 +156,7 @@
     <ClCompile Include="mez\merize\stock\stock_conball.cpp" />
     <ClCompile Include="mez\merize\entityprivate\ent_ball.cpp" />
     <ClCompile Include="mez\merize\stock\stock_entball.cpp" />
+    <ClCompile Include="mez\merize\ren\tex\texloader.cpp" />
+    <ClCompile Include="mez\merize\ren\tex\texturebase.cpp" />
   </ItemGroup>
 </Project>

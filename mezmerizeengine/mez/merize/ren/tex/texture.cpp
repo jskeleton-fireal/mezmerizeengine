@@ -1,4 +1,5 @@
 #include "texture.h"
+using namespace tex;
 
 int RTexture::get_bpp()
 {

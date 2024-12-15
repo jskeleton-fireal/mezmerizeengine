@@ -1,5 +1,6 @@
 #include "texcache.h"
-
+#include "texenums.h"
+using namespace tex;
 void CachedStuff_RTexture::CreateDefaults()
 {
 	MezColor fb_Color1 = MezColor(0xff70ff);
@@ -9,6 +10,6 @@ void CachedStuff_RTexture::CreateDefaults()
 	fallbacktex->m_rawtexture.rgba[1] = fb_Color1;
 	fallbacktex->m_rawtexture.rgba[2] = fb_Color1;
 	fallbacktex->m_rawtexture.rgba[3] = fb_Color2;
-	fallbacktex->m_flags = fallbacktex->point_filter | fallbacktex->no_mips;
+	fallbacktex->m_flags = point_filter | no_mips;
 	Upload(Fallback(), fallbacktex);
 }
