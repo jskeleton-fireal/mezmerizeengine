@@ -2,6 +2,7 @@
 #include "mez/merize/engine/CachedStuff.h"
 #include <mez/merize/ren/rinterface/rinterface.h>
 #include <mez/merize/ren/tex/texture.h>
+#include <mez/merize/ren/tex/texloader.h>
 class TstTestImplementation : public MezEntityPhysical
 {
 public:
@@ -9,7 +10,7 @@ public:
 public:
 	TstTestImplementation() {  }
 public:
-	RTexture* tex;
+	RTextureBase* tex;
 	virtual void Initialize()
 	{
 		MezEntityPhysical::Initialize();
@@ -35,11 +36,23 @@ public:
 		SetShader("modifiedphong", "default3d");
 		SetLighting(true);
 		GetTransform()->m_Position.z = -4;
-		//for msvc debugger
+		tex = RTextureLoader::CreateTextureFromFile("test3.png");
+		if(tex)
+		{
+			tex->m_flags |= tex::point_filter;
+			tex->m_flags |= tex::no_mips;
+
+			m_ComponentContainer.FindRenderable()->m_Renderable->m_rInterface->UploadTexture(tex);
+			//for msvc debugger
+		}
 		RModel_Base* mesh = m_ComponentContainer.FindRenderable()->m_Renderable->m_model;
-		int uv_count = mesh->GetVertCount();
-		Vector* uvs = mesh->GetUVs();
-		uvs = uvs;
+		if (!mesh)
+		{
+			int uv_count = mesh->GetVertCount();
+			Vector* uvs = mesh->GetUVs();
+			uvs = uvs;
+		}
+
 	}
 
 	~TstTestImplementation()
