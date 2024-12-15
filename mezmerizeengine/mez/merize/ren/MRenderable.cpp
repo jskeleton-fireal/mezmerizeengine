@@ -67,3 +67,9 @@ int MRenderable::PrecacheModel_Name(const char* model_name)
 	return -1;
 }
 
+void MRenderable::UseFallbackModel()
+{
+	CachedStuff_RModels* cache = static_cast<CachedStuff_RModels*>(engine->cache.get(CachedStuffManager::nameRModel));
+	m_model = cache->GetFallback();
+}
+

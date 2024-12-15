@@ -23,6 +23,8 @@ public:
 
 	//0 = okay. 1 = already precached. -1 = failed.
 	virtual int PrecacheModel_Name(const char* model_name);
+
+	void UseFallbackModel();
 public:
 	explicit operator MRenderableRSHandle() { return MRenderableRSHandle(this); }
 };
