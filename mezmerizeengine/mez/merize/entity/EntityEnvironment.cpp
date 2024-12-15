@@ -1,6 +1,6 @@
 #include "EntityEnvironment.h"
 #include <mez/merize/engine/BaseEngine.h>
-ENTITY_LINK(PROJECT_MEZMERIZE,"world_env", MezEntityEnvironment);
+ENTITY_LINK_EBALL(PROJECT_MEZMERIZE,"world_env", MezEntityEnvironment);
 
 inline MezEntityEnvironment::MezEntityEnvironment()
 {

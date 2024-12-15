@@ -23,7 +23,7 @@ static void df_single(ConsoleHelper* c_curcon)
 	
 }
 
-CREATE_CONSOLECOMMAND_WFUNC(dump_factories, 0)
+CREATE_CONSOLECOMMAND_WFUNC(dump_factories, CONTHING_FLAG_CONBALL)
 {
 	//dump factories :)
 	df_single(ConsoleHelper::FindGlobal());

@@ -9,14 +9,19 @@ efactory_t::efactory_t(const char* f_name, const mezcreatefunc_t* f_func)
 {
 	m_name = f_name;
 	m_func = f_func;
+	m_flags = 0;
+	m_project = 0;
 	f.upload(this);
 }
 
-efactory_t::efactory_t(const char* f_name, const mezcreatefunc_t* f_func, u64 f_project)
+efactory_t::efactory_t(const char* f_name, const mezcreatefunc_t* f_func, u64 f_project, int f_flags)
 {
 	m_project = f_project;
 	m_name = f_name;
 	m_func = f_func;
+	m_flags = f_flags;
+
+	if (f_flags & EFACTORY_FLAGS_EBALL) { return; }
 	f.upload(this);
 	
 }

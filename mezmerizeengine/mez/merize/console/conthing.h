@@ -5,6 +5,7 @@ enum
 {
 	CONTHING_FLAG_DEVELOPMENT = (1 << 0),
 	CONTHING_FLAG_HIDDEN = (1 << 1),
+	CONTHING_FLAG_CONBALL = (1 << 15),
 };
 
 //what factories use internally
@@ -25,7 +26,7 @@ public:
 
 	virtual bool console_execute(class ConCommandArgs args,const char* input) = 0;
 protected:
-	void Upload();
+	void Upload(bool force = 0);
 	int get_engine_id();
 };
 

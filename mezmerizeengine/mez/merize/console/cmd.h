@@ -30,6 +30,7 @@ public:
 
 	ConsoleCommand(const char* f_name, bitfield16_t f_flags, concmd_functype_t f_func) : ConsoleThing(f_name,f_flags)
 	{
+		m_Flags = f_flags;
 		m_func = f_func;
 	}
 	virtual const char* ct_type_name() { return "cmd"; }

@@ -22,15 +22,19 @@ bool ConsoleThing::is_global_reference()
 	return m_engine== ENGINE_GLOBALREF_VAL;
 }
 
-void ConsoleThing::Upload()
+void ConsoleThing::Upload(bool force)
 {
 	if (!ConsoleHelper::is_initialized())
 	{
 		//this will cause conhelper to intialize globally instead of in the engine
 		ConsoleHelper::force_init();
 	}
+	if (force) goto label_pushit;
+	if (m_Flags & CONTHING_FLAG_CONBALL) return;
+	label_pushit:
 	ConsoleHelper::FindGlobal()->m_things.push_back(this);
 }
+
 
 int ConsoleThing::get_engine_id()
 {

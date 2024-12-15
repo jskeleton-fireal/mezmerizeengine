@@ -3,6 +3,7 @@
 
 void EntBall::append(efactory_t* f_)
 {
+	assert(f_->m_flags & EFACTORY_FLAGS_EBALL);
 	m_tings.push_back(entball_single_t(f_));
 	
 }

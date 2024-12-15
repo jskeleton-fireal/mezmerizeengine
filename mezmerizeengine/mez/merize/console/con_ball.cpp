@@ -2,6 +2,7 @@
 #include "conhelper.h"
 void ConBall::append(ConsoleThing* f_)
 {
+	assert(f_->m_Flags & CONTHING_FLAG_CONBALL);
 	m_tings.push_back(conball_single_t(f_));
 }
 
