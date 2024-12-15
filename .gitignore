@@ -370,3 +370,5 @@ FodyWeavers.xsd
 /doxygen-test/te
 /.gitignore
 /.gitignore
+/deps
+/working_dir/content
