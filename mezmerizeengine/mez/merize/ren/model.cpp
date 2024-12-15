@@ -52,7 +52,7 @@ RModel* RModel::LoadModelFromFile(const char* filename, bool essential)
         static_format_t t = static_format("Failed to find model %s", fn);
         if (!essential)
         {
-            engine->show_messagebox(t, ENGINE_MSGBOXTYPE_WARNING);
+            printf("%s\n",t);
         }
         else
         {

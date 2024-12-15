@@ -11,9 +11,9 @@ public:
 	{
 		
 	}
-	virtual void CreateDefaults()
+	virtual RModel_Base* CreateFallback()
 	{
-		Upload(Fallback(), RModel::LoadModelFromFile(Fallback(),1));
+		return RModel::LoadModelFromFile(Fallback(), 1);
 	}
 	virtual const char* Fallback() { return "null"; }
 	virtual const char* prettyname() { return "model"; }

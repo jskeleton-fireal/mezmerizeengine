@@ -10,7 +10,7 @@ public:
 	{
 
 	}
-	virtual void CreateDefaults();
+	virtual RTextureBase* CreateFallback();
 	virtual const char* Fallback() { return "blank"; }
 	virtual const char* prettyname() { return "texture"; }
 };

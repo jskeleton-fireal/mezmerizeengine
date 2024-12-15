@@ -23,6 +23,7 @@ class CachedStuff : public CachedStuff_baseclassDONTUSETHISPLEASE
 		CS_ERRORCODE_FALLBACKNOTFOUND = 0,
 	};
 private:
+	handle_t m_fallback = 0;
 	ValVec m_vec;
 public:
 	possibly_null(handle_t) Lookup(const char* name)
@@ -33,26 +34,37 @@ public:
 			ValPair pair = m_vec[i];
 			if (!strcmp(pair.first.c_str(), name)) { return pair.second; }
 		}
-		const char* fb = Fallback();
-		if (fb && name != fb)
+		//not found
+		if (Fallback())
 		{
-			Cls* fbk = Lookup(fb);
-			if (fbk) return fbk;
-			error_report(CS_ERRORCODE_FALLBACKNOTFOUND, name, fb);
+			//we have a fallback
+			if (!m_fallback)
+			{
+				m_fallback = CreateFallback();
+			}
+			if (m_fallback) return m_fallback;
+			const char* ft = Fallback();
+			error_report(CS_ERRORCODE_FALLBACKNOTFOUND, name, ft);
 		}
 		return 0;
 	}
 
 	void Upload(const char* name, handle_t instance)
 	{
+		if (Fallback() && !strcmp(name, Fallback()))
+		{
+			m_fallback = instance;
+			return;
+		}
 		instance->m_id = m_vec.size();
 		preupload(name, instance);
 		m_vec.push_back(std::make_pair(name, instance));
 		postupload(name, instance);
 	}
 	virtual void CreateDefaults() {}
+	virtual handle_t CreateFallback() { return 0; }
 	virtual const char* Fallback() { return 0; }
-	virtual void setup() { CreateDefaults(); }
+	virtual void setup() {  }
 	virtual void  preupload(const char* name, handle_t instance) {}
 	virtual void  postupload(const char* name, handle_t instance) {}
 
