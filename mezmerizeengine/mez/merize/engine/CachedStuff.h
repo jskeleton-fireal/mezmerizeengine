@@ -68,8 +68,8 @@ public:
 		postupload(name, instance);
 	}\
 	virtual void CreateDefaults() {}
-	virtual handle_t CreateFallback() { return 0; }
 	virtual const char* Fallback() { return 0; }
+	virtual handle_t GetFallback() { return m_fallback; }
 	virtual void setup() {  }
 	virtual void  preupload(const char* name, handle_t instance) {}
 	virtual void  postupload(const char* name, handle_t instance) {}
@@ -81,6 +81,8 @@ public:
 	{
 		
 	}
+protected:
+	virtual handle_t CreateFallback() { return 0; }
 };
 
 
