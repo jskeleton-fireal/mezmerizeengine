@@ -56,7 +56,14 @@ int MRenderable::PrecacheModel_Name(const char* model_name)
 	int i;
 	bool exists = engine->cache.get(CachedStuffManager::nameRModel)->Exists(model_name, &i);
 	if (exists) return 1;
-	cache->Upload(model_name, RModel::LoadModelFromFile(model_name, 0));
-	return 0;
+	RModel_Base* model = RModel::LoadModelFromFile(model_name, 0);
+	if (model->is_valid())
+	{
+		cache->Upload(model_name, model);
+		return 0;
+	}
+
+	//Model failed to load
+	return -1;
 }
 
