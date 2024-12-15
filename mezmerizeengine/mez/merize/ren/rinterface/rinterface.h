@@ -5,6 +5,7 @@
 #include "mez/merize/engine/baseengine.h"
 #include "mez/merize/ren/rinterface/rtemplate/template.h"
 #include "mez/merize/ren/rinterface/rinterface_feature.h"
+#include <mez/merize/ren/model_mesh.h>
 //rinterfaces are what connect renderables to the render system of choice
 
 namespace sf

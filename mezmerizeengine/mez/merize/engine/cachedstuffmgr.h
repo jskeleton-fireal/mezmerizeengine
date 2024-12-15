@@ -3,14 +3,23 @@
 
 
 #include "CachedStuff.h"
-#include "mez/merize/ren/mdlcache.h"
-#include "mez/merize/ren/tex/texcache.h"
+
 
 //This is what is in Engine
 class CachedStuffManager
 {
 public:
-	CachedStuff_RModels m_models;
-	CachedStuff_RTexture m_textures;
+	enum
+	{
+		nameRModel,
+		nameRTexture,
+		num_of_names,
+	};
+	typedef int name_t;
+	void load();
+	CachedStuffBase* get(name_t f_name) { return m_list[f_name]; }
+	~CachedStuffManager();
+private:
+	CachedStuffBase* m_list[num_of_names];
 };
 #endif

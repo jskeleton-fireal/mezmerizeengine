@@ -2,6 +2,8 @@
 #include "RenderSystem.h"
 #include "../staticdefs.h"
 #include "rinterface/rinterface_def.h"
+#include "model.h"
+#include "mdlcache.h"
 //called before draw
 
 
@@ -12,7 +14,7 @@ void MRenderable::SetModel_Id(int model_id)
 }
 void MRenderable::SetModel_Name(const char* model_name)
 {
-	SetModel(engine->cache.m_models.Lookup(model_name));
+	SetModel(engine->cache.get(CachedStuffManager::nameRModel)->Lookup_Dynamic<RModel>(model_name));
 }
 void MRenderable::SetModel(RModel_Base* model)
 {
@@ -50,10 +52,11 @@ void MRenderable::SetModel(RModel_Base* model)
 
 int MRenderable::PrecacheModel_Name(const char* model_name)
 {
+	CachedStuff_RModels* cache = static_cast<CachedStuff_RModels*>(engine->cache.get(CachedStuffManager::nameRModel));
 	int i;
-	bool exists = engine->cache.m_models.Exists(model_name, &i);
+	bool exists = engine->cache.get(CachedStuffManager::nameRModel)->Exists(model_name, &i);
 	if (exists) return 1;
-	engine->cache.m_models.Upload(model_name, RModel::LoadModelFromFile(model_name, 0));
+	cache->Upload(model_name, RModel::LoadModelFromFile(model_name, 0));
 	return 0;
 }
 

@@ -146,7 +146,7 @@ int BaseEngine::run()
     sf::Thread cthread(&console_thread, pass);
     cthread.launch();
     //load cache house
-
+    cache.load();
     sf::Clock clock; // starts the clock
     m_supersecret->clockp = &clock;
     OnInitialized();

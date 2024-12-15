@@ -44,9 +44,6 @@ public:
 	int m_id;
 	CachedStuffManager cache;
 	ConsoleHelper* conhelper;
-	//Sometimes, we need the main thread to execute something because another thread cant access something.
-	//An immediate operation gets called before the engine internally updates the game state
-	//not sure how good this is in a security context.. one bad buffer overflow and boom rca right there with this
 	voidfunction_t* m_immediate_operation = 0;
 
 	float time = 0.0f;

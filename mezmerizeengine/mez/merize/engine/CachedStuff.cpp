@@ -4,7 +4,7 @@
 //okay so templates need to have all their stuff defined in the header file because of how they work
 //but if its being created in the engine header file it cannot access the engine (it hasn't been defined yet)
 //so im avoiding that by having this lameness
-void CachedStuff_baseclassDONTUSETHISPLEASE::error_report(int code, const char* format, ...)
+void CachedStuffBase::error_report(int code, const char* format, ...)
 {
 	const char* txttouse = 0;
 	switch (code)
