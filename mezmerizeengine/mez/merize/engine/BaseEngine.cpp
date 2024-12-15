@@ -13,6 +13,7 @@
 #include "mez/merize/io/input.h"
 #include <mez/merize/ren/rinterface/rinterface_def.h>
 #include <mez/merize/stock/stock_conball.h>
+#include <mez/merize/stock/stock_entball.h>
 
 
 //holy what a mess
@@ -80,7 +81,10 @@ public:
 
 int BaseEngine::run()
 {
+    //these need to be first
     UnpackConBall();
+    UnpackEntBall();
+
     OnPreInitialized();
     //
     typedef void (BaseEngine::* updateloop)();
@@ -325,12 +329,24 @@ EngineConsole* BaseEngine::GetEngineConsole()
 
 ConBall BaseEngine::GetConBall()
 {
+    //return ConBall();
     return get_stock_conball();
+}
+
+EntBall BaseEngine::GetEntBall()
+{
+    //return EntBall();
+    return get_stock_entball();
 }
 
 void BaseEngine::UnpackConBall()
 {
     GetConBall().unpack();
+}
+
+void BaseEngine::UnpackEntBall()
+{
+    GetEntBall().unpack();
 }
 
 RInterface* BaseEngine::create_rinterface_instance()

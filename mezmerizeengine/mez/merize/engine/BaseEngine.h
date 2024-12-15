@@ -113,7 +113,10 @@ protected:
 	virtual void OnPreInitialized() {}
 
 	class ConBall GetConBall();
-	virtual void UnpackConBall();
+	class EntBall GetEntBall();
+	//override these if you dont like balls
+	virtual void UnpackConBall();	
+	virtual void UnpackEntBall();
 public:
 	RInterface* create_rinterface_instance();
 	RStatic* create_rstatic();
