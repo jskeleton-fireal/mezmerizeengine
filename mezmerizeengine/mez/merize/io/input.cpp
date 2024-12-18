@@ -1,6 +1,8 @@
 #include "input.h"
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <SFML/Window/Window.hpp>
+#include <SFML/Window/WindowBase.hpp>
 #include "mez/merize/merize.h"
 #include "mez/merize/engine/baseengine.h"
 #include <mez/merize/console/cmd.h>
@@ -16,7 +18,7 @@ static bool keycode_search = 0;
 static Vector2 mpos_last = Vector2(0,0);
 static bool cursor_locked = false;
 static bool focus = true;
-//yeah. this sucks. BUT! BUT! a bitmask would use more CPU..
+//yeah. this sucks. BUT! BUT! a bitmask would use more CPU.. so... uhh... yeah this is BETTER!!
 struct input_helper
 {
     static const int tracking = 0xff;
@@ -61,7 +63,8 @@ float Input::KeyFWAxis(MezKeyCode forward_key, MezKeyCode backward_key)
 
 Vector2 Input::GetMousePos()
 {
-    sf::Vector2i i = sf::Mouse::getPosition();
+    sf::WindowBase* relative = static_cast<sf::WindowBase*>(engine->m_Window);
+    sf::Vector2i i = sf::Mouse::getPosition(*relative);
     return { (float)i.x,(float)i.y };
 }
 

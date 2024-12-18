@@ -37,7 +37,8 @@ extern BaseEngine* engine;
 
 class BaseEngine
 {
-	friend RenderSystem;
+	friend class RenderSystem;
+	friend class Input;
 public:
 	EList elist; //huge
 	RenderSystem rendersys;
@@ -83,6 +84,7 @@ public:
 
 	//for whitewater/wisconsin
 	void* GetWindowHandle();
+
 public:
 	//public functions for everyone
 	MezBaseEntity* CreateEntityByName_Typeless(const char* m_name);
