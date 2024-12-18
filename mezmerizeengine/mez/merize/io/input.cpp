@@ -120,25 +120,27 @@ void Input::tic()
 void Input::post_tic()
 {
     if (!should_be_accepting_input()) return;
-    if (!cursor_locked)
+    mpos_last = GetMousePos_Normalized();
+    if (cursor_locked)
     {
-        mpos_last = GetMousePos_Normalized();
-    }
-    else {
-        mpos_last = GetMousePos_Normalized();
         engine->set_mousepos(engine->rendersys.ViewportSize() / 2.0f);
-        bool escape_pressed = KeyPressed(MKC_Escape);
-        if (escape_pressed)
-        {
-            //disable cursor lock
-            console_printf("cursor has been unlocked\n");
-            CursorLock(0);
-        }
     }
 }
 
 void Input::notify_focus(bool yn)
 {
+    if (cursor_locked)
+    {
+        if (yn)
+        {
+            engine->cursorlock_status(&yn);
+        }
+        else
+        {
+            //free the cursor from its shackles if we alt tab
+            engine->m_Window->setMouseCursorGrabbed(0);
+        }
+    }
     focus = yn;
 }
 
