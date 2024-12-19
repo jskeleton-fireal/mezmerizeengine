@@ -82,8 +82,12 @@ Vector2 Input::GetMousePos_Normalized_Delta()
 
 void Input::CursorLock(bool val)
 {
-    engine->cursorlock_status(&val);
-    cursor_locked = val;
+    if (cursor_locked != val)
+    {
+        engine->cursorlock_status(&val);
+        cursor_locked = val;
+    }
+
 }
 
 bool Input::CursorIsLocked()
