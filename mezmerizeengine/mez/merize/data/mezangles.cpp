@@ -55,7 +55,7 @@ Vector MezAngles::RightVector_2D()
 {
     Vector v = Vector();
     v.y = 0;
-    v.x = -cos(m_angles[ANGLE_YAW]);
+    v.x = cos(m_angles[ANGLE_YAW]);
     v.z = sin(m_angles[ANGLE_YAW]);
     return v.normalize();
 }
@@ -65,7 +65,7 @@ Vector MezAngles::RightVector_3D()
     Vector v = Vector();
     v.y = -sin(m_angles[ANGLE_YAW]);
     float scale = cos(m_angles[ANGLE_ROLL]);
-    v.x = -cos(m_angles[ANGLE_YAW]) * scale;
+    v.x = cos(m_angles[ANGLE_YAW]) * scale;
     v.z = sin(m_angles[ANGLE_YAW]) * scale;
     return v.normalize();
 }
