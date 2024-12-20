@@ -225,6 +225,10 @@ void RInterface_OpenGL::Prepare()
 		glEnableVertexAttribArray(RIF_VAO_GL_UV);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VAO_uv);
 	}
+	if (glavailable(m_Texture1))
+	{
+		glBindTexture(GL_TEXTURE_2D, m_Texture1);
+	}
 
 
 	//Need to transform matricies
