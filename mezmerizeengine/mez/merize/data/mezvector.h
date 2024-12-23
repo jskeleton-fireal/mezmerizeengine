@@ -9,7 +9,7 @@ struct Vector
 	float z;
 #ifdef __cplusplus 
 	//for backwards compatibility
-	float operator [] (int i) { return (&reintrp(*this, float))[i]; }
+	float& operator [] (int i) { return (&reintrp(*this, float))[i]; }
 	Vector operator-(Vector i) { return Vector(x-i.x,y-i.y,z-i.z); }
 	Vector operator+(Vector i) { return Vector(x+i.x,y+i.y,z+i.z); }
 	Vector operator*(Vector i) { return Vector(x*i.x,y*i.y,z*i.z); }
