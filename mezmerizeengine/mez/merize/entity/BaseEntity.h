@@ -18,7 +18,7 @@ enum
 	LIFESTATE_ALIVE,
 };
 
-class MezBaseEntity : public MezPropertyObject
+class MezBaseEntity
 {
 public:
 	enum MEZENTITYSTATE

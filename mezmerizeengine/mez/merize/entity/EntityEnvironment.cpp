@@ -15,9 +15,3 @@ inline MezEntityEnvironment::~MezEntityEnvironment()
 		engine->rendersys.enviro_sky.change(0, 0);
 	}
 }
-
-inline void MezEntityEnvironment::DeclareProperties(PropertyContainer* vector)
-{
-	MezBaseEntity::DeclareProperties(vector);
-	//todo: need to serialize environment stuff as well
-}
